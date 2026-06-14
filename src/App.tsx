@@ -7,6 +7,9 @@ import {
   useSensor,
   useSensors,
   closestCenter,
+  pointerWithin,
+  rectIntersection,
+  type CollisionDetection,
   type DragEndEvent,
   type DragStartEvent,
 } from '@dnd-kit/core'
@@ -78,6 +81,12 @@ export default function App() {
 
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 5 } }))
 
+  const collisionDetection: CollisionDetection = (args) => {
+    if (args.active.data.current?.type === 'pt-sort') return closestCenter(args)
+    const hits = pointerWithin(args)
+    return hits.length > 0 ? hits : rectIntersection(args)
+  }
+
   const activeContent = state.contents.find(c => c.id === state.activeContentId) ?? null
   const contentAssignments = activeContent ? (state.assignments[activeContent.id] ?? {}) : {}
   const ptCount = activeContent ? (state.ptCounts[activeContent.id] ?? 1) : 1
@@ -146,7 +155,7 @@ export default function App() {
   }
 
   return (
-    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+    <DndContext sensors={sensors} collisionDetection={collisionDetection} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
       <div className="app-shell">
         <header className="app-header">
           <div className="logo-group">
