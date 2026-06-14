@@ -2,6 +2,11 @@
 
 TalesWeaver のコンテンツ向けチーム編成管理ツール。
 
+https://github.com/wes3da4/tw-teambuilder
+
+## 環境
+本ツールはPC（デスクトップ）環境専用です。
+
 ## 機能
 
 - **複数コンテンツ管理** — コンテンツごとにロール構成・PT 数を設定
