@@ -49,10 +49,10 @@ export default function ContentModal({ initial, onSave, onClose, onDelete }: Pro
         <div className="form-row">
           <label>ロール構成（タンク / ヒーラー / アタッカー / 指定なし）</label>
           <div className="role-inputs">
-            <input type="number" value={roles.tank} min={0} onFocus={e => e.target.select()} onWheel={e => e.currentTarget.blur()} onChange={e => setRole('tank', Math.max(0, +e.target.value || 0))} placeholder="タンク" />
-            <input type="number" value={roles.heal} min={0} onFocus={e => e.target.select()} onWheel={e => e.currentTarget.blur()} onChange={e => setRole('heal', Math.max(0, +e.target.value || 0))} placeholder="ヒーラー" />
-            <input type="number" value={roles.dps}  min={0} onFocus={e => e.target.select()} onWheel={e => e.currentTarget.blur()} onChange={e => setRole('dps',  Math.max(0, +e.target.value || 0))} placeholder="DPS" />
-            <input type="number" value={roles.free} min={0} onFocus={e => e.target.select()} onWheel={e => e.currentTarget.blur()} onChange={e => setRole('free', Math.max(0, +e.target.value || 0))} placeholder="指定なし" />
+            <input type="number" lang="en" value={roles.tank} min={0} onFocus={e => e.target.select()} onWheel={e => e.currentTarget.blur()} onChange={e => setRole('tank', Math.max(0, +e.target.value || 0))} placeholder="タンク" />
+            <input type="number" lang="en" value={roles.heal} min={0} onFocus={e => e.target.select()} onWheel={e => e.currentTarget.blur()} onChange={e => setRole('heal', Math.max(0, +e.target.value || 0))} placeholder="ヒーラー" />
+            <input type="number" lang="en" value={roles.dps}  min={0} onFocus={e => e.target.select()} onWheel={e => e.currentTarget.blur()} onChange={e => setRole('dps',  Math.max(0, +e.target.value || 0))} placeholder="DPS" />
+            <input type="number" lang="en" value={roles.free} min={0} onFocus={e => e.target.select()} onWheel={e => e.currentTarget.blur()} onChange={e => setRole('free', Math.max(0, +e.target.value || 0))} placeholder="指定なし" />
           </div>
           <div style={{ fontSize: 11, color: 'var(--text-dim)', marginTop: 6 }}>
             合計: {roles.tank + roles.heal + roles.dps + roles.free}人/PT
