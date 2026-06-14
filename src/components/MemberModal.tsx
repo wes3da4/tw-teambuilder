@@ -126,7 +126,7 @@ export default function MemberModal({ members, showEta, onToggleEta, onAdd, onUp
             </div>
             <div className="form-row">
               <label>エタ</label>
-              <input type="number" value={form.level} min={0} inputMode="numeric" onFocus={e => e.target.select()} onChange={e => setForm(f => ({ ...f, level: +e.target.value }))} />
+              <input type="text" className="input-numeric" value={form.level} inputMode="numeric" onFocus={e => e.target.select()} onWheel={e => e.currentTarget.blur()} onChange={e => { const v = e.target.value.replace(/[０-９]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0)).replace(/[^0-9]/g, ''); setForm(f => ({ ...f, level: v === '' ? 0 : Math.max(0, +v) })) }} />
             </div>
             <div className="form-row">
               <label>ロール</label>
