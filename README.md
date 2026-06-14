@@ -12,6 +12,10 @@ TalesWeaver のコンテンツ向けチーム編成管理ツール。
 - **クリップボードコピー** — PT 編成をテキストまたはスクリーンショットでコピー
 - **データ永続化** — localStorage に自動保存
 
+## Notes
+
+This project was built with the assistance of [Claude](https://claude.ai/) (Anthropic).
+
 ## 技術スタック
 
 - [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
