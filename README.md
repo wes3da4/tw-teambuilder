@@ -2,7 +2,7 @@
 
 TalesWeaver のコンテンツ向けチーム編成管理ツール。
 
-[https://github.com/wes3da4/tw-teambuilder](https://wes3da4.github.io/tw-teambuilder/)
+https://wes3da4.github.io/tw-teambuilder/
 
 ## 環境
 
