@@ -49,10 +49,10 @@ export default function ContentModal({ initial, onSave, onClose, onDelete }: Pro
         <div className="form-row">
           <label>ロール構成（タンク / ヒーラー / アタッカー / 指定なし）</label>
           <div className="role-inputs">
-            <input type="number" value={roles.tank} min={0} onChange={e => setRole('tank', +e.target.value)} placeholder="タンク" />
-            <input type="number" value={roles.heal} min={0} onChange={e => setRole('heal', +e.target.value)} placeholder="ヒーラー" />
-            <input type="number" value={roles.dps}  min={0} onChange={e => setRole('dps',  +e.target.value)} placeholder="DPS" />
-            <input type="number" value={roles.free} min={0} onChange={e => setRole('free', +e.target.value)} placeholder="指定なし" />
+            <input type="number" value={roles.tank} min={0} inputMode="numeric" onFocus={e => e.target.select()} onChange={e => setRole('tank', +e.target.value)} placeholder="タンク" />
+            <input type="number" value={roles.heal} min={0} inputMode="numeric" onFocus={e => e.target.select()} onChange={e => setRole('heal', +e.target.value)} placeholder="ヒーラー" />
+            <input type="number" value={roles.dps}  min={0} inputMode="numeric" onFocus={e => e.target.select()} onChange={e => setRole('dps',  +e.target.value)} placeholder="DPS" />
+            <input type="number" value={roles.free} min={0} inputMode="numeric" onFocus={e => e.target.select()} onChange={e => setRole('free', +e.target.value)} placeholder="指定なし" />
           </div>
           <div style={{ fontSize: 11, color: 'var(--text-dim)', marginTop: 6 }}>
             合計: {roles.tank + roles.heal + roles.dps + roles.free}人/PT
