@@ -5,7 +5,7 @@ import {
 } from '@dnd-kit/core'
 import {
   SortableContext, verticalListSortingStrategy,
-  useSortable, arrayMove,
+  useSortable,
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import type { Member, Role } from '../types'

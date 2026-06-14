@@ -1,4 +1,4 @@
-import { type RefObject, useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { SortableContext, horizontalListSortingStrategy, useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import type { Content, Member } from '../types'
@@ -11,11 +11,11 @@ interface Props {
   assignments: Record<number, Record<number, string | null>>
   members: Member[]
   showEta: boolean
-  ptAreaRef: RefObject<HTMLDivElement>
+  ptAreaRef: React.RefObject<HTMLDivElement | null>
   onAddPT: () => void
   onRemovePT: (ptIdx: number) => void
   onPTNameChange: (ptIdx: number, name: string) => void
-  onReorderPTs: (from: number, to: number) => void
+  onReorderPTs?: (from: number, to: number) => void
 }
 
 interface SortablePTBoxProps {
@@ -29,7 +29,7 @@ interface SortablePTBoxProps {
   onNameChange: (name: string) => void
   onRemove: () => void
   canRemove: boolean
-  measureRef?: RefObject<HTMLDivElement>
+  measureRef?: React.RefObject<HTMLDivElement | null>
 }
 
 function SortablePTBox({ id, ptIdx, content, ptName, slotAssignments, members, showEta, onNameChange, onRemove, canRemove, measureRef }: SortablePTBoxProps) {
@@ -54,14 +54,14 @@ function SortablePTBox({ id, ptIdx, content, ptName, slotAssignments, members, s
         onNameChange={onNameChange}
         onRemove={onRemove}
         canRemove={canRemove}
-        dragHandleListeners={listeners as Record<string, unknown>}
-        dragHandleAttributes={attributes as Record<string, unknown>}
+        dragHandleListeners={listeners as Record<string, unknown> | undefined}
+        dragHandleAttributes={attributes as unknown as Record<string, unknown>}
       />
     </div>
   )
 }
 
-export default function PTArea({ content, ptCount, ptNames, assignments, members, showEta, ptAreaRef, onAddPT, onRemovePT, onPTNameChange, onReorderPTs }: Props) {
+export default function PTArea({ content, ptCount, ptNames, assignments, members, showEta, ptAreaRef, onAddPT, onRemovePT, onPTNameChange }: Props) {
   const ptIds = Array.from({ length: ptCount }, (_, i) => `pt-${i}`)
   const firstBoxRef = useRef<HTMLDivElement>(null)
   const [ptBoxHeight, setPtBoxHeight] = useState<number | undefined>(undefined)
