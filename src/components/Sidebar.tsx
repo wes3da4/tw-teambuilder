@@ -14,7 +14,7 @@ export default function Sidebar({ contents, activeId, onSelect, onAdd }: Props) 
         <span>コンテンツ</span>
         <button className="add-btn" onClick={onAdd} title="コンテンツを追加">＋</button>
       </div>
-      <div className="content-list">
+      <div className="content-list" style={{ flex: 1 }}>
         {contents.length === 0 && (
           <div style={{ padding: '16px 10px', color: 'var(--text-dim)', fontSize: 12, textAlign: 'center' }}>
             コンテンツがありません
@@ -30,6 +30,12 @@ export default function Sidebar({ contents, activeId, onSelect, onAdd }: Props) 
             <div className="meta">max{c.ptSize}</div>
           </div>
         ))}
+      </div>
+      <div className="sidebar-footer">
+        <a href="https://github.com/wes3da4/tw-teambuilder" target="_blank" rel="noopener noreferrer" className="github-link">
+          <i className="ti ti-brand-github" />
+          <span>GitHub</span>
+        </a>
       </div>
     </div>
   )

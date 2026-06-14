@@ -2,10 +2,15 @@
 
 TalesWeaver のコンテンツ向けチーム編成管理ツール。
 
-https://github.com/wes3da4/tw-teambuilder
+[https://github.com/wes3da4/tw-teambuilder](https://wes3da4.github.io/tw-teambuilder/)
 
 ## 環境
+
 本ツールはPC（デスクトップ）環境専用です。
+
+## 不具合報告
+
+- [@lu_uj](https://x.com/lu_uj)
 
 ## 機能
 
