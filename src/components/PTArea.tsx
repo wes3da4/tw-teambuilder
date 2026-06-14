@@ -96,7 +96,7 @@ export default function PTArea({ content, ptCount, ptNames, assignments, members
             />
           ))}
           <div className="pt-add-wrap" data-html2canvas-ignore style={ptBoxHeight !== undefined ? { height: ptBoxHeight } : undefined}>
-            <button className="pt-add-btn" onClick={onAddPT}>+</button>
+            <button className="pt-add-btn" onClick={onAddPT}><i className="ti ti-plus" /></button>
           </div>
         </div>
       </SortableContext>
