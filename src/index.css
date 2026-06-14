@@ -39,7 +39,6 @@ input, select { font-family: inherit; font-size: 13px; }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 input[type="number"] { -moz-appearance: textfield; }
-.input-numeric { ime-mode: disabled; }
 
 #root { flex: 1; display: flex; }
 
