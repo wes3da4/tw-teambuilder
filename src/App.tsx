@@ -30,7 +30,15 @@ export default function App() {
   const [showMemberModal, setShowMemberModal] = useState(false)
   const [activeCard, setActiveCard] = useState<Member | null>(null)
   const [poolHeight, setPoolHeight] = useState(160)
+  const [copiedKey, setCopiedKey] = useState<string | null>(null)
   const ptAreaRef = useRef<HTMLDivElement>(null)
+  const copiedTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  function showCopied(key: string) {
+    if (copiedTimerRef.current) clearTimeout(copiedTimerRef.current)
+    setCopiedKey(key)
+    copiedTimerRef.current = setTimeout(() => setCopiedKey(null), 2000)
+  }
 
   function handleResizeStart(e: React.MouseEvent) {
     e.preventDefault()
@@ -57,6 +65,7 @@ export default function App() {
     canvas.toBlob(blob => {
       if (!blob) return
       navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })])
+      showCopied('screenshot')
     })
   }
 
@@ -77,6 +86,72 @@ export default function App() {
       lines.push(`${name}: ${memberText}`)
     }
     navigator.clipboard.writeText(lines.join('\n'))
+    showCopied('text')
+  }
+
+  function copyAIPrompt() {
+    if (!activeContent) return
+
+    const roleLabels: Record<string, string> = { tank: 'タンク', heal: 'ヒーラー', dps: 'アタッカー', free: '指定なし' }
+    const roleParts = (['tank', 'heal', 'dps', 'free'] as const)
+      .filter(r => activeContent.roles[r] > 0)
+      .map(r => `${roleLabels[r]}×${activeContent.roles[r]}`)
+      .join(' ')
+
+    const ptCount = state.ptCounts[activeContent.id] ?? 1
+
+    const availableMembers = state.members.filter(m => !m.absent)
+
+    const memberRows = availableMembers.map(m => {
+      const roleLabel = roleLabels[m.role] ?? m.role
+      const memo = m.memo?.trim() ? `（${m.memo.trim()}）` : ''
+      return `- ${m.name}：${m.chara} / ${roleLabel} / エタ${m.level}${memo}`
+    })
+
+    const ptNameList = Array.from({ length: ptCount }, (_, i) => {
+      const name = (state.ptNames[activeContent.id] ?? {})[i] ?? `PT${i + 1}`
+      return `  - PT${i + 1}: ${name}`
+    })
+
+    const lines: string[] = [
+      'あなたはTalesWeaverオンラインゲームのチームコンテンツパーティ編成アドバイザーです。',
+      '以下の情報をもとに、最適なPT編成を提案してください。',
+      '',
+      '## コンテンツ情報',
+      `- コンテンツ名: ${activeContent.name}`,
+      `- PT構成: ${roleParts}（1PTあたり合計${activeContent.ptSize}人）`,
+      `- PT一覧（${ptCount}PT）:`,
+      ...ptNameList,
+    ]
+
+    if (activeContent.memo?.trim()) {
+      lines.push(`- 今回のメモ: ${activeContent.memo.trim()}`)
+    }
+
+    lines.push('')
+    lines.push('## 参加メンバー（欠席者を除く）')
+    if (memberRows.length > 0) {
+      lines.push(...memberRows)
+    } else {
+      lines.push('（メンバーなし）')
+    }
+
+    lines.push('')
+    lines.push('## 依頼')
+    lines.push(`上記の情報とメモを考慮して、${ptCount}PT分の最適なチーム編成を提案してください。`)
+    lines.push('各メンバーのロール・エタレベル・メモを踏まえ、バランスの取れた配置を複数案示してください。')
+
+    const ptNameList2 = Array.from({ length: ptCount }, (_, i) => {
+      const name = (state.ptNames[activeContent.id] ?? {})[i] ?? `PT${i + 1}`
+      return `${name}: メンバー名 / メンバー名 / ...`
+    })
+    lines.push('')
+    lines.push('## 出力フォーマット')
+    lines.push(`【${activeContent.name}】`)
+    lines.push(...ptNameList2)
+
+    navigator.clipboard.writeText(lines.join('\n'))
+    showCopied('ai')
   }
 
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 5 } }))
@@ -177,24 +252,41 @@ export default function App() {
             {activeContent ? (
               <>
                 <div className="content-header">
-                  <div className="title">{activeContent.name}</div>
-                  <div className="meta">
-                    最大{activeContent.ptSize}人 /
-                    {activeContent.roles.tank > 0 && ` タンク×${activeContent.roles.tank}`}
-                    {activeContent.roles.heal > 0 && ` ヒーラー×${activeContent.roles.heal}`}
-                    {activeContent.roles.dps > 0 && ` アタッカー×${activeContent.roles.dps}`}
-                    {activeContent.roles.free > 0 && ` 指定なし×${activeContent.roles.free}`}
+                  <div className="content-header-main">
+                    <div className="title">{activeContent.name}</div>
+                    <div className="meta">
+                      最大{activeContent.ptSize}人 /
+                      {activeContent.roles.tank > 0 && ` タンク×${activeContent.roles.tank}`}
+                      {activeContent.roles.heal > 0 && ` ヒーラー×${activeContent.roles.heal}`}
+                      {activeContent.roles.dps > 0 && ` アタッカー×${activeContent.roles.dps}`}
+                      {activeContent.roles.free > 0 && ` 指定なし×${activeContent.roles.free}`}
+                    </div>
+                    <div className="spacer" />
+                    {copiedKey && (
+                      <span className="copy-feedback">✓ コピーしました</span>
+                    )}
+                    <button className="setting-btn" onClick={copyText} title="PT編成をテキストでコピー">
+                      <i className="ti ti-clipboard-text" />
+                    </button>
+                    <button className="setting-btn" onClick={copyScreenshot} title="スクリーンショットをコピー">
+                      <i className="ti ti-camera" />
+                    </button>
+                    <button className="setting-btn ai-prompt-btn" onClick={copyAIPrompt} title="AI編成プロンプトをコピー">
+                      <i className="ti ti-robot" /> AI
+                    </button>
+                    <button className="setting-btn" onClick={() => { setEditContent(activeContent); setShowContentModal(true) }}>
+                      ⚙ 設定
+                    </button>
                   </div>
-                  <div className="spacer" />
-                  <button className="setting-btn" onClick={copyText} title="PT編成をテキストでコピー">
-                    <i className="ti ti-clipboard-text" />
-                  </button>
-                  <button className="setting-btn" onClick={copyScreenshot} title="スクリーンショットをコピー">
-                    <i className="ti ti-camera" />
-                  </button>
-                  <button className="setting-btn" onClick={() => { setEditContent(activeContent); setShowContentModal(true) }}>
-                    ⚙ 設定
-                  </button>
+                  <div className="content-memo-bar">
+                    <span className="content-memo-label">メモ</span>
+                    <input
+                      className="content-memo-input"
+                      value={activeContent.memo ?? ''}
+                      onChange={e => store.updateContent({ ...activeContent, memo: e.target.value })}
+                      placeholder=""
+                    />
+                  </div>
                 </div>
                 <PTArea
                   ptAreaRef={ptAreaRef}

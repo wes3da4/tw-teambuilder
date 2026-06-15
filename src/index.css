@@ -160,13 +160,17 @@ input[type="number"] { -moz-appearance: textfield; }
 .right-col { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
 
 .content-header {
-  padding: 10px 16px;
   border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  background: var(--bg-secondary);
+}
+.content-header-main {
+  padding: 8px 16px;
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-shrink: 0;
-  background: var(--bg-secondary);
 }
 .content-header .title { font-size: 15px; font-weight: 600; }
 .content-header .meta { font-size: 11px; color: var(--text-muted); }
@@ -182,6 +186,33 @@ input[type="number"] { -moz-appearance: textfield; }
   transition: border-color 0.15s, color 0.15s;
 }
 .content-header .setting-btn:hover { border-color: var(--border-hover); color: var(--text); }
+
+.content-memo-bar {
+  padding: 4px 16px 7px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.content-memo-label {
+  font-size: 10px;
+  color: var(--text-dim);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.content-memo-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  outline: none;
+  font-size: 12px;
+  color: var(--text);
+  padding: 2px 4px;
+  transition: border-color 0.15s;
+}
+.content-memo-input:focus { border-bottom-color: var(--accent); }
+.content-memo-input::placeholder { color: var(--text-dim); }
 
 /* PTエリア */
 .pt-area {
@@ -237,7 +268,6 @@ input[type="number"] { -moz-appearance: textfield; }
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  overflow: hidden;
 }
 .pt-box-header {
   padding: 6px 10px;
@@ -503,7 +533,7 @@ input[type="number"] { -moz-appearance: textfield; }
 }
 .member-modal-body .member-add-section .modal-footer {
   margin-top: auto;
-  padding-top: 16px;
+  padding-top: 0;
 }
 .member-list-col {
   flex: 1;
@@ -513,7 +543,7 @@ input[type="number"] { -moz-appearance: textfield; }
   gap: 8px;
 }
 .member-list-col .member-list {
-  height: 290px;
+  height: 377px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -656,6 +686,92 @@ input[type="number"] { -moz-appearance: textfield; }
   opacity: 1 !important;
   box-shadow: 0 4px 16px rgba(0,0,0,0.25);
   cursor: grabbing;
+}
+
+/* MemoTooltip（portal） */
+.memo-tooltip {
+  position: fixed;
+  z-index: 9999;
+  background: #0d1b38;
+  color: #c8deff;
+  font-size: 12px;
+  line-height: 1.65;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(80, 130, 210, 0.45);
+  max-width: 240px;
+  white-space: pre-wrap;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+.memo-tooltip--visible { opacity: 1; }
+
+.memo-tooltip--right::before,
+.memo-tooltip--right::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+}
+.memo-tooltip--right::before { right: 100%; border-right-color: rgba(80, 130, 210, 0.45); }
+.memo-tooltip--right::after  { right: calc(100% - 1px); border-right-color: #0d1b38; }
+
+.memo-tooltip--left::before,
+.memo-tooltip--left::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+}
+.memo-tooltip--left::before { left: 100%; border-left-color: rgba(80, 130, 210, 0.45); }
+.memo-tooltip--left::after  { left: calc(100% - 1px); border-left-color: #0d1b38; }
+
+/* メモテキストエリア */
+.memo-textarea {
+  width: 100%;
+  padding: 7px 10px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  outline: none;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  transition: border-color 0.15s;
+}
+.memo-textarea:focus { border-color: var(--accent); }
+.memo-textarea::placeholder { color: var(--text-dim); }
+
+/* コピーフィードバック */
+.copy-feedback {
+  font-size: 11px;
+  color: var(--accent);
+  white-space: nowrap;
+  animation: fade-in-out 2s ease forwards;
+  pointer-events: none;
+}
+@keyframes fade-in-out {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* AIプロンプトボタン */
+.ai-prompt-btn {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+.ai-prompt-btn:hover {
+  background: var(--accent-bg) !important;
+  border-color: var(--accent-hover) !important;
+  color: var(--accent-hover) !important;
 }
 
 /* スクロールバー */

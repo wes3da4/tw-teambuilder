@@ -7,6 +7,7 @@ export interface Member {
   role: Role
   chara: string
   absent: boolean
+  memo: string
 }
 
 export interface Content {
@@ -14,6 +15,7 @@ export interface Content {
   name: string
   ptSize: number
   roles: { tank: number; heal: number; dps: number; free: number }
+  memo: string
 }
 
 export interface AppState {
