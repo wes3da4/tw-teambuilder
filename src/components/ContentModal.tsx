@@ -24,6 +24,7 @@ export default function ContentModal({ initial, onSave, onClose, onDelete }: Pro
       name: name.trim(),
       ptSize: total,
       roles,
+      memo: initial?.memo ?? '',
     })
   }
 

@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { useDraggable } from '@dnd-kit/core'
 import type { Member, Role } from '../types'
 import { CHARA_MAP, ROLE_ICON, SLOT_ROLE_CLASS } from '../constants'
+import MemoTooltip from './MemoTooltip'
 
 interface Props {
   member: Member
@@ -18,6 +20,7 @@ export default function MemberCard({ member, slotRole, draggableId, draggableDat
     data: draggableData ?? {},
     disabled: member.absent || absenceMode,
   })
+  const [anchorRect, setAnchorRect] = useState<DOMRect | null>(null)
 
   const charaFile = CHARA_MAP[member.chara]
   const roleIcon = ROLE_ICON[member.role]
@@ -38,6 +41,8 @@ export default function MemberCard({ member, slotRole, draggableId, draggableDat
       className={classes}
       onClick={absenceMode ? onAbsenceClick : undefined}
       style={absenceMode ? { cursor: 'pointer' } : undefined}
+      onMouseEnter={member.memo ? e => setAnchorRect(e.currentTarget.getBoundingClientRect()) : undefined}
+      onMouseLeave={member.memo ? () => setAnchorRect(null) : undefined}
     >
       {slotRole && (
         <div className={`card-slot-icon ${slotRoleClass} ${mismatch ? 'mismatch' : ''}`}>
@@ -56,6 +61,9 @@ export default function MemberCard({ member, slotRole, draggableId, draggableDat
       <div className="card-role-icon">
         {roleIcon && <img src={roleIcon} alt={member.role} />}
       </div>
+      {anchorRect && member.memo && (
+        <MemoTooltip text={member.memo} anchorRect={anchorRect} />
+      )}
     </div>
   )
 }

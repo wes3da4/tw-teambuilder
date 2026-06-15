@@ -11,7 +11,7 @@ import { CSS } from '@dnd-kit/utilities'
 import type { Member, Role } from '../types'
 import { CHARAS, CHARA_MAP, ROLE_ICON, ROLES } from '../constants'
 
-const EMPTY_FORM = { name: '', level: 0, role: 'dps' as Role, chara: '', absent: false }
+const EMPTY_FORM = { name: '', level: 0, role: 'dps' as Role, chara: '', absent: false, memo: '' }
 
 interface Props {
   members: Member[]
@@ -73,16 +73,16 @@ export default function MemberModal({ members, showEta, onToggleEta, onAdd, onUp
 
   function startEdit(m: Member) {
     setEditId(m.id)
-    setForm({ name: m.name, level: m.level, role: m.role, chara: m.chara, absent: m.absent })
+    setForm({ name: m.name, level: m.level, role: m.role, chara: m.chara, absent: m.absent, memo: m.memo ?? '' })
   }
 
   function handleSave() {
     if (!form.name.trim() || !form.chara) return
     if (editId) {
-      onUpdate({ id: editId, ...form, name: form.name.trim() })
+      onUpdate({ id: editId, ...form, name: form.name.trim(), memo: form.memo })
       setEditId(null)
     } else {
-      onAdd({ id: crypto.randomUUID(), ...form, name: form.name.trim() })
+      onAdd({ id: crypto.randomUUID(), ...form, name: form.name.trim(), memo: form.memo })
     }
     setForm(EMPTY_FORM)
   }
@@ -140,6 +140,16 @@ export default function MemberModal({ members, showEta, onToggleEta, onAdd, onUp
                 <option value="">-- 選択 --</option>
                 {CHARAS.map(c => <option key={c} value={c}>{c}</option>)}
               </select>
+            </div>
+            <div className="form-row">
+              <label>メモ</label>
+              <textarea
+                className="memo-textarea"
+                value={form.memo}
+                onChange={e => setForm(f => ({ ...f, memo: e.target.value }))}
+                placeholder="例: 土曜のみ参加可能、遅い時間希望"
+                rows={2}
+              />
             </div>
             <div className="modal-footer">
               {editId && <button className="btn-secondary" onClick={cancelEdit}>キャンセル</button>}
