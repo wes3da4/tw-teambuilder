@@ -93,13 +93,8 @@ export default function App() {
     if (!activeContent) return
 
     const roleLabels: Record<string, string> = { tank: 'タンク', heal: 'ヒーラー', dps: 'アタッカー', free: '指定なし' }
-    const roleParts = (['tank', 'heal', 'dps', 'free'] as const)
-      .filter(r => activeContent.roles[r] > 0)
-      .map(r => `${roleLabels[r]}×${activeContent.roles[r]}`)
-      .join(' ')
 
     const ptCount = state.ptCounts[activeContent.id] ?? 1
-
     const availableMembers = state.members.filter(m => !m.absent)
 
     const memberRows = availableMembers.map(m => {
@@ -113,20 +108,54 @@ export default function App() {
       return `  - PT${i + 1}: ${name}`
     })
 
+    // PT成立条件セクション
+    const conditionLines: string[] = ['各PTは以下の構成を必ず満たすこと。', '']
+    if (activeContent.roles.tank > 0) conditionLines.push(`- タンク：${activeContent.roles.tank}名必須`)
+    if (activeContent.roles.heal > 0) conditionLines.push(`- ヒーラー：${activeContent.roles.heal}名必須`)
+    if (activeContent.roles.dps  > 0) conditionLines.push(`- アタッカー：${activeContent.roles.dps}名`)
+    if (activeContent.roles.free > 0) conditionLines.push(`- 指定なし：${activeContent.roles.free}名`)
+    conditionLines.push(`- 合計：${activeContent.ptSize}名`)
+
+    const requiredRoleNames: string[] = []
+    if (activeContent.roles.tank > 0) requiredRoleNames.push('タンク')
+    if (activeContent.roles.heal > 0) requiredRoleNames.push('ヒーラー')
+
+    if (requiredRoleNames.length > 0) {
+      const reqText = requiredRoleNames.map(r => {
+        const count = r === 'タンク' ? activeContent.roles.tank : activeContent.roles.heal
+        return `${r}${count}名`
+      }).join('・')
+      conditionLines.push('')
+      conditionLines.push('PTごとに成立条件を判定すること。')
+      conditionLines.push(`参加者全体で${reqText}いれば良い、ではなく、各PTに${reqText}を配置すること。`)
+    }
+
     const lines: string[] = [
       'あなたはTalesWeaverオンラインゲームのチームコンテンツパーティ編成アドバイザーです。',
       '以下の情報をもとに、最適なPT編成を提案してください。',
       '',
       '## コンテンツ情報',
       `- コンテンツ名: ${activeContent.name}`,
-      `- PT構成: ${roleParts}（1PTあたり合計${activeContent.ptSize}人）`,
-      `- PT一覧（${ptCount}PT）:`,
+      `- PT枠（最大${ptCount}PT、参加人数に応じて使用PT数は減らしてよい）:`,
       ...ptNameList,
     ]
 
     if (activeContent.memo?.trim()) {
       lines.push(`- 今回のメモ: ${activeContent.memo.trim()}`)
     }
+
+    lines.push('')
+    lines.push('## PT成立条件')
+    lines.push('')
+    lines.push(...conditionLines)
+
+    lines.push('')
+    lines.push('## 戦力評価')
+    lines.push('')
+    lines.push('- エタレベルは戦力指標として扱うこと')
+    lines.push('- エタ40はエタ20より大幅に高火力とみなすこと')
+    lines.push('- PT間の総戦力差が最小になるよう配置すること')
+    lines.push('- 指定ロール成立後は戦力均等化を優先すること')
 
     lines.push('')
     lines.push('## 参加メンバー（欠席者を除く）')
@@ -138,10 +167,12 @@ export default function App() {
 
     lines.push('')
     lines.push('## 依頼')
-    lines.push(`上記の情報とメモを考慮して、${ptCount}PT分の最適なチーム編成を提案してください。`)
+    lines.push('上記の情報とメモを考慮して、最適なPT編成を提案してください。')
+    lines.push(`参加メンバー${availableMembers.length}人をなるべく少ないPTにまとめ、各PTができるだけ満員に近くなるよう優先してください。`)
     lines.push('各メンバーのロール・エタレベル・メモを踏まえ、バランスの取れた配置を複数案示してください。')
 
-    const ptNameList2 = Array.from({ length: ptCount }, (_, i) => {
+    const neededPTs = Math.min(ptCount, Math.max(1, Math.ceil(availableMembers.length / activeContent.ptSize)))
+    const ptNameList2 = Array.from({ length: neededPTs }, (_, i) => {
       const name = (state.ptNames[activeContent.id] ?? {})[i] ?? `PT${i + 1}`
       return `${name}: メンバー名 / メンバー名 / ...`
     })
