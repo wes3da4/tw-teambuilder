@@ -218,6 +218,26 @@ export function useAppStore() {
     update(s => ({ ...s, showEta: !s.showEta }))
   }, [update])
 
+  const applyLayout = useCallback((contentId: string, layout: { ptName: string; memberIds: string[] }[]) => {
+    update(s => {
+      const newPtNames: Record<number, string> = {}
+      const newAssignments: Record<number, Record<number, string | null>> = {}
+      layout.forEach(({ ptName, memberIds }, idx) => {
+        newPtNames[idx] = ptName
+        newAssignments[idx] = {}
+        memberIds.forEach((id, slotIdx) => {
+          newAssignments[idx][slotIdx] = id
+        })
+      })
+      return {
+        ...s,
+        ptCounts: { ...s.ptCounts, [contentId]: layout.length },
+        ptNames: { ...s.ptNames, [contentId]: newPtNames },
+        assignments: { ...s.assignments, [contentId]: newAssignments },
+      }
+    })
+  }, [update])
+
   const reorderMembers = useCallback((from: number, to: number) => {
     update(s => {
       const members = [...s.members]
@@ -278,5 +298,6 @@ export function useAppStore() {
     reorderMembers,
     reorderPTs,
     toggleShowEta,
+    applyLayout,
   }
 }

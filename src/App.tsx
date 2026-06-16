@@ -20,6 +20,7 @@ import MemberPool from './components/MemberPool'
 import ContentModal from './components/ContentModal'
 import MemberModal from './components/MemberModal'
 import MemberCard from './components/MemberCard'
+import ImportModal from './components/ImportModal'
 import type { Content, Member } from './types'
 
 export default function App() {
@@ -31,6 +32,7 @@ export default function App() {
   const [activeCard, setActiveCard] = useState<Member | null>(null)
   const [poolHeight, setPoolHeight] = useState(160)
   const [copiedKey, setCopiedKey] = useState<string | null>(null)
+  const [showImportModal, setShowImportModal] = useState(false)
   const ptAreaRef = useRef<HTMLDivElement>(null)
   const copiedTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -114,7 +116,7 @@ export default function App() {
     if (activeContent.roles.heal > 0) conditionLines.push(`- ヒーラー：${activeContent.roles.heal}名必須`)
     if (activeContent.roles.dps  > 0) conditionLines.push(`- アタッカー：${activeContent.roles.dps}名`)
     if (activeContent.roles.free > 0) conditionLines.push(`- 指定なし：${activeContent.roles.free}名`)
-    conditionLines.push(`- 合計：${activeContent.ptSize}名`)
+    conditionLines.push(`- 合計：最大${activeContent.ptSize}名（参加可能人数に応じて減員可）`)
 
     const requiredRoleNames: string[] = []
     if (activeContent.roles.tank > 0) requiredRoleNames.push('タンク')
@@ -136,7 +138,7 @@ export default function App() {
       '',
       '## コンテンツ情報',
       `- コンテンツ名: ${activeContent.name}`,
-      `- PT枠（最大${ptCount}PT、参加人数に応じて使用PT数は減らしてよい）:`,
+      `- PT枠（最大${ptCount}PT）:`,
       ...ptNameList,
     ]
 
@@ -150,15 +152,29 @@ export default function App() {
     lines.push(...conditionLines)
 
     lines.push('')
+    lines.push('## PT人数配分ルール')
+    lines.push('')
+    lines.push('必要最小PT数を算出すること。')
+    lines.push('その後、全参加者を必要最小PT数へ割り振り、PT間の人数差が最小となるよう均等配分すること。')
+    lines.push('空き枠があるPTが存在する場合でも、人数均等化のために新PTを作成することは許可する。')
+    lines.push('ただし、必要最小PT数を超えるPTを作成してはならない。')
+    lines.push('')
+    lines.push('優先順位:')
+    lines.push('1. PT成立条件')
+    lines.push('2. 必要最小PT数')
+    lines.push('3. PT人数の均等化')
+    lines.push('4. 戦力均等化')
+    lines.push('5. 希望時間')
+    lines.push('')
     lines.push('## 戦力評価')
     lines.push('')
     lines.push('- エタレベルは戦力指標として扱うこと')
     lines.push('- エタ40はエタ20より大幅に高火力とみなすこと')
     lines.push('- PT間の総戦力差が最小になるよう配置すること')
-    lines.push('- 指定ロール成立後は戦力均等化を優先すること')
 
     lines.push('')
     lines.push('## 参加メンバー（欠席者を除く）')
+    lines.push('※ メモに欠席・参加不可の記述があるメンバーは、## コンテンツ情報 の「今回のメモ」およびPT名の日時と照合し、該当する場合は配置対象から除いてください。')
     if (memberRows.length > 0) {
       lines.push(...memberRows)
     } else {
@@ -168,8 +184,11 @@ export default function App() {
     lines.push('')
     lines.push('## 依頼')
     lines.push('上記の情報とメモを考慮して、最適なPT編成を提案してください。')
-    lines.push(`参加メンバー${availableMembers.length}人をなるべく少ないPTにまとめ、各PTができるだけ満員に近くなるよう優先してください。`)
     lines.push('各メンバーのロール・エタレベル・メモを踏まえ、バランスの取れた配置を複数案示してください。')
+    lines.push('')
+    lines.push('【制約】')
+    lines.push('- メモで欠席・参加不可と判断したメンバーを除く全員を、必ずいずれかのPTに配置すること（配置漏れ禁止）')
+    lines.push('- 各メンバーは複数のPTに重複して配置しないこと')
 
     const neededPTs = Math.min(ptCount, Math.max(1, Math.ceil(availableMembers.length / activeContent.ptSize)))
     const ptNameList2 = Array.from({ length: neededPTs }, (_, i) => {
@@ -305,6 +324,9 @@ export default function App() {
                     <button className="setting-btn ai-prompt-btn" onClick={copyAIPrompt} title="AI編成プロンプトをコピー">
                       <i className="ti ti-robot" /> AI
                     </button>
+                    <button className="setting-btn" onClick={() => setShowImportModal(true)} title="テキストから配置">
+                      <i className="ti ti-text-plus" /> 配置
+                    </button>
                     <button className="setting-btn" onClick={() => { setEditContent(activeContent); setShowContentModal(true) }}>
                       ⚙ 設定
                     </button>
@@ -379,6 +401,15 @@ export default function App() {
           onDelete={store.deleteMember}
           onReorder={store.reorderMembers}
           onClose={() => setShowMemberModal(false)}
+        />
+      )}
+
+      {showImportModal && activeContent && (
+        <ImportModal
+          content={activeContent}
+          members={state.members}
+          onApply={layout => store.applyLayout(activeContent.id, layout)}
+          onClose={() => setShowImportModal(false)}
         />
       )}
     </DndContext>

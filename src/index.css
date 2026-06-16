@@ -730,6 +730,57 @@ input[type="number"] { -moz-appearance: textfield; }
 .memo-tooltip--left::before { left: 100%; border-left-color: rgba(80, 130, 210, 0.45); }
 .memo-tooltip--left::after  { left: calc(100% - 1px); border-left-color: #0d1b38; }
 
+/* テキストインポートモーダル */
+.import-modal { width: 560px; }
+.import-textarea { font-size: 12px; line-height: 1.6; }
+
+.import-preview {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.import-preview-label {
+  font-size: 10px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.import-preview-row {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  align-items: baseline;
+}
+.import-pt-name {
+  color: var(--text-muted);
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.import-pt-name::after { content: ':'; margin-left: 2px; }
+.import-members { color: var(--text); }
+
+.import-errors {
+  background: rgba(192, 48, 48, 0.08);
+  border: 1px solid rgba(192, 48, 48, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.import-error-row {
+  font-size: 12px;
+  color: var(--danger);
+}
+
 /* メモテキストエリア */
 .memo-textarea {
   width: 100%;
