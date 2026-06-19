@@ -353,8 +353,10 @@ export default function App() {
                   onRemovePT={i => store.removePT(activeContent.id, i)}
                   onPTNameChange={(i, name) => store.setPTName(activeContent.id, i, name)}
                   onReorderPTs={(from, to) => store.reorderPTs(activeContent.id, from, to)}
+                  draggingChara={activeCard?.chara ?? null}
+                  draggingMemberId={activeCard?.id ?? null}
                 />
-                <MemberPool members={state.members} assignedIds={assignedIds} showEta={state.showEta} poolHeight={poolHeight} onResizeStart={handleResizeStart} onUpdateMember={store.updateMember} />
+                <MemberPool members={state.members} assignedIds={assignedIds} showEta={state.showEta} poolHeight={poolHeight} onResizeStart={handleResizeStart} onUpdateMember={store.updateMember} draggingChara={activeCard?.chara ?? null} draggingMemberId={activeCard?.id ?? null} />
               </>
             ) : (
               <div className="no-content">
@@ -372,6 +374,8 @@ export default function App() {
               member={activeCard}
               draggableId="overlay"
               draggableData={{}}
+              draggingChara={activeCard.chara}
+              draggingMemberId={activeCard.id}
             />
           </div>
         )}

@@ -36,6 +36,10 @@ export default function Sidebar({ contents, activeId, onSelect, onAdd }: Props) 
           <i className="ti ti-brand-github" />
           <span>GitHub</span>
         </a>
+        <span className="footer-sep">/</span>
+        <a href="https://github.com/wes3da4/tw-teambuilder/blob/main/CREDITS.md" target="_blank" rel="noopener noreferrer" className="github-link">
+          <span>Credits</span>
+        </a>
       </div>
     </div>
   )

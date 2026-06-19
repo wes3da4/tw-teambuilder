@@ -9,9 +9,11 @@ interface Props {
   poolHeight: number
   onResizeStart: (e: React.MouseEvent) => void
   onUpdateMember: (member: Member) => void
+  draggingChara?: string | null
+  draggingMemberId?: string | null
 }
 
-export default function MemberPool({ members, assignedIds, showEta, poolHeight, onResizeStart, onUpdateMember }: Props) {
+export default function MemberPool({ members, assignedIds, showEta, poolHeight, onResizeStart, onUpdateMember, draggingChara, draggingMemberId }: Props) {
   const [absenceMode, setAbsenceMode] = useState(false)
 
   const unassigned = members.filter(m => !assignedIds.has(m.id))
@@ -47,6 +49,8 @@ export default function MemberPool({ members, assignedIds, showEta, poolHeight, 
             absenceMode={absenceMode}
             onAbsenceClick={() => handleCardClick(m)}
             showEta={showEta}
+            draggingChara={draggingChara}
+            draggingMemberId={draggingMemberId}
           />
         ))}
         {unassigned.length === 0 && (

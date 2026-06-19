@@ -1,0 +1,108 @@
+{
+  "ルシアン": [
+    { "name": "物理複合", "icon": "skill/lucian/physical_mixed.png", "skill_ids": [] },
+    { "name": "斬り型", "icon": "skill/lucian/slash_type.png", "skill_ids": [] },
+    { "name": "突き型", "icon": "skill/lucian/thrust_type.png", "skill_ids": [] }
+  ],
+  "ボリス": [
+    { "name": "物理複合", "icon": "skill/boris/physical_mixed.png", "skill_ids": [] },
+    { "name": "斬り型", "icon": "skill/boris/slash_type.png", "skill_ids": [] },
+    { "name": "魔剣士型", "icon": "skill/boris/swordmage_type.png", "skill_ids": [] }
+  ],
+  "イスピン": [
+    { "name": "突き型", "icon": "skill/ispin/thrust_type.png", "skill_ids": [] },
+    { "name": "物理複合", "icon": "skill/ispin/physical_mixed.png", "skill_ids": [] },
+    { "name": "斬り型", "icon": "skill/ispin/slash_type.png", "skill_ids": [] }
+  ],
+  "マキシミン": [
+    { "name": "物理複合", "icon": "skill/maximin/physical_mixed.png", "skill_ids": [] },
+    { "name": "斬り型", "icon": "skill/maximin/slash_type.png", "skill_ids": [] },
+    { "name": "魔剣士型", "icon": "skill/maximin/swordmage_type.png", "skill_ids": [] }
+  ],
+  "ティチエル": [
+    { "name": "攻撃型", "icon": "skill/tichiel/attack_type.png", "skill_ids": [] },
+    { "name": "補助型", "icon": "skill/tichiel/support_type.png", "skill_ids": [] },
+    { "name": "戦闘型", "icon": "skill/tichiel/battle_type.png", "skill_ids": [] }
+  ],
+  "ナヤトレイ": [
+    { "name": "突き型", "icon": "skill/naya/thrust_type.png", "skill_ids": [] },
+    { "name": "物理複合", "icon": "skill/naya/physical_mixed.png", "skill_ids": [] },
+    { "name": "斬り型", "icon": "skill/naya/slash_type.png", "skill_ids": [] }
+  ],
+  "シベリン": [
+    { "name": "突き型", "icon": "skill/sivelin/thrust_type.png", "skill_ids": [] },
+    { "name": "物理複合", "icon": "skill/sivelin/physical_mixed.png", "skill_ids": [] },
+    { "name": "斬り型", "icon": "skill/sivelin/slash_type.png", "skill_ids": [] }
+  ],
+  "ミラ": [
+    { "name": "斬り型", "icon": "skill/mila/slash_type.png", "skill_ids": [] },
+    { "name": "物理複合", "icon": "skill/mila/physical_mixed.png", "skill_ids": [] },
+    { "name": "突き型", "icon": "skill/mila/thrust_type.png", "skill_ids": [] }
+  ],
+  "ジョシュア": [
+    { "name": "剣闘士", "icon": "skill/josua/gladiator.png", "skill_ids": ["joshua_gladiator"] },
+    { "name": "霊媒", "icon": "skill/josua/medium.png", "skill_ids": [] },
+    { "name": "魔術師", "icon": "skill/josua/sorcerer.png", "skill_ids": ["joshua_magician"] }
+  ],
+  "クロエ": [
+    { "name": "炎術型", "icon": "skill/cloe/fire_type.png", "skill_ids": [] },
+    { "name": "水術型", "icon": "skill/cloe/water_type.png", "skill_ids": [] },
+    { "name": "雷術型", "icon": "skill/cloe/lightning_type.png", "skill_ids": [] }
+  ],
+  "ランジエ": [
+    { "name": "物理型", "icon": "skill/lanziee/physical_type.png", "skill_ids": [] },
+    { "name": "魔法型", "icon": "skill/lanziee/magic_type.png", "skill_ids": [] },
+    { "name": "補助型", "icon": "skill/lanziee/support_type.png", "skill_ids": [] }
+  ],
+  "イサック": [
+    { "name": "突き型", "icon": "skill/issac/thrust_type.png", "skill_ids": [] },
+    { "name": "斬り型", "icon": "skill/issac/slash_type.png", "skill_ids": [] },
+    { "name": "物理複合", "icon": "skill/issac/physical_mixed.png", "skill_ids": [] }
+  ],
+  "イソレット": [
+    { "name": "ティエラ", "icon": "skill/isolet/tierra.png", "skill_ids": [] },
+    { "name": "チャント", "icon": "skill/isolet/chant.png", "skill_ids": [] }
+  ],
+  "ベンヤ": [
+    { "name": "デスサイズ系", "icon": "skill/benya/death_scythe.png", "skill_ids": [] },
+    { "name": "ホーリーハンマー系", "icon": "skill/benya/holy_hammer.png", "skill_ids": [] }
+  ],
+  "ロアミニ": [
+    { "name": "呪術系", "icon": "skill/roamini/curse_type.png", "skill_ids": [] }
+  ],
+  "ノクターン": [
+    { "name": "工学系", "icon": "skill/nocturne/engineering_type.png", "skill_ids": [] }
+  ],
+  "イェフネン": [
+    { "name": "ドングル", "icon": "skill/yevgnen/dongle.png", "skill_ids": [] }
+  ],
+  "アナイス": [
+    {
+      "name": "守護精霊召喚系",
+      "icon": "skill/anais/guardian_spirit_summon.png",
+      "skill_ids": ["anais_earu_summon", "anais_loki_summon", "anais_rumie_summon", "anais_flower_garden", "anais_synergy", "anais_dissonance", "anais_cacophony", "anais_aria", "anais_hard_weapon"]
+    },
+    {
+      "name": "破壊精霊召喚系",
+      "icon": "skill/anais/destruction_spirit_summon.png",
+      "skill_ids": ["anais_anferu_summon", "anais_gureshisu_summon", "anais_iguni_summon", "anais_damage_plus", "anais_angry_pixie", "anais_lightning_aura", "anais_ice_aura", "anais_fire_aura"]
+    },
+    {
+      "name": "魔法人形召喚系",
+      "icon": "skill/anais/magic_doll_summon.png",
+      "skill_ids": ["anais_mika_summon", "anais_rushi_summon", "anais_bear_heal", "anais_bear_healing", "anais_bear_cure", "anais_bear_angry", "anais_mika_bear_step", "anais_rushi_bear_step", "anais_mika_barrier", "anais_rushi_barrier"]
+    }
+  ],
+  "リーチェ": [
+    {
+      "name": "悪の武具モード",
+      "icon": "skill/rice/evil_armor_mode.png",
+      "skill_ids": ["riche_armor_mastery1", "riche_armor_mastery2", "riche_armor_mastery3", "riche_armor_mastery4"]
+    },
+    {
+      "name": "アナローズモード",
+      "icon": "skill/rice/anarose_mode.png",
+      "skill_ids": ["riche_anarose_mastery1", "riche_anarose_mastery2", "riche_anarose_mastery3", "riche_anarose_mastery4"]
+    }
+  ]
+}

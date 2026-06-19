@@ -1,0 +1,587 @@
+{
+  "attack_power": {
+    "wiki_label": "A",
+    "label": "攻撃力",
+    "cap": null,
+    "skill_ids": []
+  },
+  "attack_random": {
+    "wiki_label": "B",
+    "label": "攻撃力乱数",
+    "cap": null,
+    "skill_ids": []
+  },
+  "defense": {
+    "wiki_label": "C",
+    "label": "攻撃対象の防御力",
+    "cap": null,
+    "skill_ids": [
+      "maximin_mastery4",
+      "siberin_mastery2",
+      "lanjier_mastery3"
+    ]
+  },
+  "skill_multiplier_base": {
+    "wiki_label": "D",
+    "label": "スキル倍率",
+    "cap": null,
+    "skill_ids": []
+  },
+  "skill_multiplier_increase": {
+    "wiki_label": "E1",
+    "label": "スキル倍率増加（割合）",
+    "cap": null,
+    "skill_ids": [
+      "isaak_energy_field",
+      "roamini_curse_end",
+      "yefunen_sharp_shard",
+      "yefunen_speed_sword"
+    ]
+  },
+  "skill_multiplier_increase_fixed": {
+    "wiki_label": "E2",
+    "label": "スキル倍率増加（固定値）",
+    "cap": null,
+    "skill_ids": []
+  },
+  "crit_multiplier": {
+    "wiki_label": "F",
+    "label": "Cri倍率",
+    "cap": null,
+    "skill_ids": []
+  },
+  "crit_damage_increase": {
+    "wiki_label": "G",
+    "label": "クリティカルダメージ増加",
+    "cap": null,
+    "skill_ids": []
+  },
+  "combo_bonus": {
+    "wiki_label": "H",
+    "label": "コンボボーナス",
+    "cap": null,
+    "skill_ids": []
+  },
+  "attribute_diff_bonus": {
+    "wiki_label": "I",
+    "label": "属性差ボーナス",
+    "cap": null,
+    "skill_ids": []
+  },
+  "cut_rate_player": {
+    "wiki_label": "J",
+    "label": "カット率（プレイヤー）",
+    "cap": null,
+    "skill_ids": []
+  },
+  "final_damage_fixed": {
+    "wiki_label": "K",
+    "label": "最終ダメージ（固定値）",
+    "cap": 1000,
+    "skill_ids": []
+  },
+  "final_damage_buff": {
+    "wiki_label": "L_buff",
+    "label": "最終ダメージ増加（割合）",
+    "cap": 0.25,
+    "skill_ids": [
+      "benja_dark_blessing"
+    ]
+  },
+  "final_damage_debuff": {
+    "wiki_label": "L_debuff",
+    "label": "与ダメージ減少（割合）",
+    "cap": null,
+    "skill_ids": [
+      "mira_haki",
+      "maximin_poison_tongue",
+      "siberin_taunt",
+      "lanjier_mastery3",
+      "isaak_battlefield",
+      "anais_ice_aura",
+      "roamini_curse_pendulum",
+      "nocturne_cosmos",
+      "nocturne_electric_burst",
+      "riche_armor_mastery1",
+      "riche_armor_mastery2",
+      "riche_ganapoly",
+      "yefunen_shard_wire",
+      "yefunen_sharp_shard",
+      "yefunen_bittersweet",
+      "nayatrei_mastery4"
+    ]
+  },
+  "damage_received_reduction_fixed": {
+    "wiki_label": "M",
+    "label": "被害減少（固定値）",
+    "cap": null,
+    "skill_ids": []
+  },
+  "attack_damage_2": {
+    "wiki_label": "Old",
+    "label": "攻撃ダメージII",
+    "cap": 3.00,
+    "skill_ids": []
+  },
+  "awakening_damage": {
+    "wiki_label": "N",
+    "label": "覚醒ダメージ",
+    "cap": null,
+    "skill_ids": []
+  },
+  "physical_magic_damage_increase": {
+    "wiki_label": "O",
+    "label": "物理/魔法ダメージ増加",
+    "cap": null,
+    "skill_ids": []
+  },
+  "specific_type_damage_increase": {
+    "wiki_label": "P",
+    "label": "特定依存ダメージ増加",
+    "cap": 0.73,
+    "skill_ids": []
+  },
+  "damage_absorption": {
+    "wiki_label": "Q",
+    "label": "物理/魔法ダメージ吸収",
+    "cap": 0.70,
+    "skill_ids": [
+      "anais_flower_garden"
+    ]
+  },
+  "damage_received_multiplier": {
+    "wiki_label": "R",
+    "label": "物理/魔法被ダメージ倍率",
+    "cap": null,
+    "skill_ids": [
+      "ispin_etoile"
+    ]
+  },
+  "damage_received_reduction_item": {
+    "wiki_label": "S1",
+    "label": "被ダメージ減少（秘薬）",
+    "cap": 0.20,
+    "skill_ids": []
+  },
+  "damage_received_reduction_general": {
+    "wiki_label": "S2",
+    "label": "被ダメージ減少（一般）",
+    "cap": 0.15,
+    "skill_ids": []
+  },
+  "damage_received_reduction_base": {
+    "wiki_label": "S3",
+    "label": "被ダメージ減少（基本発動）",
+    "cap": 0.15,
+    "skill_ids": []
+  },
+  "damage_reduction_skill_buff": {
+    "wiki_label": "S4_buff",
+    "label": "被ダメージ減少（スキル）",
+    "cap": 0.30,
+    "skill_ids": [
+      "lucian_chance_guard",
+      "lucian_tekki",
+      "lucian_rengeki",
+      "lucian_guard_knight",
+      "boris_winter",
+      "boris_jinneman",
+      "boris_snowguard",
+      "boris_stimulant",
+      "tichiel_protection",
+      "tichiel_mastery3",
+      "ispin_non_retour",
+      "ispin_encourage",
+      "ispin_mark_de_victoire",
+      "maximin_cursed_sword",
+      "maximin_dotabata",
+      "maximin_stimulant",
+      "maximin_young_patriarch",
+      "siberin_berserk",
+      "siberin_hard_skin",
+      "siberin_orlannu",
+      "siberin_mastery2",
+      "joshua_soul_burst",
+      "joshua_spade_shield",
+      "joshua_mastery2",
+      "joshua_maximin_passive",
+      "chloe_mana_wall",
+      "chloe_ice_rose",
+      "lanjier_coin",
+      "lanjier_mastery4",
+      "isaak_daughter_father",
+      "anais_aria",
+      "anais_lost_cat",
+      "anais_together_joy",
+      "anais_mika_barrier",
+      "isolette_zone_burst",
+      "isolette_light_song",
+      "isolette_sacred_chant",
+      "isolette_holy_shield",
+      "isolette_noble_solitude",
+      "isolette_boris_passive",
+      "benja_mastery3",
+      "benja_ghost_girl",
+      "benja_greystar_brooch",
+      "roamini_pauatun",
+      "roamini_black_rose",
+      "nocturne_tw_guardian",
+      "nocturne_sister",
+      "riche_anarose_mastery1",
+      "riche_piusolid",
+      "yefunen_guilt"
+    ]
+  },
+  "damage_reduction_skill_debuff": {
+    "wiki_label": "S4_debuff",
+    "label": "被ダメージ増加（スキル）",
+    "cap": 0.30,
+    "skill_ids": [
+      "lucian_wind_mastery",
+      "siberin_taunt",
+      "joshua_jyakka",
+      "isaak_resshin_ranbui",
+      "benja_force_of_rubert",
+      "roamini_curse_pendulum",
+      "nocturne_mastery1",
+      "ispin_mark_de_victoire",
+      "maximin_poison_tongue",
+      "chloe_mastery4",
+      "isaak_counter_attack",
+      "riche_armor_mastery1",
+      "riche_armor_mastery2",
+      "riche_ganapoly",
+      "yefunen_blend"
+    ]
+  },
+  "damage_received_reduction_other": {
+    "wiki_label": "S5",
+    "label": "被ダメージ減少（その他）",
+    "cap": null,
+    "skill_ids": []
+  },
+  "damage_amplification": {
+    "wiki_label": "T",
+    "label": "ダメージ増幅",
+    "cap": null,
+    "skill_ids": []
+  },
+  "damage_resistance": {
+    "wiki_label": "U",
+    "label": "ダメージ耐性",
+    "cap": 0.62,
+    "skill_ids": []
+  },
+  "damage_mitigation": {
+    "wiki_label": "New2",
+    "label": "ダメージ緩和",
+    "cap": 0.40,
+    "skill_ids": []
+  },
+  "cut_rate": {
+    "wiki_label": "V",
+    "label": "カット率",
+    "cap": null,
+    "skill_ids": []
+  },
+  "attack_damage_base_fixed": {
+    "wiki_label": "W",
+    "label": "攻撃ダメージ（基本発動）固定値",
+    "cap": 1000,
+    "skill_ids": []
+  },
+  "attack_damage_isabel": {
+    "wiki_label": "X1",
+    "label": "攻撃ダメージ（イザベル）",
+    "cap": 0.50,
+    "skill_ids": []
+  },
+  "attack_damage_general": {
+    "wiki_label": "X2",
+    "label": "攻撃ダメージ（一般）",
+    "cap": 0.30,
+    "skill_ids": []
+  },
+  "attack_damage_base": {
+    "wiki_label": "X3",
+    "label": "攻撃ダメージ（基本発動）",
+    "cap": 0.80,
+    "skill_ids": []
+  },
+  "attack_damage_skill": {
+    "wiki_label": "X4",
+    "label": "攻撃ダメージ（スキル）",
+    "cap": 0.65,
+    "skill_ids": [
+      "lucian_tekki",
+      "lucian_ragurannu",
+      "lucian_rengeki",
+      "boris_winter",
+      "boris_jinneman",
+      "boris_snowguard",
+      "boris_guard_samurai",
+      "boris_mastery1",
+      "boris_mastery4",
+      "tichiel_mastery3",
+      "mira_captain",
+      "ispin_non_retour",
+      "ispin_tanzo",
+      "maximin_cursed_sword",
+      "maximin_young_patriarch",
+      "maximin_mastery1",
+      "maximin_mastery4",
+      "nayatrei_byouzoku",
+      "siberin_berserk",
+      "siberin_mastery2",
+      "siberin_mastery4",
+      "joshua_soul_burst",
+      "joshua_mastery2",
+      "chloe_mana_wall",
+      "chloe_mastery5",
+      "chloe_magic_researcher",
+      "lanjier_mastery2",
+      "lanjier_mastery4",
+      "isaak_daughter_father",
+      "anais_hard_weapon",
+      "anais_fire_aura",
+      "anais_together_joy",
+      "anais_rushi_barrier",
+      "anais_ikiwakare_brother",
+      "isolette_zone_burst",
+      "isolette_light_song",
+      "isolette_mastery1",
+      "isolette_noble_solitude",
+      "isolette_boris_passive",
+      "benja_mastery4",
+      "benja_greystar_brooch",
+      "roamini_curse_pendulum",
+      "roamini_a_puchi",
+      "roamini_byouzoku",
+      "nocturne_cosmos",
+      "nocturne_tw_guardian",
+      "nocturne_mastery1",
+      "nocturne_electric_burst",
+      "riche_anarose_mastery1",
+      "riche_friend",
+      "joshua_thread_needle"
+    ]
+  },
+  "attack_damage_special": {
+    "wiki_label": "X5",
+    "label": "攻撃ダメージ（特殊）",
+    "cap": null,
+    "skill_ids": []
+  },
+  "attack_damage_japan": {
+    "wiki_label": "X6",
+    "label": "攻撃ダメージ（日本独自）",
+    "cap": 0.30,
+    "skill_ids": []
+  },
+  "pvp_correction": {
+    "wiki_label": "Y",
+    "label": "PVP補正",
+    "cap": null,
+    "skill_ids": []
+  },
+  "additional_damage_weapon": {
+    "wiki_label": "追加ダメージ_武器強化",
+    "label": "追加ダメージ（武器強化）",
+    "cap": null,
+    "skill_ids": []
+  },
+  "additional_damage_old_ratio": {
+    "wiki_label": "追加ダメージ_旧割合",
+    "label": "追加ダメージ（旧-割合）",
+    "cap": null,
+    "skill_ids": [
+      "anais_synergy"
+    ]
+  },
+  "additional_damage_old_ratio_reduced": {
+    "wiki_label": "追加ダメージ_旧割合_負荷軽減",
+    "label": "追加ダメージ（旧-割合・負荷軽減済み）",
+    "cap": null,
+    "skill_ids": []
+  },
+  "additional_damage_new_ratio": {
+    "wiki_label": "追加ダメージ_新割合",
+    "label": "追加ダメージ（新-割合）",
+    "cap": null,
+    "skill_ids": []
+  },
+  "additional_damage_unclassified": {
+    "wiki_label": "追加ダメージ_分類不明",
+    "label": "追加ダメージ（分類不明）",
+    "cap": null,
+    "skill_ids": [
+      "isaak_counter_attack",
+      "nocturne_electric_burst",
+      "riche_armor_mastery2",
+      "mira_dagger_storm",
+      "ispin_hakka",
+      "nayatrei_mastery2",
+      "nayatrei_mastery4",
+      "siberin_mastery3",
+      "joshua_spade_shield",
+      "joshua_amplification",
+      "chloe_mana_wall",
+      "chloe_focus",
+      "chloe_mastery3",
+      "chloe_mastery4",
+      "lanjier_mastery4",
+      "isaak_mastery1",
+      "anais_lost_cat",
+      "ispin_pair",
+      "ispin_royal_guard",
+      "nayatrei_pair"
+    ]
+  },
+  "stat_ratio_increase": {
+    "wiki_label": "能力値_割合増加",
+    "label": "能力値割合増加/減少（素ステータス）",
+    "cap": null,
+    "skill_ids": [
+      "benja_soul_gate"
+    ]
+  },
+  "stat_fixed_increase": {
+    "wiki_label": "能力値_固定増加",
+    "label": "能力値固定値増加/減少（素ステータス）",
+    "cap": null,
+    "skill_ids": [
+      "anais_target"
+    ]
+  },
+  "stat_multiplier_a": {
+    "wiki_label": "能力値倍率A",
+    "label": "能力値倍率A（基本能力値全体）",
+    "cap": null,
+    "skill_ids": []
+  },
+  "stat_multiplier_buff": {
+    "wiki_label": "能力値倍率B_buff",
+    "label": "能力値倍率バフ（最終能力値）",
+    "cap": null,
+    "skill_ids": [
+      "joshua_gladiator",
+      "joshua_magician",
+      "tichiel_magic_teacher",
+      "siberin_charm",
+      "roamini_a_puchi",
+      "roamini_pauatun",
+      "roamini_mastery3",
+      "boris_jinneman",
+      "boris_mastery4",
+      "ispin_encourage",
+      "maximin_mastery4",
+      "tichiel_dongribira",
+      "mira_gambler",
+      "joshua_reiki",
+      "chloe_rivalry",
+      "ispin_rivalry",
+      "lanjier_high_technology",
+      "lanjier_winter_ice"
+    ]
+  },
+  "stat_multiplier_debuff": {
+    "wiki_label": "能力値倍率B_debuff",
+    "label": "能力値倍率デバフ（最終能力値）",
+    "cap": 0.30,
+    "skill_ids": [
+      "lucian_rengeki",
+      "lucian_tekki",
+      "boris_curse",
+      "maximin_curse",
+      "maximin_poison_tongue",
+      "ispin_panic",
+      "siberin_mastery3",
+      "mira_haki",
+      "nayatrei_sen",
+      "joshua_jyakka",
+      "chloe_fuuka",
+      "lanjier_kakuran",
+      "tichiel_break_armor",
+      "isolette_weakening",
+      "benja_force_of_rubert",
+      "roamini_curse_pendulum",
+      "ispin_hakka"
+    ]
+  },
+  "stat_final_fixed": {
+    "wiki_label": "能力値_最終固定",
+    "label": "最終固定値増加/減少（最終能力値）",
+    "cap": null,
+    "skill_ids": []
+  },
+  "hit_rate_correction": {
+    "wiki_label": "命中率補正",
+    "label": "攻撃者の最小命中率補正",
+    "cap": null,
+    "skill_ids": [
+      "lucian_kartz",
+      "boris_sword_priest",
+      "chloe_focus",
+      "benja_mastery4"
+    ]
+  },
+  "evasion_rate_correction": {
+    "wiki_label": "回避率補正",
+    "label": "攻撃対象の最小回避率補正",
+    "cap": null,
+    "skill_ids": [
+      "tichiel_mastery2",
+      "nayatrei_sen",
+      "siberin_taunt",
+      "chloe_mastery4",
+      "lanjier_mastery4",
+      "isaak_mastery1",
+      "isaak_counter_attack"
+    ]
+  },
+  "crit_rate_skill": {
+    "wiki_label": "クリ確_スキル",
+    "label": "スキルクリティカル率",
+    "cap": null,
+    "skill_ids": [
+      "lanjier_mastery2"
+    ]
+  },
+  "crit_rate_increase": {
+    "wiki_label": "クリ確_増加",
+    "label": "クリティカル率増加",
+    "cap": 1.00,
+    "skill_ids": []
+  },
+  "crit_rate_final_increase": {
+    "wiki_label": "クリ確_最終増加",
+    "label": "最終クリティカル率増加",
+    "cap": null,
+    "skill_ids": []
+  },
+  "crit_received_rate_a": {
+    "wiki_label": "クリ被撃率A",
+    "label": "対象のクリティカル被撃率A（vsモンスター/プレイヤー）",
+    "cap": null,
+    "skill_ids": [
+      "tichiel_mastery2"
+    ]
+  },
+  "crit_received_rate_b": {
+    "wiki_label": "クリ被撃率B",
+    "label": "対象のクリティカル被撃率B（プレイヤースキル・対人戦のみ）",
+    "cap": null,
+    "skill_ids": [
+      "lucian_kartz",
+      "lucian_optimistic_adventurer"
+    ]
+  },
+  "evasion_ignore_attack": {
+    "wiki_label": "回避無視",
+    "label": "回避無視攻撃（確率発動）",
+    "cap": null,
+    "skill_ids": [
+      "lucian_shorthair_sister"
+    ]
+  }
+}

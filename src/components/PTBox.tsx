@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { useDroppable } from '@dnd-kit/core'
 import type { Content, Member, Role } from '../types'
 import MemberCard from './MemberCard'
+import PTBuffDebuffPanel from './PTBuffDebuffPanel'
 import { ROLE_ICON, SLOT_ROLE_CLASS } from '../constants'
 
 function buildSlots(roles: Content['roles']): Role[] {
@@ -19,9 +21,11 @@ interface SlotProps {
   slotRole: Role
   member?: Member
   showEta: boolean
+  draggingChara?: string | null
+  draggingMemberId?: string | null
 }
 
-function Slot({ contentId, ptIdx, slotIdx, slotRole, member, showEta }: SlotProps) {
+function Slot({ contentId, ptIdx, slotIdx, slotRole, member, showEta, draggingChara, draggingMemberId }: SlotProps) {
   const dropId = `slot:${contentId}:${ptIdx}:${slotIdx}`
   const { setNodeRef, isOver } = useDroppable({ id: dropId, data: { contentId, ptIdx, slotIdx } })
 
@@ -34,6 +38,8 @@ function Slot({ contentId, ptIdx, slotIdx, slotRole, member, showEta }: SlotProp
           draggableId={`slot-card:${contentId}:${ptIdx}:${slotIdx}`}
           draggableData={{ type: 'slot', contentId, ptIdx, slotIdx }}
           showEta={showEta}
+          draggingChara={draggingChara}
+          draggingMemberId={draggingMemberId}
         />
       </div>
     )
@@ -63,14 +69,22 @@ interface Props {
   canRemove: boolean
   dragHandleListeners?: Record<string, unknown>
   dragHandleAttributes?: Record<string, unknown>
+  draggingChara?: string | null
+  draggingMemberId?: string | null
 }
 
-export default function PTBox({ content, ptIdx, ptName, slotAssignments, members, showEta, onNameChange, onRemove, canRemove, dragHandleListeners, dragHandleAttributes }: Props) {
+export default function PTBox({ content, ptIdx, ptName, slotAssignments, members, showEta, onNameChange, onRemove, canRemove, dragHandleListeners, dragHandleAttributes, draggingChara, draggingMemberId }: Props) {
   const slots = buildSlots(content.roles)
   const filled = slots.filter((_, i) => slotAssignments[i]).length
+  const [showBuffDebuff, setShowBuffDebuff] = useState(false)
+
+  const assignedMembers = Object.values(slotAssignments)
+    .map(mid => mid ? members.find(m => m.id === mid) : undefined)
+    .filter((m): m is Member => !!m)
+  const uniqueAssignedMembers = Array.from(new Map(assignedMembers.map(m => [m.chara, m])).values())
 
   return (
-    <div className="pt-box">
+    <div className={`pt-box${showBuffDebuff ? ' pt-box--buffdebuff-open' : ''}`}>
       <div className="pt-box-header">
         <span
           className="pt-drag-handle"
@@ -103,10 +117,24 @@ export default function PTBox({ content, ptIdx, ptName, slotAssignments, members
               slotRole={role}
               member={member}
               showEta={showEta}
+              draggingChara={draggingChara}
+              draggingMemberId={draggingMemberId}
             />
           )
         })}
       </div>
+      <button
+        type="button"
+        className="pt-buffdebuff-toggle"
+        data-html2canvas-ignore
+        onClick={() => setShowBuffDebuff(v => !v)}
+        title="バフ/デバフ確認"
+      >
+        <i className={`ti ti-chevron-${showBuffDebuff ? 'up' : 'down'}`} />
+      </button>
+      {showBuffDebuff && (
+        <PTBuffDebuffPanel members={uniqueAssignedMembers.map(m => ({ chara: m.chara, masterySelections: m.masterySelections ?? {}, buildType: m.buildType }))} />
+      )}
     </div>
   )
 }

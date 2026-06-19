@@ -1,0 +1,2074 @@
+{
+  "lucian_chance_guard": {
+    "chara": "ルシアン",
+    "skill_name": "チャンスガード",
+    "description": "一定確率で被ダメージを軽減する。ステータスのDEFによって発動する確率が上昇\n※発動率[%]＝[スキルレベル]×2.5 + [素DEF]÷4 (最大80%)",
+    "icon": "skill/lucian/lucian_chance_guard.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.10, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "lucian_wind_mastery": {
+    "chara": "ルシアン",
+    "skill_name": "刃風/旋風/そよ風",
+    "icon": "skill/lucian/lucian_wind_mastery.png",
+    "masteries": {
+      "刃風": { "icon": "skill/lucian/lucian_wind_mastery1.png", "description": "攻撃成功時に、対象に10秒間、1秒間隔で継続ダメージ(150%x2,Cri2.5x)" },
+      "旋風": { "icon": "skill/lucian/lucian_wind_mastery2.png", "description": "攻撃成功時に、対象に10秒間、命中率減少(-10%)／移動速度減少(-3)" },
+      "そよ風": { "icon": "skill/lucian/lucian_wind_mastery3.png", "description": "攻撃成功時に、対象に10秒間、最小回避率減少(-10%)／被ダメージ増加+5%" }
+    },
+    "effects": [
+      { "category_id": "damage_reduction_skill_debuff", "value": 0.05, "target": "pt", "mastery_group": "lucian_wind_mastery", "mastery_option": "そよ風", "condition": null }
+    ]
+  },
+  "lucian_ragurannu": {
+    "chara": "ルシアン",
+    "skill_name": "ラグランジュ神速剣",
+    "description": "[加速]クリティカル率+10%",
+    "icon": "skill/lucian/lucian_ragurannu.png",
+    "masteries": {
+      "強剣": { "icon": "skill/lucian/lucian_ragurannu1.png", "description": "前後ディレイ(+50%)、後ディレイ追加(+30%)、与ダメージ増加(+10%)" },
+      "神速剣": { "icon": "skill/lucian/lucian_ragurannu2.png", "description": "前後ディレイ(-75%)、後ディレイ追加(-45%)" },
+      "幻剣": { "icon": "skill/lucian/lucian_ragurannu3.png", "description": "前後ディレイ(-50%)、後ディレイ追加(-30%)、攻撃成功時に\\<スタン\\>5s/\\<スロー\\>10s" }
+    },
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.05, "target": "self", "mastery_group": "lucian_ragurannu", "mastery_option": "強剣", "condition": null }
+    ]
+  },
+  "lucian_rengeki": {
+    "chara": "ルシアン",
+    "skill_name": "連撃/無双乱舞/旋風斬",
+    "icon": "skill/lucian/lucian_rengeki.png",
+    "masteries": {
+      "強固な意志の連撃": { "icon": "skill/lucian/lucian_rengeki1.png", "description": "攻撃成功時に追加バフ：被ダメージ-5%" },
+      "絶え間ない連撃": { "icon": "skill/lucian/lucian_rengeki2.png", "description": "攻撃成功時に追加デバフ：敵全能力値-5%" },
+      "力を込めた連撃": { "icon": "skill/lucian/lucian_rengeki3.png", "description": "攻撃成功時に追加バフ：攻撃ダメージ+5%" }
+    },
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.05, "target": "self", "mastery_group": "lucian_rengeki", "mastery_option": "強固な意志の連撃", "condition": null },
+      { "category_id": "stat_multiplier_debuff", "value": 0.05, "target": "pt", "mastery_group": "lucian_rengeki", "mastery_option": "絶え間ない連撃", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.05, "target": "self", "mastery_group": "lucian_rengeki", "mastery_option": "力を込めた連撃", "condition": null }
+    ]
+  },
+  "lucian_tekki": {
+    "chara": "ルシアン",
+    "skill_name": "鉄壁",
+    "description": "効果範囲内のチームメンバーの攻撃ダメージ+5%／被ダメージ-5%\n鉄壁使用者(自身)は、追加で被ダメージ減少\n減少率[%]＝[基本減少率]×([素DEF]＋[装備DEF])÷500) (最大5%、最小1%)",
+    "icon": "skill/lucian/lucian_tekki.png",
+    "masteries": {
+      "誘引": { "icon": "skill/lucian/lucian_tekki1.png", "description": "メンバーのダメージ引き受け ※[エンクルム]と併用不可 / ダメージ転移[%]＝50－[素DEF]÷30＋[風属性]÷20 (最小5%)" },
+      "スタボーン": { "icon": "skill/lucian/lucian_tekki2.png", "description": "メンバーの最小命中率+10%、敵の全能力値-10%" },
+      "集中攻撃": { "icon": "skill/lucian/lucian_tekki3.png", "description": "メンバー攻撃時一定確率で追加ダメージ+10%" }
+    },
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.05, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.05, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "stat_multiplier_debuff", "value": 0.10, "target": "pt", "mastery_group": "lucian_tekki", "mastery_option": "スタボーン", "condition": null }
+    ]
+  },
+  "lucian_guard_knight": {
+    "chara": "ルシアン",
+    "skill_name": "護衛騎士",
+    "description": "射程60以内にチームメンバーのボリスがいると、被ダメージ減少(-10%)、悪い状態異常にかかる確率減少(-80%)",
+    "icon": "skill/lucian/lucian_guard_knight.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "ボリス" } }
+    ]
+  },
+  "lucian_kartz": {
+    "chara": "ルシアン",
+    "skill_name": "カルツ商団",
+    "description": "交渉成功率+25%\n自身及び射程60以内のチームメンバーのクリティカル被撃率-33%、最小命中率+10%",
+    "icon": "skill/lucian/lucian_kartz.png",
+    "effects": [
+      { "category_id": "crit_received_rate_b", "value": -0.33, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "hit_rate_correction", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "lucian_shorthair_sister": {
+    "chara": "ルシアン",
+    "skill_name": "ショートヘアのお姉さん",
+    "description": "射程60以内にチームメンバーのイソレットがいると、一定の確率で回避無視攻撃を行う",
+    "icon": "skill/lucian/lucian_shorthair_sister.png",
+    "effects": [
+      { "category_id": "evasion_ignore_attack", "value": null, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "イソレット" } }
+    ]
+  },
+  "lucian_optimistic_adventurer": {
+    "chara": "ルシアン",
+    "skill_name": "楽観的な冒険家",
+    "description": "クリティカル被撃率減少(-33%)\n硬直無視",
+    "icon": "skill/lucian/lucian_optimistic_adventurer.png",
+    "effects": [
+      { "category_id": "crit_received_rate_b", "value": -0.33, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "boris_winter": {
+    "chara": "ボリス",
+    "skill_name": "冬を乗り越える者",
+    "description": "一定時間、攻撃ダメージ(+6%)と被ダメージ(+6%)が増加（持続2分、CT10分）",
+    "icon": "skill/boris/boris_winter.png",
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.06, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": -0.06, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "boris_mastery1": {
+    "chara": "ボリス",
+    "skill_name": "マスタリー",
+    "description": "一閃 / 斬撃 / 一撃",
+    "icon": "skill/boris/boris_mastery1.png",
+    "masteries": {
+      "一閃": { "icon": "skill/boris/boris_mastery11.png", "description": "中ディレイが5%減少する。共通スキル<フルスロットル>と重複可。" },
+      "斬撃": { "icon": "skill/boris/boris_mastery12.png", "description": "攻撃ダメージ増加(+2%)" },
+      "一撃": { "icon": "skill/boris/boris_mastery13.png", "description": "攻撃スキルを使用すると、防御無視攻撃が確率で出る。(15%)" }
+    },
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.02, "target": "self", "mastery_group": "boris_mastery1", "mastery_option": "斬撃", "condition": null }
+    ]
+  },
+  "boris_jinneman": {
+    "chara": "ボリス",
+    "skill_name": "ジンネマン抗争の生存者",
+    "description": "ボリスが<抗争の生存者>を獲得し、死亡時自動復活する。\n自動復活後、10分間<抗争の余波>に切り替わり、自動復活が無効になる。",
+    "icon": "skill/boris/boris_jinneman.png",
+    "masteries": {
+      "抗争の生存者": { "icon": "skill/boris/boris_jinneman1.png", "description": "被ダメージ-3%" },
+      "必滅者": { "icon": "skill/boris/boris_jinneman2.png", "description": "攻撃ダメージ増加(+3%)" },
+      "シルバースカル優勝者": { "icon": "skill/boris/boris_jinneman3.png", "description": "HACK+10%、DEF+10%" }
+    },
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.03, "target": "self", "mastery_group": "boris_jinneman", "mastery_option": "必滅者", "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "self", "mastery_group": "boris_jinneman", "mastery_option": "抗争の生存者", "condition": null },
+      { "category_id": "stat_multiplier_buff", "value": 0.10, "target": "self", "mastery_group": "boris_jinneman", "mastery_option": "シルバースカル優勝者", "condition": null }
+    ]
+  },
+  "boris_snowguard": {
+    "chara": "ボリス",
+    "skill_name": "スノーガード",
+    "description": "被ダメージを80%軽減してSPで肩代わりする。\nHP/SPダメージ転換率(100%)",
+    "icon": "skill/boris/boris_snowguard.png",
+    "masteries": {
+      "インデュア": { "icon": "skill/boris/boris_snowguard1.png", "description": "<スノーガード>使用中、被ダメージ減少(-20%)" },
+      "スイッチング": { "icon": "skill/boris/boris_snowguard2.png", "description": "<スノーガード>使用中、被ダメージ比1%のSP回復" },
+      "騎士道": { "icon": "skill/boris/boris_snowguard3.png", "description": "<スノーガード>使用中、被ダメージ毎に<騎士道>バフが増加し、30になると攻撃ダメージ/被ダメージ増加(+3%、持続30s)" }
+    },
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.07, "target": "pt", "mastery_group": "boris_snowguard", "mastery_option": "インデュア", "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "self", "mastery_group": "boris_snowguard", "mastery_option": "騎士道", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.03, "target": "self", "mastery_group": "boris_snowguard", "mastery_option": "騎士道", "condition": null }
+    ]
+  },
+  "boris_winterer": {
+    "chara": "ボリス",
+    "skill_name": "ウィンタラー",
+    "description": "水属性増加(+5)\n攻撃対象に<霜>：行動不能、継続ダメージ(無属性/M依存/50%/Cri2x, 3.3s毎) (持続時間:15s)",
+    "icon": "skill/boris/boris_winterer.png",
+    "effects": []
+  },
+  "boris_sword_priest": {
+    "chara": "ボリス",
+    "skill_name": "剣の司祭",
+    "description": "最小命中率(+30%)、中ディレイ(-5%)",
+    "icon": "skill/boris/boris_sword_priest.png",
+    "effects": [
+      { "category_id": "hit_rate_correction", "value": 0.30, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "boris_counter": {
+    "chara": "ボリス",
+    "skill_name": "反",
+    "description": "一定時間の間、敵の攻撃を反撃し、被ダメージの1/2のダメージを与える",
+    "icon": "skill/boris/boris_counter.png",
+    "effects": []
+  },
+  "boris_freeze_icenam": {
+    "chara": "ボリス",
+    "skill_name": "アイスナム",
+    "description": "[低速]敵の移動速度を減少。（持続5s）",
+    "icon": "skill/boris/boris_freeze_icenam.png",
+    "effects": []
+  },
+  "boris_blind": {
+    "chara": "ボリス",
+    "skill_name": "ブラインド",
+    "description": "[暗黒]敵をスキル使用不可、回避率大幅低下状態にする。（持続18s）\n状態異常[暗黒]付与：一定時間の間攻撃不可、受け手のAGI激減",
+    "icon": "skill/boris/boris_blind.png",
+    "effects": []
+  },
+  "boris_poison": {
+    "chara": "ボリス",
+    "skill_name": "ポイズン",
+    "description": "[中毒]5秒毎にダメージを受ける。（持続75s）\n状態異常[中毒]付与：約5秒毎でダメージ。[スキルレベル] × 10 + 500と[現在HPの比例ダメージ(5%)]のいずれか大きい値がダメージとなる",
+    "icon": "skill/boris/boris_poison.png",
+    "effects": []
+  },
+  "boris_undead": {
+    "chara": "ボリス",
+    "skill_name": "アンデット",
+    "description": "[アンデット]HPを回復しようとするとダメージを受ける。（持続50s）\n状態異常[アンデッド]付与：回復効果がダメージとなる（HP回復アイテム・スキル）",
+    "icon": "skill/boris/boris_undead.png",
+    "effects": []
+  },
+  "boris_gracia": {
+    "chara": "ボリス",
+    "skill_name": "グラシア",
+    "description": "Hit時追加効果[移動禁止]",
+    "icon": "skill/boris/boris_gracia.png",
+    "effects": []
+  },
+  "boris_curse": {
+    "chara": "ボリス",
+    "skill_name": "カース",
+    "description": "[呪い]敵の全能力値-10%（持続30s）\n状態異常[呪い]付与：対象のステータスを10%下げる。",
+    "icon": "skill/boris/boris_curse.png",
+    "effects": [
+      { "category_id": "stat_multiplier_debuff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "boris_stimulant": {
+    "chara": "ボリス",
+    "skill_name": "スティミュラント",
+    "description": "一定時間被ダメージが減少(-3%, 持続5分)",
+    "icon": "skill/boris/boris_stimulant.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "boris_guard_samurai": {
+    "chara": "ボリス",
+    "skill_name": "護衛武士",
+    "description": "射程60以内にチームメンバーのルシアンまたはイソレットがいると、悪い状態異常にかかる確率(-80%)、攻撃ダメージ(+10%)",
+    "icon": "skill/boris/boris_guard_samurai.png",
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.02, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt_any": ["ルシアン", "イソレット"] } }
+    ]
+  },
+  "boris_mastery4": {
+    "chara": "ボリス",
+    "skill_name": "マスタリー",
+    "description": "剣を扱う技術 / 冬を降らせる子 / 冷酷で絶対的な審判者",
+    "icon": "skill/boris/boris_mastery4.png",
+    "masteries": {
+      "剣を扱う技術": { "icon": "skill/boris/boris_mastery41.png", "description": "HACK+10%、DEF+10%" },
+      "冬を降らせる子": { "icon": "skill/boris/boris_mastery42.png", "description": "<霜>状態の対象に攻撃すると追加ダメージ(+10%)" },
+      "冷酷で絶対的な審判者": { "icon": "skill/boris/boris_mastery43.png", "description": "攻撃ダメージ増加(+2%)" }
+    },
+    "effects": [
+      { "category_id": "stat_multiplier_buff", "value": 0.10, "target": "self", "mastery_group": "boris_mastery4", "mastery_option": "剣を扱う技術", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.02, "target": "self", "mastery_group": "boris_mastery4", "mastery_option": "冷酷で絶対的な審判者", "condition": null }
+    ]
+  },
+  "tichiel_dongribira": {
+    "chara": "ティチエル",
+    "skill_name": "ドングリビラ",
+    "description": "同じチームに所属するルシアン、ボリス、マキシミン、ジョシュアに回復スキル（ヒール、ヒーリングウェーブ）使用時、10%追加回復",
+    "icon": "skill/tichiel/tichiel_dongribira.png",
+    "effects": [
+      { "category_id": "stat_multiplier_buff", "value": null, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt_any": ["ルシアン", "ボリス", "マキシミン", "ジョシュア"] } }
+    ]
+  },
+  "tichiel_protection": {
+    "chara": "ティチエル",
+    "skill_name": "プロテクション",
+    "description": "被ダメージ減少[%]＝[基本軽減率]×([白属性]÷100)×([使用者MR]×1.5÷[使用者レベル])\n※白属性が100以上、MRがレベルの2/3以上の時、最大軽減率50%",
+    "icon": "skill/tichiel/tichiel_protection.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "tichiel_mastery1": {
+    "chara": "ティチエル",
+    "skill_name": "マスタリー",
+    "description": "怪我したとき！ / つらいとき！ / ブルーなとき！",
+    "icon": "skill/tichiel/tichiel_mastery1.png",
+    "masteries": {
+      "怪我したとき！": { "icon": "skill/tichiel/tichiel_mastery11.png", "description": "[極・怪我したとき！]スキルを選択\n自身を含む、周辺のチームメイトのHPを持続して回復（持続時間5分、2秒毎HP15%、最大回復HP5000）" },
+      "つらいとき！": { "icon": "skill/tichiel/tichiel_mastery12.png", "description": "[極・つらいとき！]スキルを選択\n自身を含む、周辺のチームメイトのHPとSPを持続して回復（持続時間5分、2秒毎HP7%/SP21%、最大回復HP2500/SP1200）" },
+      "ブルーなとき！": { "icon": "skill/tichiel/tichiel_mastery13.png", "description": "[極・ブルーなとき！]スキルを選択\n自身を含む、周辺のチームメイトのHPとMPを持続して回復（持続時間5分、2秒毎HP7%/MP14%、最大回復HP2500/MP999）" }
+    },
+    "effects": []
+  },
+  "tichiel_mastery2": {
+    "chara": "ティチエル",
+    "skill_name": "マスタリー",
+    "description": "レモンジャム除去剤 / 変な三色カクテル / 失敗したエリクサー",
+    "icon": "skill/tichiel/tichiel_mastery2.png",
+    "masteries": {
+      "レモンジャム除去剤": { "icon": "skill/tichiel/tichiel_mastery21.png", "description": "[極・レモンジャム除去剤]スキルを選択\n範囲内のチームメイトは持続的に状態異常が解除され、敵はダメージを受ける（持続時間60秒）" },
+      "変な三色カクテル": { "icon": "skill/tichiel/tichiel_mastery22.png", "description": "[極・変な三色カクテル]スキルを選択\n範囲内の対象は、移動速度(-2)/最小回避率(-20%)/最小命中率(-20%)/クリティカル確率(-20%)が減少（持続時間2分）" },
+      "失敗したエリクサー": { "icon": "skill/tichiel/tichiel_mastery23.png", "description": "[極・失敗したエリクサー]スキルを選択\n範囲内の対象は、HP回復量(-50%)/悪い状態異常にかかる確率(+75%)（持続時間2分）" }
+    },
+    "effects": [
+      { "category_id": "evasion_rate_correction", "value": -0.20, "target": "pt", "mastery_group": "tichiel_mastery2", "mastery_option": "変な三色カクテル", "condition": null },
+      { "category_id": "crit_received_rate_a", "value": -0.20, "target": "pt", "mastery_group": "tichiel_mastery2", "mastery_option": "変な三色カクテル", "condition": null }
+    ]
+  },
+  "tichiel_mastery3": {
+    "chara": "ティチエル",
+    "skill_name": "マスタリー",
+    "description": "勉強用チンキ剤 / 赤い目の名薬 / 遊び用チンキ剤",
+    "icon": "skill/tichiel/tichiel_mastery3.png",
+    "masteries": {
+      "勉強用チンキ剤": { "icon": "skill/tichiel/tichiel_mastery31.png", "description": "[極・勉強用チンキ剤]スキルを選択\n自身を含む、周辺のチームメイトのスキル攻撃力+10%（持続時間30分）" },
+      "赤い目の名薬": { "icon": "skill/tichiel/tichiel_mastery32.png", "description": "[極・赤い目の名薬]スキルを選択\n自身を含む、周辺のチームメイトに「赤い目の名薬」バフを付与する（スキル攻撃力+20%、持続時間5分）\n「赤い目の名薬」バフが切れた後に「スキル減少」デバフのペナルティが発生する（スキル攻撃力-20%、60秒）\n※再使用時に持続時間は初期化されない" },
+      "遊び用チンキ剤": { "icon": "skill/tichiel/tichiel_mastery33.png", "description": "[極・遊び用チンキ剤]スキルを選択\n自身を含む、周辺のチームメイトの移動速度(+2)/スキル命中率(+20%)が増加する（持続時間30分）" }
+    },
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.10, "target": "pt", "mastery_group": "tichiel_mastery3", "mastery_option": "勉強用チンキ剤", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.20, "target": "pt", "mastery_group": "tichiel_mastery3", "mastery_option": "赤い目の名薬", "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": -0.20, "target": "pt", "mastery_group": "tichiel_mastery3", "mastery_option": "赤い目の名薬", "condition": null }
+    ]
+  },
+  "tichiel_break_armor": {
+    "chara": "ティチエル",
+    "skill_name": "ブレイクアーマー",
+    "description": "ターゲットのDEF／MRが低下する。(2分)\nDEF/MR低下率[%]＝[基本減少率]×{(素STAB＋素HACK)÷100} (※最大20% ＝ 素STABと素HACKの合計が100以上）",
+    "icon": "skill/tichiel/tichiel_break_armor.png",
+    "effects": [
+      { "category_id": "stat_multiplier_debuff", "value": 0.20, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "tichiel_magic_teacher": {
+    "chara": "ティチエル",
+    "skill_name": "魔法の先生",
+    "description": "射程60以内にチームメンバーのマキシミン、クロエがいれば、自身およびマキシミン、クロエのステータスINT増加(+10%)\n※チームメンバーに付与されたバフは、自身が周辺にいる間だけ維持される",
+    "icon": "skill/tichiel/tichiel_magic_teacher.png",
+    "effects": [
+      { "category_id": "stat_multiplier_buff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "mira_gambler": {
+    "chara": "ミラ",
+    "skill_name": "勝負師",
+    "description": "射程60以内のチームメンバーに特定キャラが所属するとスキル効果増大\nティチエル：ラッキーダイスのレアドロップ率(+25%)が増加する\nルシアン：銭投げ／[紅い射手の砲撃]／ラッキーダイスの消費SEED-25%\nボリス：ラッキーダイスのサイコロの出目が必ず6になる",
+    "icon": "skill/mila/mira_gambler.png",
+    "effects": [
+      { "category_id": "stat_multiplier_buff", "value": null, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "ティチエル" } },
+      { "category_id": "stat_multiplier_buff", "value": null, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "ルシアン" } },
+      { "category_id": "stat_multiplier_buff", "value": null, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "ボリス" } }
+    ]
+  },
+  "mira_captain": {
+    "chara": "ミラ",
+    "skill_name": "キャプテン",
+    "description": "チーム与ダメージ+5%、風属性+5、移動速度+3",
+    "icon": "skill/mila/mira_captain.png",
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.02, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "mira_haki": {
+    "chara": "ミラ",
+    "skill_name": "覇気",
+    "description": "射程60以内の敵の全能力値-20%、与ダメージ-20%\n[鈍足]状態異常付与",
+    "icon": "skill/mila/mira_haki.png",
+    "effects": [
+      { "category_id": "final_damage_debuff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "stat_multiplier_debuff", "value": 0.20, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "mira_mastery1": {
+    "chara": "ミラ",
+    "skill_name": "マスタリー",
+    "description": "セルフコントロール / アンティ / ポーカーフェイス",
+    "icon": "skill/mila/mira_mastery1.png",
+    "masteries": {
+      "セルフコントロール": { "icon": "skill/mila/mira_mastery11.png", "description": "[銭投げ]、[紅い射手の砲撃]、[ラッキーダイス]の消費SEED-50%。\nマスタリー変更時に付与済みの[ラッキーダイス]は解除されるので注意。" },
+      "アンティ": { "icon": "skill/mila/mira_mastery12.png", "description": "[銭投げ]、[紅い射手の砲撃]、[ラッキーダイス]の消費SEED+100%になるが、[銭投げ]、[紅い射手の砲撃]の攻撃力が増加し、[ラッキーダイス]のサイコロが1が出てくる確率が減る。\nマスタリー変更時に付与済みの[ラッキーダイス]は解除されるので注意。" },
+      "ポーカーフェイス": { "icon": "skill/mila/mira_mastery13.png", "description": "[ラッキーダイス]のサイコロの出目が1になる確率と6になる確率がそれぞれ20%増加する。\nマスタリー変更時に付与済みの[ラッキーダイス]は解除されるので注意。" }
+    },
+    "effects": []
+  },
+  "mira_high_jump": {
+    "chara": "ミラ",
+    "skill_name": "ハイジャンプ",
+    "icon": "skill/mila/mira_high_jump.png",
+    "masteries": {
+      "スプリング": { "icon": "skill/mila/mira_high_jump1.png", "description": "[ハイジャンプ]のクールタイムが消え、射程距離が増える。" },
+      "バインドヴァイパー": { "icon": "skill/mila/mira_high_jump2.png", "description": "[ハイジャンプ]を使用すると、着地点の周辺にいる敵を引き寄せる。" },
+      "ヴァイパーズアイ": { "icon": "skill/mila/mira_high_jump3.png", "description": "[ハイジャンプ]を使用すると、一定時間、後方攻撃時の与ダメージが増加(+20%、5分)" }
+    },
+    "effects": []
+  },
+  "mira_dagger_storm": {
+    "chara": "ミラ",
+    "skill_name": "ダガーストーム",
+    "description": "エスケープ / ゲットオーバー / ベノムティス",
+    "icon": "skill/mila/mira_dagger_storm.png",
+    "masteries": {
+      "エスケープ": { "icon": "skill/mila/mira_dagger_storm1.png", "description": "[ダガーストーム]のクールタイムが消え、効果範囲が増加し、より遠くへ後退する。" },
+      "ゲットオーバー": { "icon": "skill/mila/mira_dagger_storm2.png", "description": "[ダガーストーム]を使用すると、追加ダメージを与える。追加ダメージはミラのHPが0に近いほど上昇する。" },
+      "ベノムティス": { "icon": "skill/mila/mira_dagger_storm3.png", "description": "[ダガーストーム]を使用すると、[中毒]と[麻痺]を引き起こす。" }
+    },
+    "effects": [
+      { "category_id": "additional_damage_unclassified", "value": null, "target": "self", "mastery_group": "mira_dagger_storm", "mastery_option": "ゲットオーバー", "condition": null }
+    ]
+  },
+  "mira_spurt": {
+    "chara": "ミラ",
+    "skill_name": "スパート",
+    "description": "アドレナリン / グッドフェイス / リズミカル",
+    "icon": "skill/mila/mira_spurt.png",
+    "masteries": {
+      "アドレナリン": { "icon": "skill/mila/mira_spurt1.png", "description": "[スパート]使用中、後ディレイが100%減少する。" },
+      "グッドフェイス": { "icon": "skill/mila/mira_spurt2.png", "description": "[スパート]の移動速度増加の効果が消える代わりに、持続時間が増加する。使用中、中ディレイ低下率固定(5%)" },
+      "リズミカル": { "icon": "skill/mila/mira_spurt3.png", "description": "[スパート]使用中、[後ディレイ固定]となる。" }
+    },
+    "effects": []
+  },
+  "ispin_non_retour": {
+    "chara": "イスピン",
+    "skill_name": "ノン・ルトゥール",
+    "description": "自身攻撃強化・チームメンバーの被ダメージ-50%（短時間）",
+    "icon": "skill/ispin/ispin_non_retour.png",
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.04, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": -0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "ispin_encourage": {
+    "chara": "イスピン",
+    "skill_name": "エンカレッジ",
+    "description": "射程60以内のチームメンバーの全能力値+10%",
+    "icon": "skill/ispin/ispin_encourage.png",
+    "masteries": {
+      "アンパッサン": { "icon": "skill/ispin/ispin_encourage1.png", "description": "[エンカレッジ]追加効果、移動速度増加(+5)／後方からの攻撃時に与ダメージ増加(+10%)" },
+      "キャッスリング": { "icon": "skill/ispin/ispin_encourage2.png", "description": "[エンカレッジ]追加効果、被ダメージ減少(-10%)／装備の物理防御力増加(+10%)\n※物理防御力補正が増加。プロテクトアーマーのような効果ではない" },
+      "ヒートブレイド": { "icon": "skill/ispin/ispin_encourage3.png", "description": "[エンカレッジ]追加効果、火属性増加(+10)" }
+    },
+    "effects": [
+      { "category_id": "stat_multiplier_buff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": 0.10, "target": "pt", "mastery_group": "ispin_encourage", "mastery_option": "キャッスリング", "condition": null }
+    ]
+  },
+  "ispin_panic": {
+    "chara": "イスピン",
+    "skill_name": "パニック",
+    "description": "敵全能力値-10%",
+    "icon": "skill/ispin/ispin_panic.png",
+    "effects": [
+      { "category_id": "stat_multiplier_debuff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "ispin_etoile": {
+    "chara": "イスピン",
+    "skill_name": "エトワールフィロン",
+    "description": "クリティカル確率+??%、射程+??",
+    "icon": "skill/ispin/ispin_etoile.png",
+    "effects": [
+      { "category_id": "damage_received_multiplier", "value": -0.60, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "ispin_pair": {
+    "chara": "イスピン",
+    "skill_name": "ペア",
+    "description": "チームメンバーのマキシミンが攻撃した対象を攻撃するとき、追加ダメージ(10%)",
+    "icon": "skill/ispin/ispin_pair.png",
+    "effects": [
+      { "category_id": "additional_damage_unclassified", "value": 0.10, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "マキシミン" } }
+    ]
+  },
+  "ispin_rivalry": {
+    "chara": "イスピン",
+    "skill_name": "ライバルリー",
+    "description": "射程60以内にチームメンバーのクロエがいると、中ディレイが減少(-5%)",
+    "icon": "skill/ispin/ispin_rivalry.png",
+    "effects": [
+      { "category_id": "stat_multiplier_buff", "value": null, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "クロエ" } }
+    ]
+  },
+  "ispin_royal_guard": {
+    "chara": "イスピン",
+    "skill_name": "ロイヤルガード",
+    "description": "チームメンバーのシベリンを攻撃する対象に追加ダメージ(10%)\nチームメンバーのシベリンに[エンクルム]バフが付与されているなら、装備の物理防御力が上昇(+10%)",
+    "icon": "skill/ispin/ispin_royal_guard.png",
+    "effects": [
+      { "category_id": "additional_damage_unclassified", "value": 0.10, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "シベリン" } }
+    ]
+  },
+  "ispin_mark_de_victoire": {
+    "chara": "イスピン",
+    "skill_name": "マーク・デ・ヴィクトワール",
+    "description": "チームメンバーの被ダメージ-10%",
+    "icon": "skill/ispin/ispin_mark_de_victoire.png",
+    "masteries": {
+      "フルニール": { "icon": "skill/ispin/ispin_mark_de_victoire1.png", "description": "[マーク・デ・ヴィクトワール]の動作を変更する。効果領域が自身の周りを追従。領域内のメンバーは持続してHPを回復(1s毎に最大HPの10%)" },
+      "コンケリール": { "icon": "skill/ispin/ispin_mark_de_victoire2.png", "description": "[マーク・デ・ヴィクトワール]の動作を変更する。敵対象に効果領域を付与。対象の被ダメージ増加(+10%)バフ付与" },
+      "ス・バートル": { "icon": "skill/ispin/ispin_mark_de_victoire3.png", "description": "[マーク・デ・ヴィクトワール]の動作を変更する。特定地点に領域を設置。領域内の敵に持続ダメージ(100%/Cri2x)" }
+    },
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.02, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "damage_reduction_skill_debuff", "value": 0.10, "target": "pt", "mastery_group": "ispin_mark_de_victoire", "mastery_option": "コンケリール", "condition": null }
+    ]
+  },
+  "ispin_tanzo": {
+    "chara": "イスピン",
+    "skill_name": "鍛造",
+    "description": "自身バフ（各種能力強化）・敵デバフ",
+    "icon": "skill/ispin/ispin_tanzo.png",
+    "masteries": {
+      "トレーニングホイール": { "icon": "skill/ispin/ispin_tanzo1.png", "description": "[鍛造]追加効果 <プシーキーの権能>デバフが掛かった対象の攻撃ダメージ増幅が減少する。" },
+      "即刻的フィードバック": { "icon": "skill/ispin/ispin_tanzo2.png", "description": "[鍛造]追加効果 <プシーキーの権能>デバフが掛かった対象を倒すと、HP/SP/MPを回復する。" },
+      "ハードトレーニング": { "icon": "skill/ispin/ispin_tanzo3.png", "description": "[鍛造]追加効果 <鍛造>バフに攻撃ダメージ(+10%)の効果を付与" }
+    },
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.10, "target": "self", "mastery_group": "ispin_tanzo", "mastery_option": "ハードトレーニング", "condition": null }
+    ]
+  },
+  "ispin_hakka": {
+    "chara": "イスピン",
+    "skill_name": "発火",
+    "description": "バックドラフト / パニック / サボタージュ",
+    "icon": "skill/ispin/ispin_hakka.png",
+    "masteries": {
+      "バックドラフト": { "icon": "skill/ispin/ispin_hakka1.png", "description": "<発火>デバフ追加効果、追加で同じダメージを与える。" },
+      "パニック": { "icon": "skill/ispin/ispin_hakka2.png", "description": "<発火>デバフ追加効果、各ステータス値(-10%/2分)の<パニック>デバフ付与" },
+      "サボタージュ": { "icon": "skill/ispin/ispin_hakka3.png", "description": "<発火>デバフ追加効果、装備能力値(-10%/2分)の<サボタージュ>デバフ付与" }
+    },
+    "effects": [
+      { "category_id": "additional_damage_unclassified", "value": null, "target": "self", "mastery_group": "ispin_hakka", "mastery_option": "バックドラフト", "condition": null },
+      { "category_id": "stat_multiplier_debuff", "value": 0.10, "target": "pt", "mastery_group": "ispin_hakka", "mastery_option": "パニック", "condition": null }
+    ]
+  },
+  "maximin_mastery1": {
+    "chara": "マキシミン",
+    "skill_name": "マスタリー",
+    "description": "把握 / 状況判断 / 怠惰",
+    "icon": "skill/maximin/maximin_mastery1.png",
+    "masteries": {
+      "把握": { "icon": "skill/maximin/maximin_mastery11.png", "description": "悪い状態異常の持続時間減少(-20%)。\n※スキルやアイテムで解除不可／持続時間固定の場合は減らない。" },
+      "状況判断": { "icon": "skill/maximin/maximin_mastery12.png", "description": "自分と周囲のチームメンバーの移動速度増加(+5)" },
+      "怠惰": { "icon": "skill/maximin/maximin_mastery13.png", "description": "攻撃ダメージが増加する。(+3%)" }
+    },
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.03, "target": "self", "mastery_group": "maximin_mastery1", "mastery_option": "怠惰", "condition": null }
+    ]
+  },
+  "maximin_poison_tongue": {
+    "chara": "マキシミン",
+    "skill_name": "毒舌",
+    "description": "対象の被ダメージ+10%",
+    "icon": "skill/maximin/maximin_poison_tongue.png",
+    "masteries": {
+      "侮辱": { "icon": "skill/maximin/maximin_poison_tongue1.png", "description": "<毒舌>に能力値減少(-10%)を追加" },
+      "皮肉": { "icon": "skill/maximin/maximin_poison_tongue2.png", "description": "<毒舌>に最小命中率減少(-10%)を追加" },
+      "暴言": { "icon": "skill/maximin/maximin_poison_tongue3.png", "description": "<毒舌>に最終ダメージ-10%を追加" }
+    },
+    "effects": [
+      { "category_id": "damage_reduction_skill_debuff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "stat_multiplier_debuff", "value": 0.10, "target": "pt", "mastery_group": "maximin_poison_tongue", "mastery_option": "侮辱", "condition": null },
+      { "category_id": "final_damage_debuff", "value": 0.10, "target": "pt", "mastery_group": "maximin_poison_tongue", "mastery_option": "暴言", "condition": null }
+    ]
+  },
+  "maximin_cursed_sword": {
+    "chara": "マキシミン",
+    "skill_name": "呪われた魔剣",
+    "description": "攻撃ダメージ+5%、被ダメージ+5%",
+    "icon": "skill/maximin/maximin_cursed_sword.png",
+    "masteries": {
+      "呪われた魔剣": { "icon": "skill/maximin/maximin_cursed_sword1.png", "description": "<呪われた魔剣>の効果：攻撃ダメージ/被ダメージ増加(+5%)、持続時間20s、CT1分" },
+      "封印された魔剣": { "icon": "skill/maximin/maximin_cursed_sword2.png", "description": "<呪われた魔剣>の効果：攻撃ダメージ増加(+5%)、持続時間2分、CT10分" },
+      "自我を持つ魔剣": { "icon": "skill/maximin/maximin_cursed_sword3.png", "description": "<呪われた魔剣>の効果：攻撃ダメージ/被ダメージ増加(+7%)、持続時間2分、CT10分" }
+    },
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.05, "target": "self", "mastery_group": "maximin_cursed_sword", "mastery_option": "呪われた魔剣", "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": -0.05, "target": "self", "mastery_group": "maximin_cursed_sword", "mastery_option": "呪われた魔剣", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.05, "target": "self", "mastery_group": "maximin_cursed_sword", "mastery_option": "封印された魔剣", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.07, "target": "self", "mastery_group": "maximin_cursed_sword", "mastery_option": "自我を持つ魔剣", "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": -0.07, "target": "self", "mastery_group": "maximin_cursed_sword", "mastery_option": "自我を持つ魔剣", "condition": null }
+    ]
+  },
+  "maximin_mastery4": {
+    "chara": "マキシミン",
+    "skill_name": "マスタリー",
+    "description": "剣を扱う技術 / 風使い / 棒のように振るう剣",
+    "icon": "skill/maximin/maximin_mastery4.png",
+    "masteries": {
+      "剣を扱う技術": { "icon": "skill/maximin/maximin_mastery41.png", "description": "HACK+10%、DEF+10%" },
+      "風使い": { "icon": "skill/maximin/maximin_mastery42.png", "description": "攻撃時、一定確率で<スタン>付与" },
+      "棒のように振るう剣": { "icon": "skill/maximin/maximin_mastery43.png", "description": "攻撃スキルを使用する際、対象の物理防御力と魔法防御力が一定量低下(-7%)したものとみなしてダメージを与える" }
+    },
+    "effects": [
+      { "category_id": "stat_multiplier_buff", "value": 0.10, "target": "self", "mastery_group": "maximin_mastery4", "mastery_option": "剣を扱う技術", "condition": null },
+      { "category_id": "defense", "value": -0.07, "target": "self", "mastery_group": "maximin_mastery4", "mastery_option": "棒のように振るう剣", "condition": null }
+    ]
+  },
+  "maximin_dotabata": {
+    "chara": "マキシミン",
+    "skill_name": "ドタバタペア",
+    "description": "射程60以内にチームメンバーのジョシュアまたはイスピンがいると、中ディレイ減少(-5%)、被ダメージ減少(-3%)、攻撃ダメージ増加(+2%)",
+    "icon": "skill/maximin/maximin_dotabata.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt_any": ["ジョシュア", "イスピン"] } },
+      { "category_id": "attack_damage_skill", "value": 0.02, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt_any": ["ジョシュア", "イスピン"] } }
+    ]
+  },
+  "maximin_stimulant": {
+    "chara": "マキシミン",
+    "skill_name": "スティミュラント",
+    "description": "被ダメージ-5%",
+    "icon": "skill/maximin/maximin_stimulant.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "maximin_young_patriarch": {
+    "chara": "マキシミン",
+    "skill_name": "少年家長",
+    "description": "チーム関連バフ",
+    "icon": "skill/maximin/maximin_young_patriarch.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.02, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "maximin_curse": {
+    "chara": "マキシミン",
+    "skill_name": "カース",
+    "description": "敵に呪いデバフ付与",
+    "icon": "skill/maximin/maximin_curse.png",
+    "effects": [
+      { "category_id": "stat_multiplier_debuff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "nayatrei_sen": {
+    "chara": "ナヤトレイ",
+    "skill_name": "閃",
+    "description": "強奪 / 筋斬り / 爆弾付着",
+    "icon": "skill/naya/nayatrei_sen.png",
+    "masteries": {
+      "強奪": { "icon": "skill/naya/nayatrei_sen1.png", "description": "[閃]の攻撃対象に<強奪>デバフ：全ステータス値(-10%)/装備攻撃力(-10%)(持続時間:2分)" },
+      "筋斬り": { "icon": "skill/naya/nayatrei_sen2.png", "description": "[閃]の攻撃対象に<絶筋>デバフ：全ステータス値(-10%)/最小回避率(-10%)/最小命中率(-10%)/移動速度(-3) (持続時間:2分)" },
+      "爆弾付着": { "icon": "skill/naya/nayatrei_sen3.png", "description": "[閃]の攻撃対象に2秒後に追加ダメージ (190x2/Cri2.5x)" }
+    },
+    "effects": [
+      { "category_id": "stat_multiplier_debuff", "value": 0.10, "target": "pt", "mastery_group": "nayatrei_sen", "mastery_option": "強奪", "condition": null },
+      { "category_id": "stat_multiplier_debuff", "value": 0.10, "target": "pt", "mastery_group": "nayatrei_sen", "mastery_option": "筋斬り", "condition": null },
+      { "category_id": "evasion_rate_correction", "value": -0.10, "target": "pt", "mastery_group": "nayatrei_sen", "mastery_option": "筋斬り", "condition": null }
+    ]
+  },
+  "nayatrei_mastery2": {
+    "chara": "ナヤトレイ",
+    "skill_name": "マスタリー",
+    "description": "身隠しの煙幕 / 敵を欺く煙幕 / 毒入り煙幕",
+    "icon": "skill/naya/nayatrei_mastery2.png",
+    "masteries": {
+      "身隠しの煙幕": { "icon": "skill/naya/nayatrei_mastery21.png", "description": "[煙幕]を使用すると、敵にターゲットされない<未隠れ>バフが付与される。攻撃すると即時切れるが、霧の中に入ればバフは更新される。(持続時間 5s)" },
+      "敵を欺く煙幕": { "icon": "skill/naya/nayatrei_mastery22.png", "description": "[煙幕]を使用すると、<強襲>が付与される。<強襲>バフは、攻撃時に一度だけ追加ダメージ(+50%)を与える (持続時間30s)" },
+      "毒入り煙幕": { "icon": "skill/naya/nayatrei_mastery23.png", "description": "[煙幕]上にいる対象は、1.5s毎に<中毒+1>付与される。" }
+    },
+    "effects": [
+      { "category_id": "additional_damage_unclassified", "value": 0.50, "target": "self", "mastery_group": "nayatrei_mastery2", "mastery_option": "敵を欺く煙幕", "condition": null }
+    ]
+  },
+  "nayatrei_mastery3": {
+    "chara": "ナヤトレイ",
+    "skill_name": "マスタリー",
+    "description": "後ろを狙う襲撃 / 体重を乗せた襲撃 / 無差別的な襲撃",
+    "icon": "skill/naya/nayatrei_mastery3.png",
+    "masteries": {
+      "後ろを狙う襲撃": { "icon": "skill/naya/nayatrei_mastery31.png", "description": "[襲撃]で対象の後方から攻撃すると追加ダメージ(+50%)を与える。" },
+      "体重を乗せた襲撃": { "icon": "skill/naya/nayatrei_mastery32.png", "description": "[襲撃]で対象を攻撃すると追加ダメージ（距離20以上で50%、距離10以上で35%、距離0以上で20%）を与える。" },
+      "無差別的な襲撃": { "icon": "skill/naya/nayatrei_mastery33.png", "description": "[襲撃](チャージ・スプレッド)を[無差別的な襲撃](前ディレイなし範囲)に変更する。" }
+    },
+    "effects": []
+  },
+  "nayatrei_mastery4": {
+    "chara": "ナヤトレイ",
+    "skill_name": "マスタリー",
+    "description": "毒塗り / 致命的な毒 / 無気力になる毒",
+    "icon": "skill/naya/nayatrei_mastery4.png",
+    "masteries": {
+      "毒塗り": { "icon": "skill/naya/nayatrei_mastery41.png", "description": "<連>、<花蝴乱舞>、<心>、<手裏剣投げ>、<狂猫>、<分身撃>、<忍術閃>、<襲撃>、<無差別的な襲撃>で敵を攻撃すると<中毒>がかかる。" },
+      "致命的な毒": { "icon": "skill/naya/nayatrei_mastery42.png", "description": "<中毒>状態の対象を攻撃すると、スタック量に応じた中毒ダメージを与える。クールタイム1.2s。" },
+      "無気力になる毒": { "icon": "skill/naya/nayatrei_mastery43.png", "description": "<中毒>状態の対象を攻撃すると、攻撃ダメージ減少(-10%)のデバフを付与する" }
+    },
+    "effects": [
+      { "category_id": "additional_damage_unclassified", "value": null, "target": "self", "mastery_group": "nayatrei_mastery4", "mastery_option": "致命的な毒", "condition": null },
+      { "category_id": "final_damage_debuff", "value": 0.10, "target": "pt", "mastery_group": "nayatrei_mastery4", "mastery_option": "無気力になる毒", "condition": null }
+    ]
+  },
+  "nayatrei_byouzoku": {
+    "chara": "ナヤトレイ",
+    "skill_name": "苗族",
+    "description": "特定状態異常無効・クリティカル被撃率減少\n射程60以内のチームメンバーにロアミニがいると、自身とロアミニの与ダメージが増加(+10%)",
+    "icon": "skill/naya/nayatrei_byouzoku.png",
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.02, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "ロアミニ" } }
+    ]
+  },
+  "nayatrei_pair": {
+    "chara": "ナヤトレイ",
+    "skill_name": "ペア",
+    "description": "チームメンバーのシベリンが攻撃した対象に追加ダメージ(10%)",
+    "icon": "skill/naya/nayatrei_pair.png",
+    "effects": [
+      { "category_id": "additional_damage_unclassified", "value": 0.10, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "シベリン" } }
+    ]
+  },
+  "siberin_taunt": {
+    "chara": "シベリン",
+    "skill_name": "挑発",
+    "description": "射程内の敵の与ダメージ+10%、被ダメージ+10%（敵デバフ）",
+    "icon": "skill/sivelin/siberin_taunt.png",
+    "masteries": {
+      "欺瞞": { "icon": "skill/sivelin/siberin_taunt1.png", "description": "<挑発>に最小回避率減少(-10%)を追加" },
+      "軽蔑": { "icon": "skill/sivelin/siberin_taunt2.png", "description": "<挑発>に最小命中率減少(-10%)を追加" },
+      "嘲笑": { "icon": "skill/sivelin/siberin_taunt3.png", "description": "<挑発>の与ダメージ増加を削除（対象の被ダメージ増加のみとなり、デメリットがなくなる）" }
+    },
+    "effects": [
+      { "category_id": "damage_reduction_skill_debuff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "final_damage_debuff", "value": -0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "evasion_rate_correction", "value": -0.10, "target": "pt", "mastery_group": "siberin_taunt", "mastery_option": "欺瞞", "condition": null },
+      { "category_id": "final_damage_debuff", "value": 0.10, "target": "pt", "mastery_group": "siberin_taunt", "mastery_option": "嘲笑", "condition": null }
+    ]
+  },
+  "siberin_mastery2": {
+    "chara": "シベリン",
+    "skill_name": "マスタリー",
+    "description": "槍術 / 棒術 / 地稽古",
+    "icon": "skill/sivelin/siberin_mastery2.png",
+    "masteries": {
+      "槍術": { "icon": "skill/sivelin/siberin_mastery21.png", "description": "攻撃ダメージ増加する(+10%)" },
+      "棒術": { "icon": "skill/sivelin/siberin_mastery22.png", "description": "攻撃スキルを使用する際、対象の物理防御力と魔法防御力が一定量低下(-7%)したものとみなしてダメージを与える" },
+      "地稽古": { "icon": "skill/sivelin/siberin_mastery23.png", "description": "被ダメージが減少する(-5%)" }
+    },
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.10, "target": "self", "mastery_group": "siberin_mastery2", "mastery_option": "槍術", "condition": null },
+      { "category_id": "defense", "value": -0.07, "target": "self", "mastery_group": "siberin_mastery2", "mastery_option": "棒術", "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": 0.05, "target": "self", "mastery_group": "siberin_mastery2", "mastery_option": "地稽古", "condition": null }
+    ]
+  },
+  "siberin_mastery3": {
+    "chara": "シベリン",
+    "skill_name": "真紅の死神",
+    "description": "業火 / コーマ / フィアー",
+    "icon": "skill/sivelin/siberin_mastery3.png",
+    "masteries": {
+      "業火": { "icon": "skill/sivelin/siberin_mastery31.png", "description": "<発火>デバフ追加効果、追加で同じダメージを与える。" },
+      "コーマ": { "icon": "skill/sivelin/siberin_mastery32.png", "description": "<発火>デバフ追加効果、各ステータス値(-10%/2分)の<パニック>デバフ付与\n※イスピン・マスタリー[パニック]と併用不可" },
+      "フィアー": { "icon": "skill/sivelin/siberin_mastery33.png", "description": "<発火>デバフ追加効果、装備能力値(-10%/2分)の<サボタージュ>デバフ付与\n※イスピン・マスタリー[サボタージュ]と併用不可" }
+    },
+    "effects": [
+      { "category_id": "additional_damage_unclassified", "value": null, "target": "self", "mastery_group": "siberin_mastery3", "mastery_option": "業火", "condition": null },
+      { "category_id": "stat_multiplier_debuff", "value": 0.10, "target": "pt", "mastery_group": "siberin_mastery3", "mastery_option": "コーマ", "condition": null }
+    ]
+  },
+  "siberin_mastery4": {
+    "chara": "シベリン",
+    "skill_name": "マスタリー",
+    "description": "バーサーカー / 不屈 / 暴走",
+    "icon": "skill/sivelin/siberin_mastery4.png",
+    "masteries": {
+      "バーサーカー": { "icon": "skill/sivelin/siberin_mastery41.png", "description": "攻撃成功時に10%の確率でHP回復（回復量=[攻撃ダメージ]×0.03、最大HPの5%まで回復）" },
+      "不屈": { "icon": "skill/sivelin/siberin_mastery42.png", "description": "被ダメージ毎に<不屈>バフ+1（最大スタック数:10）\n※攻撃ダメージ/被ダメージ増加：+スタック数[%]\n※マスタリー選択/解除、毎日0時に増加値はリセット" },
+      "暴走": { "icon": "skill/sivelin/siberin_mastery43.png", "description": "マスタリー選択後の累積ダメージが[最大HP]の5倍以上であれば、60秒間、攻撃ダメージ+60%\n毎秒最大HPの10%、HP減少再使用制限60s\n※マスタリー選択/解除、毎日0時に増加値はリセット" }
+    },
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": null, "target": "self", "mastery_group": "siberin_mastery4", "mastery_option": "不屈", "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": null, "target": "self", "mastery_group": "siberin_mastery4", "mastery_option": "不屈", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.60, "target": "self", "mastery_group": "siberin_mastery4", "mastery_option": "暴走", "condition": null }
+    ]
+  },
+  "siberin_berserk": {
+    "chara": "シベリン",
+    "skill_name": "バーサーク",
+    "description": "マスタリーで効果が変更される",
+    "icon": "skill/sivelin/siberin_berserk.png",
+    "masteries": {
+      "バーサーク-攻撃型": { "icon": "skill/sivelin/siberin_berserk1.png", "description": "<バーサーク>の効果を変更する。攻撃力が大幅に増加し、防御力とディレイが大幅に減少する。\n攻撃ダメージ+30%/被ダメージ+20%/移動速度+3/前ディレイ-20%/後ディレイ-20%/硬直無視" },
+      "バーサーク-バランス型": { "icon": "skill/sivelin/siberin_berserk2.png", "description": "<バーサーク>の効果を変更する。攻撃力が小幅に増加し、防御力とディレイが小幅に減少する。\n攻撃ダメージ+20%/被ダメージ+10%/移動速度+3/前ディレイ-10%/後ディレイ-10%/硬直無視" },
+      "バーサーク-防御型": { "icon": "skill/sivelin/siberin_berserk3.png", "description": "<バーサーク>の効果を変更する。攻撃力は増加しないが、防御力が増加する。\n被ダメージ-10%/移動速度+3/硬直無視" }
+    },
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.30, "target": "self", "mastery_group": "siberin_berserk", "mastery_option": "バーサーク-攻撃型", "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": -0.20, "target": "self", "mastery_group": "siberin_berserk", "mastery_option": "バーサーク-攻撃型", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.20, "target": "self", "mastery_group": "siberin_berserk", "mastery_option": "バーサーク-バランス型", "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": -0.10, "target": "self", "mastery_group": "siberin_berserk", "mastery_option": "バーサーク-バランス型", "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": 0.10, "target": "self", "mastery_group": "siberin_berserk", "mastery_option": "バーサーク-防御型", "condition": null }
+    ]
+  },
+  "siberin_hard_skin": {
+    "chara": "シベリン",
+    "skill_name": "ハードスキン",
+    "description": "被ダメージ減少",
+    "icon": "skill/sivelin/siberin_hard_skin.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.10, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "siberin_charm": {
+    "chara": "シベリン",
+    "skill_name": "魅力発散",
+    "description": "射程60以内のチームメンバーに女性キャラクターが存在すると、自身とチームメンバーにすべての能力値増加(+1%)／移動速度増加(+2)",
+    "icon": "skill/sivelin/siberin_charm.png",
+    "effects": [
+      { "category_id": "stat_multiplier_buff", "value": 0.01, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt_any": ["ミラ", "ティチエル", "イスピン", "ナヤトレイ", "クロエ", "アナイス", "イソレット", "ベンヤ", "ロアミニ", "リーチェ"] } }
+    ]
+  },
+  "siberin_orlannu": {
+    "chara": "シベリン",
+    "skill_name": "オルランヌの継承者",
+    "description": "イスピンが同じチームにいる場合、被ダメージが減少する(-10%)\nイスピンを攻撃している敵を攻撃すると追加ダメージ(+10%)",
+    "icon": "skill/sivelin/siberin_orlannu.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "イスピン" } },
+      { "category_id": "additional_damage_unclassified", "value": 0.10, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "イスピン" } }
+    ]
+  },
+  "joshua_gladiator": {
+    "chara": "ジョシュア",
+    "skill_name": "剣闘士",
+    "description": "STAB+10% / DEF+10%",
+    "icon": "skill/josua/joshua_gladiator.png",
+    "effects": [
+      { "category_id": "stat_multiplier_buff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "joshua_magician": {
+    "chara": "ジョシュア",
+    "skill_name": "魔法師",
+    "description": "INT+10% / MR+10%",
+    "icon": "skill/josua/joshua_magician.png",
+    "effects": [
+      { "category_id": "stat_multiplier_buff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "joshua_jyakka": {
+    "chara": "ジョシュア",
+    "skill_name": "弱化",
+    "description": "射程内の敵の全能力値-20%、被ダメージ+10%\n敵が攻撃するたびに攻撃者のHPを回復（ジョシュアへの吸収）",
+    "icon": "skill/josua/joshua_jyakka.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_debuff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "damage_reduction_skill_debuff", "value": 0.05, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "ボリス" } },
+      { "category_id": "stat_multiplier_debuff", "value": 0.20, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "joshua_spade_shield": {
+    "chara": "ジョシュア",
+    "skill_name": "スペードシールド",
+    "description": "被ダメージ時にHP回復\n被ダメージ-10%",
+    "icon": "skill/josua/joshua_spade_shield.png",
+    "masteries": {
+      "ハートフラッシュ": { "icon": "skill/josua/joshua_spade_shield1.png", "description": "スペードシールドの効果をMP,SP回復量なし／HP回復量3倍に変更" },
+      "トラップカード": { "icon": "skill/josua/joshua_spade_shield2.png", "description": "スペードシールド使用中、攻撃を受けると反撃する（100%,2x,一定確率(10%)で追加効果[感電]）" },
+      "エースイン・ザ・ホール": { "icon": "skill/josua/joshua_spade_shield3.png", "description": "スペードシールド使用中、攻撃毎に追加ダメージ(10%)" }
+    },
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.10, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "additional_damage_unclassified", "value": 0.10, "target": "self", "mastery_group": "joshua_spade_shield", "mastery_option": "エースイン・ザ・ホール", "condition": null }
+    ]
+  },
+  "joshua_reiki": {
+    "chara": "ジョシュア",
+    "skill_name": "霊媒〈幽霊〉",
+    "description": "チームメンバーのボリスがかなり近くにいる場合、<平穏>バフにかかる",
+    "icon": "skill/josua/joshua_reiki.png",
+    "effects": [
+      { "category_id": "stat_multiplier_buff", "value": null, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "ボリス" } }
+    ]
+  },
+  "joshua_mastery2": {
+    "chara": "ジョシュア",
+    "skill_name": "マスタリー",
+    "description": "オープンハンド / アノーイングネイバー / エリート",
+    "icon": "skill/josua/joshua_mastery2.png",
+    "masteries": {
+      "オープンハンド": { "icon": "skill/josua/joshua_mastery21.png", "description": "被ダメージ減少(-10%)" },
+      "アノーイングネイバー": { "icon": "skill/josua/joshua_mastery22.png", "description": "攻撃ダメージ増加(+10%)" },
+      "エリート": { "icon": "skill/josua/joshua_mastery23.png", "description": "憑依モード時のボーナス効果\n剣闘士：STAB(+10%)、DEF(+10%)\n魔法師：INT(+10%)、MR(+10%)\n※剣闘士/魔法師の効果値は各スキル側で記録済み" }
+    },
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.10, "target": "self", "mastery_group": "joshua_mastery2", "mastery_option": "オープンハンド", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.10, "target": "self", "mastery_group": "joshua_mastery2", "mastery_option": "アノーイングネイバー", "condition": null }
+    ]
+  },
+  "joshua_amplification": {
+    "chara": "ジョシュア",
+    "skill_name": "アンプリフィケーション",
+    "description": "プレッシャー・オブ・ダクネス / プレッシャー・オブ・エレクトロ / プレッシャー・オブ・フロスト",
+    "icon": "skill/josua/joshua_amplification.png",
+    "masteries": {
+      "プレッシャー・オブ・ダクネス": { "icon": "skill/josua/joshua_amplification1.png", "description": "アンプリフィケーションを使用すると、[マインドフューリー]バフがかかる。\n攻撃時に[暗黒]/黒属性増加(+5) (持続時間30分、チーム対象)\n[暗黒]状態の敵を攻撃すると追加ダメージ(10%)" },
+      "プレッシャー・オブ・エレクトロ": { "icon": "skill/josua/joshua_amplification2.png", "description": "アンプリフィケーションを使用すると、[マインドエレクトリック]バフがかかる。\n攻撃時に[感電]/雷属性増加(+5) (持続時間30分、チーム対象)\n[感電]状態の敵を攻撃すると追加ダメージ(10%)" },
+      "プレッシャー・オブ・フロスト": { "icon": "skill/josua/joshua_amplification3.png", "description": "アンプリフィケーションを使用すると、[マインドフリーズ]バフがかかる。\n攻撃時に[霜]/水属性増加(+5) (持続時間30分、チーム対象)\n[霜]状態の敵を攻撃すると追加ダメージ(10%)" }
+    },
+    "effects": [
+      { "category_id": "additional_damage_unclassified", "value": 0.10, "target": "self", "mastery_group": "joshua_amplification", "mastery_option": "プレッシャー・オブ・ダクネス", "condition": null },
+      { "category_id": "additional_damage_unclassified", "value": 0.10, "target": "self", "mastery_group": "joshua_amplification", "mastery_option": "プレッシャー・オブ・エレクトロ", "condition": null },
+      { "category_id": "additional_damage_unclassified", "value": 0.10, "target": "self", "mastery_group": "joshua_amplification", "mastery_option": "プレッシャー・オブ・フロスト", "condition": null }
+    ]
+  },
+  "joshua_soul_burst": {
+    "chara": "ジョシュア",
+    "skill_name": "ソウルバースト",
+    "icon": "skill/josua/joshua_soul_burst.png",
+    "masteries": {
+      "レギュレート": { "icon": "skill/josua/joshua_soul_burst1.png", "description": "ソウルバースト使用時、被ダメージ減少(-5%)" },
+      "ガーディアン": { "icon": "skill/josua/joshua_soul_burst2.png", "description": "ソウルバースト使用中、被ダメージをMPに変換。被ダメージ転換率(HP→MP)+100%／被ダメージ転換比率(HP→MP)+30%" },
+      "エクソダス": { "icon": "skill/josua/joshua_soul_burst3.png", "description": "ソウルバースト使用時、攻撃ダメージ増加(+5%)" }
+    },
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.05, "target": "self", "mastery_group": "joshua_soul_burst", "mastery_option": "レギュレート", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.05, "target": "self", "mastery_group": "joshua_soul_burst", "mastery_option": "エクソダス", "condition": null }
+    ]
+  },
+  "joshua_maximin_passive": {
+    "chara": "ジョシュア",
+    "skill_name": "マキシミン（パッシブ）",
+    "description": "射程60以内のチームメンバーにマキシミンがいると、悪い状態異常にかかる確率減少(-80%)／被ダメージ減少(-10%)",
+    "icon": "skill/josua/joshua_maximin_passive.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "マキシミン" } }
+    ]
+  },
+  "joshua_thread_needle": {
+    "chara": "ジョシュア",
+    "skill_name": "糸と針",
+    "description": "射程60以内のチームメンバーにリーチェがいると、与ダメージ増加(+10%)",
+    "icon": "skill/josua/joshua_thread_needle.png",
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.02, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "リーチェ" } }
+    ]
+  },
+  "chloe_mana_wall": {
+    "chara": "クロエ",
+    "skill_name": "マナウォール",
+    "description": "被ダメージ-10%\nMPで被ダメージを肩代わり",
+    "icon": "skill/cloe/chloe_mana_wall.png",
+    "masteries": {
+      "スタビライジング": { "icon": "skill/cloe/chloe_mana_wall1.png", "description": "マナウォール使用中、被ダメージ減少(-5%)" },
+      "コンバージョン": { "icon": "skill/cloe/chloe_mana_wall2.png", "description": "マナウォール使用中、攻撃を受けた際に被ダメージに比例してMP回復" },
+      "リバウンド": { "icon": "skill/cloe/chloe_mana_wall3.png", "description": "マナウォール使用中、被ダメージ毎に<チャージドエネルギー>バフが増加し、10になるとバフを消費して攻撃スキル使用時に追加ダメージ(+100%)を与える" }
+    },
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.10, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": 0.05, "target": "self", "mastery_group": "chloe_mana_wall", "mastery_option": "スタビライジング", "condition": null },
+      { "category_id": "additional_damage_unclassified", "value": 1.00, "target": "self", "mastery_group": "chloe_mana_wall", "mastery_option": "リバウンド", "condition": null }
+    ]
+  },
+  "chloe_rivalry": {
+    "chara": "クロエ",
+    "skill_name": "ライバルリー",
+    "description": "射程60以内にチームメンバーのイスピンがいると、中ディレイが減少(-5%)",
+    "icon": "skill/cloe/chloe_rivalry.png",
+    "effects": [
+      { "category_id": "stat_multiplier_buff", "value": null, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "イスピン" } }
+    ]
+  },
+  "chloe_focus": {
+    "chara": "クロエ",
+    "skill_name": "フォーカス",
+    "description": "インナーピース / フォーカスオンターゲット / フロー",
+    "icon": "skill/cloe/chloe_focus.png",
+    "masteries": {
+      "インナーピース": { "icon": "skill/cloe/chloe_focus1.png", "description": "フォーカス使用中、MP持続減少量を半減" },
+      "フォーカスオンターゲット": { "icon": "skill/cloe/chloe_focus2.png", "description": "フォーカス使用中、最小命中率増加(+10%)" },
+      "フロー": { "icon": "skill/cloe/chloe_focus3.png", "description": "フォーカス使用中、MP持続減少量を2倍(最大MPの2%)に増やす代わりに基本追加ダメージが20%に増加" }
+    },
+    "effects": [
+      { "category_id": "hit_rate_correction", "value": 0.10, "target": "self", "mastery_group": "chloe_focus", "mastery_option": "フォーカスオンターゲット", "condition": null },
+      { "category_id": "additional_damage_unclassified", "value": 0.20, "target": "self", "mastery_group": "chloe_focus", "mastery_option": "フロー", "condition": null }
+    ]
+  },
+  "chloe_mastery3": {
+    "chara": "クロエ",
+    "skill_name": "マスタリー",
+    "description": "クイックウェザーリング / アイスフレーク / アイアンリッチ",
+    "icon": "skill/cloe/chloe_mastery3.png",
+    "masteries": {
+      "クイックウェザーリング": { "icon": "skill/cloe/chloe_mastery31.png", "description": "<風化>の敵に疾風系スキルや大地系スキルで攻撃時、<低速>デバフ付与（移動速度減少(-3)）" },
+      "アイスフレーク": { "icon": "skill/cloe/chloe_mastery32.png", "description": "<氷化>の敵に水術系スキルで攻撃時、追加ダメージ(10%)と<麻痺>付与\n<氷化>解除時、<麻痺>付与" },
+      "アイアンリッチ": { "icon": "skill/cloe/chloe_mastery33.png", "description": "<雷電>の敵に雷術系スキルで攻撃時、<感電>／<石化>付与" }
+    },
+    "effects": [
+      { "category_id": "additional_damage_unclassified", "value": 0.10, "target": "self", "mastery_group": "chloe_mastery3", "mastery_option": "アイスフレーク", "condition": null }
+    ]
+  },
+  "chloe_mastery4": {
+    "chara": "クロエ",
+    "skill_name": "マスタリー",
+    "description": "ワイルドファイヤー / クイックフリーズ / スパークリングアイス",
+    "icon": "skill/cloe/chloe_mastery4.png",
+    "masteries": {
+      "ワイルドファイヤー": { "icon": "skill/cloe/chloe_mastery41.png", "description": "<炸裂>の敵に炎術系スキルで攻撃すると、<ワイルドファイヤー>デバフ付与（被ダメージ増加(+10%)、持続時間2分）" },
+      "クイックフリーズ": { "icon": "skill/cloe/chloe_mastery42.png", "description": "<氷化>の敵に水術系スキルで攻撃すると、<クイックフリーズ>デバフ付与（最小命中率減少(-10%)／最小回避率減少(-10%)／移動速度減少(-3)、持続時間2分）" },
+      "スパークリングアイス": { "icon": "skill/cloe/chloe_mastery43.png", "description": "<雷電>の敵に雷術系スキルで攻撃すると、追加ダメージ(10%)" }
+    },
+    "effects": [
+      { "category_id": "damage_reduction_skill_debuff", "value": 0.10, "target": "pt", "mastery_group": "chloe_mastery4", "mastery_option": "ワイルドファイヤー", "condition": null },
+      { "category_id": "evasion_rate_correction", "value": -0.10, "target": "pt", "mastery_group": "chloe_mastery4", "mastery_option": "クイックフリーズ", "condition": null },
+      { "category_id": "additional_damage_unclassified", "value": 0.10, "target": "self", "mastery_group": "chloe_mastery4", "mastery_option": "スパークリングアイス", "condition": null }
+    ]
+  },
+  "chloe_mastery5": {
+    "chara": "クロエ",
+    "skill_name": "マスタリー",
+    "description": "マナウォール-防御型 / マナウォール-バランス / マナウォール-攻撃型",
+    "icon": "skill/cloe/chloe_mastery5.png",
+    "masteries": {
+      "マナウォール-防御型": { "icon": "skill/cloe/chloe_mastery51.png", "description": "マナウォール使用中、転換比率20%(カット率80%)" },
+      "マナウォール-バランス": { "icon": "skill/cloe/chloe_mastery52.png", "description": "マナウォール使用中、転換比率30%(カット率70%)、攻撃ダメージ+5%" },
+      "マナウォール-攻撃型": { "icon": "skill/cloe/chloe_mastery53.png", "description": "マナウォール使用中、マナウォール防御なし、攻撃ダメージ+7%" }
+    },
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.05, "target": "self", "mastery_group": "chloe_mastery5", "mastery_option": "マナウォール-バランス", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.07, "target": "self", "mastery_group": "chloe_mastery5", "mastery_option": "マナウォール-攻撃型", "condition": null }
+    ]
+  },
+  "chloe_fuuka": {
+    "chara": "クロエ",
+    "skill_name": "風化",
+    "description": "敵全能力値-10%",
+    "icon": "skill/cloe/chloe_fuuka.png",
+    "effects": [
+      { "category_id": "stat_multiplier_debuff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "chloe_ice_rose": {
+    "chara": "クロエ",
+    "skill_name": "氷の薔薇",
+    "description": "クリティカル被撃率-33%、被ダメージ-10%",
+    "icon": "skill/cloe/chloe_ice_rose.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "chloe_magic_researcher": {
+    "chara": "クロエ",
+    "skill_name": "魔法研究者",
+    "description": "射程60以内のチームメンバーが魔法攻撃すると、自身に<渡空>バフ付与（持続時間10s）\n<渡空>：攻撃ダメージ(+10%)、MP回復([最大MP]×0.01)、経験値獲得量(+Lv)",
+    "icon": "skill/cloe/chloe_magic_researcher.png",
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.10, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt_with_type_any": [
+        { "chara": "ボリス", "types": ["魔剣士型"] },
+        { "chara": "ティチエル", "types": ["攻撃型", "補助型"] },
+        { "chara": "クロエ" },
+        { "chara": "ジョシュア", "types": ["霊媒", "魔術師"] },
+        { "chara": "アナイス" },
+        { "chara": "ランジエ", "types": ["魔法型", "補助型"] },
+        { "chara": "イソレット", "types": ["チャント"] },
+        { "chara": "ベンヤ", "types": ["ホーリーハンマー系"] },
+        { "chara": "ロアミニ" }
+      ] } }
+    ]
+  },
+  "lanjier_coin": {
+    "chara": "ランジエ",
+    "skill_name": "共和国の硬貨",
+    "description": "クリティカル被撃率-50%（または-25%）\n悪い状態異常にかかる確率-20%（または-10%）\n回避P+30（または+15）\n被ダメージ軽減",
+    "icon": "skill/lanziee/lanjier_coin.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.07, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": 0.05, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "lanjier_mastery1": {
+    "chara": "ランジエ",
+    "skill_name": "マスタリー",
+    "description": "散弾リボルバー / トリプルリボルバー / フラッシュバン",
+    "icon": "skill/lanziee/lanjier_mastery1.png",
+    "masteries": {
+      "散弾リボルバー": { "icon": "skill/lanziee/lanjier_mastery11.png", "description": "[極・散弾リボルバー]スキルを選択\n6回攻撃後にCT60秒、1回でも発動すると6回攻撃しなくとも一定時間後にCTが発生する" },
+      "トリプルリボルバー": { "icon": "skill/lanziee/lanjier_mastery12.png", "description": "[極・トリプルリボルバー]スキルを選択\n6回攻撃後にCT60秒、1回でも発動すると6回攻撃しなくとも一定時間後にCTが発生する" },
+      "フラッシュバン": { "icon": "skill/lanziee/lanjier_mastery13.png", "description": "[極・フラッシュバン]スキルを選択\n対象に些細なダメージと[暗黒]デバフを付与する" }
+    },
+    "effects": []
+  },
+  "lanjier_mastery2": {
+    "chara": "ランジエ",
+    "skill_name": "マスタリー",
+    "description": "マズルブレーキ / サイレンサー / ロングバレル",
+    "icon": "skill/lanziee/lanjier_mastery2.png",
+    "masteries": {
+      "マズルブレーキ": { "icon": "skill/lanziee/lanjier_mastery21.png", "description": "装備の命中率が10%増加、クリティカル確率が増加" },
+      "サイレンサー": { "icon": "skill/lanziee/lanjier_mastery22.png", "description": "攻撃ダメージ増加3%\nモンスターにターゲットされにくくなる" },
+      "ロングバレル": { "icon": "skill/lanziee/lanjier_mastery23.png", "description": "銃スキルの射程距離がわずかに増加" }
+    },
+    "effects": [
+      { "category_id": "crit_rate_skill", "value": null, "target": "self", "mastery_group": "lanjier_mastery2", "mastery_option": "マズルブレーキ", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.03, "target": "self", "mastery_group": "lanjier_mastery2", "mastery_option": "サイレンサー", "condition": null }
+    ]
+  },
+  "lanjier_mastery3": {
+    "chara": "ランジエ",
+    "skill_name": "マスタリー",
+    "description": "拡張弾 / 貫通弾 / 麻酔弾",
+    "icon": "skill/lanziee/lanjier_mastery3.png",
+    "masteries": {
+      "拡張弾": { "icon": "skill/lanziee/lanjier_mastery31.png", "description": "弾攻撃スキル使用時、[出血]（継続ダメージ）と[低速]デバフ付与" },
+      "貫通弾": { "icon": "skill/lanziee/lanjier_mastery32.png", "description": "装備の命中率(セット効果は対象外)が10%減少、射程距離が4減少\n自身の与ダメージ計算時に敵の防御値（物防&魔防）が減少(-15%)したものとして計算する\n（※デバフではないので他PCに影響しない）" },
+      "麻酔弾": { "icon": "skill/lanziee/lanjier_mastery33.png", "description": "敵に与ダメージ減少(-5%)効果付与（[麻酔弾]デバフ）\n[麻酔弾]が5回スタックされると[麻痺]デバフ付与" }
+    },
+    "effects": [
+      { "category_id": "defense", "value": -0.15, "target": "self", "mastery_group": "lanjier_mastery3", "mastery_option": "貫通弾", "condition": null },
+      { "category_id": "final_damage_debuff", "value": 0.05, "target": "pt", "mastery_group": "lanjier_mastery3", "mastery_option": "麻酔弾", "condition": null }
+    ]
+  },
+  "lanjier_mastery4": {
+    "chara": "ランジエ",
+    "skill_name": "マスタリー",
+    "description": "アイソード / アップライジング / ララバイ",
+    "icon": "skill/lanziee/lanjier_mastery4.png",
+    "masteries": {
+      "アイソード": { "icon": "skill/lanziee/lanjier_mastery41.png", "description": "[極・アイソード]スキルを選択\nアイソードを設置、装置の近くにいる敵に攻撃すると追加ダメージを与える。装置が破壊されると爆発して、周囲に[霜]デバフをばらまく" },
+      "アップライジング": { "icon": "skill/lanziee/lanjier_mastery42.png", "description": "[極・アップライジング]スキルを選択\nガス範囲内にいる間だけ敵味方へ[極・アップライジング]バフ（攻撃/被ダメージ10%増加）\n[極・撹乱]と重複可" },
+      "ララバイ": { "icon": "skill/lanziee/lanjier_mastery43.png", "description": "[極・ララバイ]スキルを選択\nガス内の敵は[極・ララバイ]（命中率減少、最小回避率減少）／[睡眠]が付与され、持続的にMP減少（持続時間30s）" }
+    },
+    "effects": [
+      { "category_id": "additional_damage_unclassified", "value": null, "target": "self", "mastery_group": "lanjier_mastery4", "mastery_option": "アイソード", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.10, "target": "pt", "mastery_group": "lanjier_mastery4", "mastery_option": "アップライジング", "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": -0.10, "target": "pt", "mastery_group": "lanjier_mastery4", "mastery_option": "アップライジング", "condition": null },
+      { "category_id": "evasion_rate_correction", "value": null, "target": "pt", "mastery_group": "lanjier_mastery4", "mastery_option": "ララバイ", "condition": null }
+    ]
+  },
+  "lanjier_kakuran": {
+    "chara": "ランジエ",
+    "skill_name": "撹乱",
+    "description": "敵の被ダメージ+10%\nチームにボリスがいると追加+5%",
+    "icon": "skill/lanziee/lanjier_kakuran.png",
+    "effects": [
+      { "category_id": "stat_multiplier_debuff", "value": 0.13, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "stat_multiplier_debuff", "value": 0.05, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "ボリス" } }
+    ]
+  },
+  "lanjier_high_technology": {
+    "chara": "ランジエ",
+    "skill_name": "ハイテクノロジー",
+    "description": "射程60以内にチームメンバーのノクターンがいるとスキルの性能が改善される。",
+    "icon": "skill/lanziee/lanjier_high_technology.png",
+    "effects": [
+      { "category_id": "stat_multiplier_buff", "value": null, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "ノクターン" } }
+    ]
+  },
+  "lanjier_winter_ice": {
+    "chara": "ランジエ",
+    "skill_name": "温度の違う氷",
+    "description": "ボリスが同じチーム・同じ空間にいる場合に「奇襲」/「撹乱」/「機動」の効果が増大\n※「撹乱」の増加分は撹乱側で記録",
+    "icon": "skill/lanziee/lanjier_winter_ice.png",
+    "effects": [
+      { "category_id": "stat_multiplier_buff", "value": null, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "ボリス" } }
+    ]
+  },
+  "isaak_mastery1": {
+    "chara": "イサック",
+    "skill_name": "マスタリー",
+    "description": "コンカッション / モラバンド / アフターマス",
+    "icon": "skill/issac/isaak_mastery1.png",
+    "masteries": {
+      "コンカッション": { "icon": "skill/issac/isaak_mastery11.png", "description": "[グロッキー]状態の敵は、持続してMPとSPが最大値の10%ずつ減少する。" },
+      "モラバンド": { "icon": "skill/issac/isaak_mastery12.png", "description": "[グロッキー]状態の敵は、持続的にダメージを受ける。(0.4s間隔)\n※陣ではなく気絶に付随する状態異常ダメージ" },
+      "アフターマス": { "icon": "skill/issac/isaak_mastery13.png", "description": "[グロッキー]状態の敵は、最小回避率が減少する。(20%)" }
+    },
+    "effects": [
+      { "category_id": "additional_damage_unclassified", "value": null, "target": "self", "mastery_group": "isaak_mastery1", "mastery_option": "モラバンド", "condition": null },
+      { "category_id": "evasion_rate_correction", "value": -0.20, "target": "pt", "mastery_group": "isaak_mastery1", "mastery_option": "アフターマス", "condition": null }
+    ]
+  },
+  "isaak_energy_field": {
+    "chara": "イサック",
+    "skill_name": "エネルギーフィールド",
+    "description": "引き寄せ・[スタン]付与\n無敵3秒付与",
+    "icon": "skill/issac/isaak_energy_field.png",
+    "masteries": {
+      "金剛不壞": { "icon": "skill/issac/isaak_energy_field1.png", "description": "[エネルギーフィールド]使用時、3秒間<無敵>となる。" },
+      "プリチャージ": { "icon": "skill/issac/isaak_energy_field2.png", "description": "[エネルギーフィールド]の攻撃力が増加する。(50%)" },
+      "アフターエフェクト": { "icon": "skill/issac/isaak_energy_field3.png", "description": "[エネルギーフィールド]のクールタイムが10秒増えるが、スキル終了後その場に引き寄せ効果のみ5秒持続。" }
+    },
+    "effects": [
+      { "category_id": "skill_multiplier_increase", "value": 0.50, "target": "self", "mastery_group": "isaak_energy_field", "mastery_option": "プリチャージ", "condition": null }
+    ]
+  },
+  "isaak_mastery3": {
+    "chara": "イサック",
+    "skill_name": "マスタリー",
+    "description": "ウィービング / ブロッキング / ショルダーロール",
+    "icon": "skill/issac/isaak_mastery3.png",
+    "masteries": {
+      "ウィービング": { "icon": "skill/issac/isaak_mastery31.png", "description": "[極・ウィービング]スキルを選択\n最小回避率が増加する。SPを持続消費する。" },
+      "ブロッキング": { "icon": "skill/issac/isaak_mastery32.png", "description": "[極・ブロッキング]スキルを選択\n高確率で被ダメージを軽減した上でSPで肩代わりする。" },
+      "ショルダーロール": { "icon": "skill/issac/isaak_mastery33.png", "description": "[極・ショルダーロール]スキルを選択\n低確率で被ダメージを大きく軽減した上でSPで肩代わりする。" }
+    },
+    "effects": []
+  },
+  "isaak_battlefield": {
+    "chara": "イサック",
+    "skill_name": "戦場の化身",
+    "description": "周辺の敵に与ダメージ/最小命中率減少[圧倒]デバフ（×5スタック最大与ダメ-20%/最小命中率-10%）",
+    "icon": "skill/issac/isaak_battlefield.png",
+    "effects": [
+      { "category_id": "final_damage_debuff", "value": 0.05, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "isaak_counter_attack": {
+    "chara": "イサック",
+    "skill_name": "カウンターアタック",
+    "description": "最小命中率+20%\n攻撃した敵に被ダメージ+5%/最小回避率-20%デバフ付与",
+    "icon": "skill/issac/isaak_counter_attack.png",
+    "masteries": {
+      "パワフルカウンター": { "icon": "skill/issac/isaak_counter_attack1.png", "description": "[カウンターアタック]の攻撃力が増加する。(50%)" },
+      "クロスカウンター": { "icon": "skill/issac/isaak_counter_attack2.png", "description": "[カウンターアタック]が全ての状況に反撃する。その代わり、反撃するときもSPを消耗する。" },
+      "フェイク": { "icon": "skill/issac/isaak_counter_attack3.png", "description": "[カウンターアタック]で反撃するとき、50%の確率でダメージを与える代わりに、被ダメージが増加+5%、最小回避率減少(-20%)効果を相手に与える。" }
+    },
+    "effects": [
+      { "category_id": "additional_damage_unclassified", "value": 0.50, "target": "self", "mastery_group": null, "mastery_option": "パワフルカウンター", "condition": null },
+      { "category_id": "damage_reduction_skill_debuff", "value": 0.05, "target": "pt", "mastery_group": "isaak_counter_attack", "mastery_option": "フェイク", "condition": null },
+      { "category_id": "evasion_rate_correction", "value": -0.20, "target": "pt", "mastery_group": "isaak_counter_attack", "mastery_option": "フェイク", "condition": null }
+    ]
+  },
+  "isaak_daughter_father": {
+    "chara": "イサック",
+    "skill_name": "娘持ちの父親",
+    "description": "チームにアナイスがいると被ダメージ-10%・自身与ダメージ+10%",
+    "icon": "skill/issac/isaak_daughter_father.png",
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.02, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "アナイス" } },
+      { "category_id": "damage_reduction_skill_buff", "value": 0.02, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "アナイス" } }
+    ]
+  },
+  "isaak_resshin_ranbui": {
+    "chara": "イサック",
+    "skill_name": "滅神乱舞",
+    "description": "敵被ダメージ+3~30%",
+    "icon": "skill/issac/isaak_resshin_ranbui.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_debuff", "value": 0.30, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "anais_hard_weapon": {
+    "chara": "アナイス",
+    "skill_name": "ハードウエポン",
+    "description": "攻撃ダメージ+5~20%",
+    "icon": "skill/anais/anais_hard_weapon.png",
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.20, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "anais_fire_aura": {
+    "chara": "アナイス",
+    "skill_name": "ファイヤーオーラ",
+    "description": "攻撃ダメージ+5%",
+    "icon": "skill/anais/anais_fire_aura.png",
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.05, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "anais_ice_aura": {
+    "chara": "アナイス",
+    "skill_name": "アイスオーラ",
+    "description": "<アイススネア>デバフを付与",
+    "icon": "skill/anais/anais_ice_aura.png",
+    "effects": [
+      { "category_id": "final_damage_debuff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "anais_aria": {
+    "chara": "アナイス",
+    "skill_name": "アリア",
+    "description": "敵の被ダメージ+5〜15%（デバフ）\n味方の被ダメージ-3〜9%（バフ）\n状態異常除去\nHP持続回復",
+    "icon": "skill/anais/anais_aria.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.12, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "anais_flower_garden": {
+    "chara": "アナイス",
+    "skill_name": "フラワーガーデン",
+    "description": "HP/MP自然回復量増加\n守護精霊追加効果：エアル→移動速度+3、ロキ→物理ダメージ吸収+20%",
+    "icon": "skill/anais/anais_flower_garden.png",
+    "effects": [
+      { "category_id": "damage_absorption", "value": 0.20, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "anais_target": {
+    "chara": "アナイス",
+    "skill_name": "ターゲット",
+    "description": "対象のAGI-10（永続デバフ）",
+    "icon": "skill/anais/anais_target.png",
+    "effects": [
+      { "category_id": "stat_fixed_increase", "value": -10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null, "stat": "AGI" }
+    ]
+  },
+  "anais_synergy": {
+    "chara": "アナイス",
+    "skill_name": "シナジー",
+    "icon": "skill/anais/anais_synergy.png",
+    "effects": [
+      { "category_id": "additional_damage_old_ratio", "value": null, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "anais_lost_cat": {
+    "chara": "アナイス",
+    "skill_name": "迷子の野良猫",
+    "description": "射程60以内にチームメンバーのイサックがいると、被ダメージ-3%\nチームメンバーのイサックが攻撃した対象を攻撃するとき、追加ダメージ10%",
+    "icon": "skill/anais/anais_lost_cat.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "イサック" } },
+      { "category_id": "additional_damage_unclassified", "value": 0.10, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "イサック" } }
+    ]
+  },
+  "anais_together_joy": {
+    "chara": "アナイス",
+    "skill_name": "共にいられる喜び",
+    "description": "召喚獣がいる",
+    "icon": "skill/anais/anais_together_joy.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "anais_mika_barrier": {
+    "chara": "アナイス",
+    "skill_name": "ミカベアバリア",
+    "description": "被ダメージ-1~5%",
+    "icon": "skill/anais/anais_mika_barrier.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.05, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "anais_rushi_barrier": {
+    "chara": "アナイス",
+    "skill_name": "ルシベアバリア",
+    "description": "攻撃ダメージ+1~3%",
+    "icon": "skill/anais/anais_rushi_barrier.png",
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "anais_ikiwakare_brother": {
+    "chara": "アナイス",
+    "skill_name": "生き別れの弟",
+    "description": "チームにノクターンがいると与ダメージ+2%、移動速度+5",
+    "icon": "skill/anais/anais_ikiwakare_brother.png",
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.02, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "ノクターン" } }
+    ]
+  },
+  "anais_earu_summon": {
+    "chara": "アナイス",
+    "skill_name": "エアル召喚",
+    "icon": "skill/anais/anais_earu_summon.png",
+    "effects": []
+  },
+  "anais_loki_summon": {
+    "chara": "アナイス",
+    "skill_name": "ロキ召喚",
+    "icon": "skill/anais/anais_loki_summon.png",
+    "effects": []
+  },
+  "anais_rumie_summon": {
+    "chara": "アナイス",
+    "skill_name": "ルミエ召喚",
+    "icon": "skill/anais/anais_rumie_summon.png",
+    "effects": []
+  },
+  "anais_dissonance": {
+    "chara": "アナイス",
+    "skill_name": "ディソナンス",
+    "icon": "skill/anais/anais_dissonance.png",
+    "effects": []
+  },
+  "anais_cacophony": {
+    "chara": "アナイス",
+    "skill_name": "カコフォニー",
+    "icon": "skill/anais/anais_cacophony.png",
+    "effects": []
+  },
+  "anais_anferu_summon": {
+    "chara": "アナイス",
+    "skill_name": "アンフェル召喚",
+    "icon": "skill/anais/anais_anferu_summon.png",
+    "effects": []
+  },
+  "anais_gureshisu_summon": {
+    "chara": "アナイス",
+    "skill_name": "グレシス召喚",
+    "icon": "skill/anais/anais_gureshisu_summon.png",
+    "effects": []
+  },
+  "anais_iguni_summon": {
+    "chara": "アナイス",
+    "skill_name": "イグニー召喚",
+    "icon": "skill/anais/anais_iguni_summon.png",
+    "effects": []
+  },
+  "anais_damage_plus": {
+    "chara": "アナイス",
+    "skill_name": "ダメージプラス",
+    "icon": "skill/anais/anais_damage_plus.png",
+    "effects": []
+  },
+  "anais_angry_pixie": {
+    "chara": "アナイス",
+    "skill_name": "アングリーピクシー",
+    "icon": "skill/anais/anais_angry_pixie.png",
+    "effects": []
+  },
+  "anais_mika_summon": {
+    "chara": "アナイス",
+    "skill_name": "ミカベア召喚",
+    "icon": "skill/anais/anais_mika_summon.png",
+    "effects": []
+  },
+  "anais_rushi_summon": {
+    "chara": "アナイス",
+    "skill_name": "ルシベア召喚",
+    "icon": "skill/anais/anais_rushi_summon.png",
+    "effects": []
+  },
+  "anais_bear_heal": {
+    "chara": "アナイス",
+    "skill_name": "くまさんヒール",
+    "icon": "skill/anais/anais_bear_heal.png",
+    "effects": []
+  },
+  "anais_bear_healing": {
+    "chara": "アナイス",
+    "skill_name": "くまさんヒーリング",
+    "icon": "skill/anais/anais_bear_healing.png",
+    "effects": []
+  },
+  "anais_bear_cure": {
+    "chara": "アナイス",
+    "skill_name": "くまさんキュア",
+    "icon": "skill/anais/anais_bear_cure.png",
+    "effects": []
+  },
+  "anais_bear_angry": {
+    "chara": "アナイス",
+    "skill_name": "くまさんアングリー",
+    "icon": "skill/anais/anais_bear_angry.png",
+    "effects": []
+  },
+  "anais_mika_bear_step": {
+    "chara": "アナイス",
+    "skill_name": "ミカベアステップ",
+    "icon": "skill/anais/anais_mika_bear_step.png",
+    "effects": []
+  },
+  "anais_rushi_bear_step": {
+    "chara": "アナイス",
+    "skill_name": "ルシベアステップ",
+    "icon": "skill/anais/anais_rushi_bear_step.png",
+    "effects": []
+  },
+  "isolette_zone_burst": {
+    "chara": "イソレット",
+    "skill_name": "ゾーンバースト",
+    "description": "スキル発動時、自身+チームメンバーに[極・武威]付与（攻撃ダメージ+5%、持続2分）\nスキル発動時、自身+チームメンバーに[極・忍耐]付与（被ダメージ-5%、持続2分）\nクリティカル時、敵に[極・弱体化]付与（全ステータス-20%、持続30s、ボスにも有効）",
+    "icon": "skill/isolet/isolette_zone_burst.png",
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.02, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": 0.02, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "isolette_light_song": {
+    "chara": "イソレット",
+    "skill_name": "光の歌",
+    "description": "自身+チームメンバーの全属性+5/攻撃ダメージ+5%/被ダメージ-5%（持続35s）",
+    "icon": "skill/isolet/isolette_light_song.png",
+    "masteries": {
+      "光の歌（防御）": { "icon": "skill/isolet/isolette_light_song1.png", "description": "<光の歌>の追加効果\n被ダメージ減少効果上昇(-10%)" },
+      "光の歌（属性）": { "icon": "skill/isolet/isolette_light_song2.png", "description": "<光の歌>の追加効果\n全属性増加効果上昇(+10)" },
+      "光の歌（攻撃）": { "icon": "skill/isolet/isolette_light_song3.png", "description": "<光の歌>の追加効果\n攻撃ダメージ増加効果上昇(+10%)" }
+    },
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.10, "target": "pt", "mastery_group": "isolette_light_song", "mastery_option": "光の歌（防御）", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.10, "target": "pt", "mastery_group": "isolette_light_song", "mastery_option": "光の歌（攻撃）", "condition": null }
+    ]
+  },
+  "isolette_mastery1": {
+    "chara": "イソレット",
+    "skill_name": "マスタリー",
+    "description": "神聖 / 太陽の嵐 / ヨズレル",
+    "icon": "skill/isolet/isolette_mastery1.png",
+    "masteries": {
+      "神聖": { "icon": "skill/isolet/isolette_mastery11.png", "description": "攻撃時、対象に<神聖>デバフを付与する。\n<神聖>デバフ：全属性減少(-10) [持続10s]" },
+      "太陽の嵐": { "icon": "skill/isolet/isolette_mastery12.png", "description": "攻撃時、対象に<太陽の嵐>デバフを付与する。\n<太陽の嵐>：対象に10秒間、1.2秒間隔で継続ダメージ(無属性,H依存,150%x2,Cri2.5x)" },
+      "ヨズレル": { "icon": "skill/isolet/isolette_mastery13.png", "description": "攻撃時、自身に<ヨズレル>バフを付与する。\n<ヨズレル>：攻撃ダメージ増加(+10%) [持続20分]" }
+    },
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.10, "target": "self", "mastery_group": "isolette_mastery1", "mastery_option": "ヨズレル", "condition": null }
+    ]
+  },
+  "isolette_mastery2": {
+    "chara": "イソレット",
+    "skill_name": "マスタリー",
+    "description": "ストームダンス / ストームブレード / ストームブラスト",
+    "icon": "skill/isolet/isolette_mastery2.png",
+    "masteries": {
+      "ストームダンス": { "icon": "skill/isolet/isolette_mastery21.png", "description": "<ストームダンス>スキルを選択：[範囲攻撃]スキル\n周辺の敵にスタン付与" },
+      "ストームブレード": { "icon": "skill/isolet/isolette_mastery22.png", "description": "<ストームブレード>スキルを選択：[単体攻撃]スキル" },
+      "ストームブラスト": { "icon": "skill/isolet/isolette_mastery23.png", "description": "<ストームブラスト>スキルを選択：[範囲攻撃]スキル\nストームダンスよりクールタイム増加(+2s)／[月光の加護]消費増加(+5)、スキル倍率増加(+50%)、クリティカル(+0.5x)" }
+    },
+    "effects": []
+  },
+  "isolette_sacred_chant": {
+    "chara": "イソレット",
+    "skill_name": "神聖チャントの継承者",
+    "description": "チームメンバーの被ダメージ-5%、移動速度+3",
+    "icon": "skill/isolet/isolette_sacred_chant.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "isolette_weakening": {
+    "chara": "イソレット",
+    "skill_name": "弱体化",
+    "description": "敵全ステータス-20%（クリティカル時）",
+    "icon": "skill/isolet/isolette_weakening.png",
+    "effects": [
+      { "category_id": "stat_multiplier_debuff", "value": 0.20, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "isolette_holy_shield": {
+    "chara": "イソレット",
+    "skill_name": "ホーリーシールド",
+    "description": "被ダメージ-5%、移動速度+10\n被撃時に一定確率で攻撃をガードしMPで肩代わり（ダメージ転換比率20%/カット率80%）\n発動率[%]＝[(オリジナルDEF+物理防御力)/10]（持続30分）",
+    "icon": "skill/isolet/isolette_holy_shield.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "isolette_noble_solitude": {
+    "chara": "イソレット",
+    "skill_name": "高貴な孤独",
+    "description": "被ダメージ-5%、攻撃ダメージ+10%",
+    "icon": "skill/isolet/isolette_noble_solitude.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "isolette_boris_passive": {
+    "chara": "イソレット",
+    "skill_name": "ボリス（パッシブ）",
+    "description": "射程60以内にチームメンバーのボリスがいると被ダメージ-5%、攻撃ダメージ+10%、悪い状態異常の持続時間-20%",
+    "icon": "skill/isolet/isolette_boris_passive.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.02, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "ボリス" } },
+      { "category_id": "attack_damage_skill", "value": 0.02, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "ボリス" } }
+    ]
+  },
+  "benja_dark_blessing": {
+    "chara": "ベンヤ",
+    "skill_name": "ダークブレッシング",
+    "description": "蘇生効果付与+[ダークブレッシング]バフ（攻撃ダメージ+100%/回避率+30%/特殊回避付与）",
+    "icon": "skill/benya/benja_dark_blessing.png",
+    "effects": [
+      { "category_id": "final_damage_buff", "value": 1.00, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "benja_altruistic": {
+    "chara": "ベンヤ",
+    "skill_name": "アルトリスティックスピリット",
+    "description": "[極・アルトリスティックスピリット] スキルを選択\n自身の攻撃ダメージ+7%、チームメンバーの攻撃ダメージ+5%\n※マスタリーでBLOOD選択時のみ有効",
+    "icon": "skill/benya/benja_altruistic.png",
+    "effects": []
+  },
+  "benja_harmonic": {
+    "chara": "ベンヤ",
+    "skill_name": "ハーモニックスピリット",
+    "description": "[極・ハーモニックスピリット] スキルを選択\n攻撃ダメージ+7%/最小命中率+10%\n※マスタリーでDEFENCE選択時のみ有効",
+    "icon": "skill/benya/benja_harmonic.png",
+    "effects": []
+  },
+  "benja_trans": {
+    "chara": "ベンヤ",
+    "skill_name": "トランススピリット",
+    "description": "[極・トランススピリット] スキルを選択\n攻撃ダメージ+10%\n※マスタリーでDEATH選択時のみ有効",
+    "icon": "skill/benya/benja_trans.png",
+    "effects": []
+  },
+  "benja_mastery1": {
+    "chara": "ベンヤ",
+    "skill_name": "マスタリー",
+    "description": "DEATH:フィア・オブ・ブラッド / BLOOD:スチールフォーアス / DEFENCE:アクティブカウンター",
+    "icon": "skill/benya/benja_mastery1.png",
+    "masteries": {
+      "フィア・オブ・ブラッド": { "icon": "skill/benya/benja_mastery11.png", "description": "[極・カース・オブ・ブラッド]命中率が上昇する。攻撃された対象は黒属性が低下する。（30秒持続）" },
+      "スチールフォーアス": { "icon": "skill/benya/benja_mastery12.png", "description": "[極・ソウルスチール]の最大HP回復量が増加し、発動時に周囲のチームメンバーも一緒に回復する。また、黒属性が増加する" },
+      "アクティブカウンター": { "icon": "skill/benya/benja_mastery13.png", "description": "[極・スピンハンマー]でダメージを与えたとき、一定確率で[カウンターハンマー活性化]バフが付く" }
+    },
+    "effects": []
+  },
+  "benja_mastery2": {
+    "chara": "ベンヤ",
+    "skill_name": "マスタリー",
+    "description": "DEATH:インベージョンブラッド / BLOOD:インフェクションブラッド / DEFENCE:リフレクション",
+    "icon": "skill/benya/benja_mastery2.png",
+    "masteries": {
+      "インベージョンブラッド": { "icon": "skill/benya/benja_mastery21.png", "description": "[極・カース・オブ・ブラッド]の持続ダメージが増加する。" },
+      "インフェクションブラッド": { "icon": "skill/benya/benja_mastery22.png", "description": "一部スキルに[極・出血]([MR]依存,50%,Cri2x,10s持続,3.3s間隔)が追加発動する。" },
+      "リフレクション": { "icon": "skill/benya/benja_mastery23.png", "description": "[極・アイアンメイデン]や[極・アイアン・バディーズ]発動時に[カウンターハンマー活性化]バフ発動率が増加する。" }
+    },
+    "effects": []
+  },
+  "benja_mastery3": {
+    "chara": "ベンヤ",
+    "skill_name": "マスタリー",
+    "description": "DEATH:ハードディフェンス / BLOOD:アイアン・バディーズ / DEFENCE:アボイドディメンション\n※ハードディフェンス：[極・アイアン・メイデン]被ダメージ-60%\n※アイアン・バディーズ：[極・アイアンメイデン]を[極・アイアン・バディーズ]に変更（自身+周囲チームメンバーの被ダメージ-15%）\n※アボイドディメンション：[極・アイアンメイデン]はそのまま（被ダメージ-30%）+回避効果付与",
+    "icon": "skill/benya/benja_mastery3.png",
+    "masteries": {
+      "ハードディフェンス": { "icon": "skill/benya/benja_mastery31.png", "description": "[極・アイアン・メイデン]被ダメージ60%減少" },
+      "アイアン・バディーズ": { "icon": "skill/benya/benja_mastery32.png", "description": "[極・アイアンメイデン]を[極・アイアン・バディーズ]に変更する。" },
+      "アボイドディメンション": { "icon": "skill/benya/benja_mastery33.png", "description": "[極・ソウルフォーメーション]回避効果が発動する。" }
+    },
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.60, "target": "self", "mastery_group": "benja_mastery3", "mastery_option": "ハードディフェンス", "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": 0.15, "target": "pt", "mastery_group": "benja_mastery3", "mastery_option": "アイアン・バディーズ", "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": 0.30, "target": "self", "mastery_group": "benja_mastery3", "mastery_option": "アボイドディメンション", "condition": null }
+    ]
+  },
+  "benja_mastery4": {
+    "chara": "ベンヤ",
+    "skill_name": "マスタリー",
+    "description": "DEATH:トランススピリット / BLOOD:アルトリスティックスピリット / DEFENCE:ハーモニックスピリット",
+    "icon": "skill/benya/benja_mastery4.png",
+    "masteries": {
+      "トランススピリット": { "icon": "skill/benya/benja_mastery41.png", "description": "[極・トランススピリット] スキルを選択\n攻撃ダメージ+10%" },
+      "アルトリスティックスピリット": { "icon": "skill/benya/benja_mastery42.png", "description": "[極・アルトリスティックスピリット] スキルを選択\n自身の攻撃ダメージ+7%、チームメンバーの攻撃ダメージ+5%" },
+      "ハーモニックスピリット": { "icon": "skill/benya/benja_mastery43.png", "description": "[極・ハーモニックスピリット] スキルを選択\n攻撃ダメージ+7%/最小命中率+10%" }
+    },
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.10, "target": "self", "mastery_group": "benja_mastery4", "mastery_option": "トランススピリット", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.07, "target": "self", "mastery_group": "benja_mastery4", "mastery_option": "アルトリスティックスピリット", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.05, "target": "pt", "mastery_group": "benja_mastery4", "mastery_option": "アルトリスティックスピリット", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.07, "target": "self", "mastery_group": "benja_mastery4", "mastery_option": "ハーモニックスピリット", "condition": null },
+      { "category_id": "hit_rate_correction", "value": 0.10, "target": "self", "mastery_group": "benja_mastery4", "mastery_option": "ハーモニックスピリット", "condition": null }
+    ]
+  },
+  "benja_iron_maiden": {
+    "chara": "ベンヤ",
+    "skill_name": "アイアンメイデン",
+    "description": "被ダメージ-30%、硬直無視\n※マスタリーで具体的な効果値が決まる",
+    "icon": "skill/benya/benja_iron_maiden.png",
+    "effects": []
+  },
+  "benja_iron_buddies": {
+    "chara": "ベンヤ",
+    "skill_name": "アイアンバディーズ",
+    "description": "自身と周囲チームメンバーの被ダメージ-15%、硬直無視\n※マスタリーでアイアン・バディーズ選択時のみ有効",
+    "icon": "skill/benya/benja_iron_buddies.png",
+    "effects": []
+  },
+  "benja_force_of_rubert": {
+    "chara": "ベンヤ",
+    "skill_name": "フォース・オブ・ルベルト",
+    "description": "敵の全能力値-10%/被ダメージ+10%（持続30秒）",
+    "icon": "skill/benya/benja_force_of_rubert.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_debuff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "stat_multiplier_debuff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "benja_soul_gate": {
+    "chara": "ベンヤ",
+    "skill_name": "ソウルゲート",
+    "description": "[ソウルフォーメーション]付与時：AGI+5%、回避率+30%",
+    "icon": "skill/benya/benja_soul_gate.png",
+    "effects": [
+      { "category_id": "stat_ratio_increase", "value": 0.05, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "benja_ghost_girl": {
+    "chara": "ベンヤ",
+    "skill_name": "幽霊だった少女",
+    "description": "被ダメージ-5%\nコンボ3回以上継続時：DEF/MR+30%",
+    "icon": "skill/benya/benja_ghost_girl.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "benja_greystar_brooch": {
+    "chara": "ベンヤ",
+    "skill_name": "グレイスターブローチ",
+    "description": "チームにジョシュアがいると：ジョシュアの被ダメージ-10%、ベンヤの与ダメージ+10%\nチームにリーチェがいると：リーチェの被ダメージ-10%、ベンヤの与ダメージ+10%",
+    "icon": "skill/benya/benja_greystar_brooch.png",
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.02, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt_any": ["ジョシュア", "リーチェ"] } },
+      { "category_id": "damage_reduction_skill_buff", "value": 0.02, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt_any": ["ジョシュア", "リーチェ"] } }
+    ]
+  },
+  "roamini_curse_pendulum": {
+    "chara": "ロアミニ",
+    "skill_name": "カース・ペンジュラム",
+    "description": "敵：被ダメージ+20%/与ダメージ-10%/全能力値-20%/移動速度-5\nチームメンバー：与ダメージ+10%",
+    "icon": "skill/roamini/roamini_curse_pendulum.png",
+    "masteries": {
+      "シンボルオブステディ": { "icon": "skill/roamini/roamini_curse_pendulum1.png", "description": "カース・ペンジュラム、ベノムノヴァの持続時間が2倍に増加する。" },
+      "シンボルオブフラッシュ": { "icon": "skill/roamini/roamini_curse_pendulum2.png", "description": "カース・ペンジュラム、ベノムノヴァの持続時間とクールタイムが半減する。" },
+      "シンボルオブスピリット": { "icon": "skill/roamini/roamini_curse_pendulum3.png", "description": "カース・ペンジュラム、ベノムノヴァの効果を強化、クールタイムが1.5倍に増加する。\nカース・ペンジュラム：被ダメージ増加(+5%)、敵の与ダメージ減少(-5%)、全能力値減少(-5%)、チームメンバーの与ダメージ増加(+5%)、\nベノムノヴァ：ダメージ増加(約1.5倍)、中毒数増加(+4)" }
+    },
+    "effects": [
+      { "category_id": "final_damage_debuff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "final_damage_debuff", "value": 0.05, "target": "pt", "mastery_group": "roamini_curse_pendulum", "mastery_option": "シンボルオブスピリット", "condition": null },
+      { "category_id": "damage_reduction_skill_debuff", "value": 0.20, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "damage_reduction_skill_debuff", "value": 0.05, "target": "pt", "mastery_group": "roamini_curse_pendulum", "mastery_option": "シンボルオブスピリット", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.05, "target": "pt", "mastery_group": "roamini_curse_pendulum", "mastery_option": "シンボルオブスピリット", "condition": null },
+      { "category_id": "stat_multiplier_debuff", "value": 0.20, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "stat_multiplier_debuff", "value": 0.05, "target": "pt", "mastery_group": "roamini_curse_pendulum", "mastery_option": "シンボルオブスピリット", "condition": null }
+    ]
+  },
+  "roamini_a_puchi": {
+    "chara": "ロアミニ",
+    "skill_name": "ア・プチ",
+    "description": "[ア・プチ]スキルを選択\n与ダメージ増加(+10%)、INT増加(+10%)、スキルの射程距離(+4)を付与",
+    "icon": "skill/roamini/roamini_a_puchi.png",
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.10, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "stat_multiplier_buff", "value": 0.10, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "roamini_pauatun": {
+    "chara": "ロアミニ",
+    "skill_name": "パウアトゥン",
+    "description": "[パウアトゥン]スキルを選択\n被ダメージ減少(-10%)、DEF/MR/最大HPが増加(+10%)",
+    "icon": "skill/roamini/roamini_pauatun.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.10, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "stat_multiplier_buff", "value": 0.10, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "roamini_curse_end": {
+    "chara": "ロアミニ",
+    "skill_name": "カース・エンド",
+    "icon": "skill/roamini/roamini_curse_end.png",
+    "masteries": {
+      "逼迫": { "icon": "skill/roamini/roamini_curse_end1.png", "description": "カース・エンドのクールタイム短縮(5s→3s)" },
+      "良心": { "icon": "skill/roamini/roamini_curse_end2.png", "description": "カース・エンドの与ダメージが1.5倍になる" },
+      "怨恨": { "icon": "skill/roamini/roamini_curse_end3.png", "description": "範囲スキルカース・エンドを単体スキル怨恨に変更する。" }
+    },
+    "effects": [
+      { "category_id": "skill_multiplier_increase", "value": 0.50, "target": "self", "mastery_group": null, "mastery_option": "良心", "condition": null }
+    ]
+  },
+  "roamini_mastery3": {
+    "chara": "ロアミニ",
+    "skill_name": "マスタリー",
+    "description": "バフラーム / パウアトゥン / ア・プチ\n※パウアトゥン/ア・プチの効果値は各スキル側で記録",
+    "icon": "skill/roamini/roamini_mastery3.png",
+    "masteries": {
+      "バフラーム": { "icon": "skill/roamini/roamini_mastery31.png", "description": "[バフラーム]スキルを選択\n最小回避率とAGI(+10%)、移動速度(+5)が増加する。" },
+      "パウアトゥン": { "icon": "skill/roamini/roamini_mastery32.png", "description": "[パウアトゥン]スキルを選択\n被ダメージ減少(-10%)、DEF/MR/最大HPが増加(+10%)" },
+      "ア・プチ": { "icon": "skill/roamini/roamini_mastery33.png", "description": "[ア・プチ]スキルを選択\n与ダメージ増加(+10%)、INT増加(+10%)、スキルの射程距離(+4)を付与" }
+    },
+    "effects": [
+      { "category_id": "stat_multiplier_buff", "value": 0.10, "target": "self", "mastery_group": "roamini_mastery3", "mastery_option": "バフラーム", "condition": null }
+    ]
+  },
+  "roamini_black_rose": {
+    "chara": "ロアミニ",
+    "skill_name": "黒い薔薇",
+    "description": "被ダメージ-10%、交渉成功率+25%",
+    "icon": "skill/roamini/roamini_black_rose.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.02, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "roamini_byouzoku": {
+    "chara": "ロアミニ",
+    "skill_name": "苗族",
+    "description": "[中毒][暗黒]無効/クリティカル被撃率-50%\nチームにナヤトレイがいると自身とナヤトレイの与ダメージ+10%",
+    "icon": "skill/roamini/roamini_byouzoku.png",
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.02, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "ナヤトレイ" } }
+    ]
+  },
+  "nocturne_cosmos": {
+    "chara": "ノクターン",
+    "skill_name": "コスモス",
+    "description": "自身に[調和]バフ：攻撃ダメージ+10%/最小命中率+10%（持続30s）\n攻撃時に敵に[混沌]デバフ：与ダメージ-5%/最小命中率-5%（持続5s）",
+    "icon": "skill/nocturne/nocturne_cosmos.png",
+    "effects": [
+      { "category_id": "final_damage_debuff", "value": 0.05, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.02, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "nocturne_tw_guardian": {
+    "chara": "ノクターン",
+    "skill_name": "テイルズウィーバー守護者",
+    "description": "チームメンバーの攻撃ダメージ+5%/被ダメージ-5%",
+    "icon": "skill/nocturne/nocturne_tw_guardian.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.02, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "nocturne_mastery1": {
+    "chara": "ノクターン",
+    "skill_name": "マスタリー",
+    "description": "クイックチャージ / チャージバースト / インデュアチャージ",
+    "icon": "skill/nocturne/nocturne_mastery1.png",
+    "masteries": {
+      "クイックチャージ": { "icon": "skill/nocturne/nocturne_mastery11.png", "description": "<レーザーカノン>/<プラズマカノン> チャージ速度短縮(0.3s)、攻撃ダメージ減少(-20%)" },
+      "チャージバースト": { "icon": "skill/nocturne/nocturne_mastery12.png", "description": "<レーザーカノン>/<プラズマカノン> チャージ速度延長(1.1s)、攻撃ダメージ増加(+100%)" },
+      "インデュアチャージ": { "icon": "skill/nocturne/nocturne_mastery13.png", "description": "<レーザーカノン>/<プラズマカノン> チャージ速度基本(1.0s)、対象に被ダメージ増加(+10%/2分)デバフを追加で付与" }
+    },
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": -0.20, "target": "self", "mastery_group": "nocturne_mastery1", "mastery_option": "クイックチャージ", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 1.00, "target": "self", "mastery_group": "nocturne_mastery1", "mastery_option": "チャージバースト", "condition": null },
+      { "category_id": "damage_reduction_skill_debuff", "value": 0.10, "target": "pt", "mastery_group": "nocturne_mastery1", "mastery_option": "インデュアチャージ", "condition": null }
+    ]
+  },
+  "nocturne_electric_burst": {
+    "chara": "ノクターン",
+    "skill_name": "エレクトリックバースト",
+    "description": "攻撃ダメージ+10%/雷属性+5/移動速度+5\n全スキルに[感電]デバフ付与（物理攻撃力-20%/最小命中率-30%、持続30s）",
+    "icon": "skill/nocturne/nocturne_electric_burst.png",
+    "masteries": {
+      "サンダーボルト": { "icon": "skill/nocturne/nocturne_electric_burst1.png", "description": "<感電>状態の敵に攻撃成功時、対象に10%の確率でスタンを付与" },
+      "エレクトリックショック": { "icon": "skill/nocturne/nocturne_electric_burst2.png", "description": "<感電>状態の敵に攻撃成功時、対象に攻撃ダメージ減少(10%)を付与" },
+      "ライトニングアタック": { "icon": "skill/nocturne/nocturne_electric_burst3.png", "description": "<感電>状態の敵に攻撃成功時、対象に与えたダメージの10%の追加ダメージ" }
+    },
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.03, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "final_damage_debuff", "value": 0.10, "target": "pt", "mastery_group": "nocturne_electric_burst", "mastery_option": "エレクトリックショック", "condition": null },
+      { "category_id": "additional_damage_unclassified", "value": 0.10, "target": "self", "mastery_group": "nocturne_electric_burst", "mastery_option": "ライトニングアタック", "condition": null }
+    ]
+  },
+  "nocturne_mastery3": {
+    "chara": "ノクターン",
+    "skill_name": "マスタリー",
+    "description": "サテライトカノン / クラスターロケット / クアンタムニュークリア",
+    "icon": "skill/nocturne/nocturne_mastery3.png",
+    "masteries": {
+      "サテライトカノン": { "icon": "skill/nocturne/nocturne_mastery31.png", "description": "<サテライトカノン> スキルを選択" },
+      "クラスターロケット": { "icon": "skill/nocturne/nocturne_mastery32.png", "description": "<クラスターロケット> スキルを選択" },
+      "クアンタムニュークリア": { "icon": "skill/nocturne/nocturne_mastery33.png", "description": "<クアンタムニュークリア> スキルを選択" }
+    },
+    "effects": []
+  },
+  "nocturne_sister": {
+    "chara": "ノクターン",
+    "skill_name": "生き別れの姉",
+    "description": "チームにアナイスがいると被ダメージ-10%",
+    "icon": "skill/nocturne/nocturne_sister.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.02, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "アナイス" } }
+    ]
+  },
+  "riche_friend": {
+    "chara": "リーチェ",
+    "skill_name": "友達",
+    "description": "チームにマキシミンかジョシュアがいれば、リーチェ、マキシミン、ジョシュアの攻撃ダメージが増加",
+    "icon": "skill/rice/riche_friend.png",
+    "effects": [
+      { "category_id": "attack_damage_skill", "value": 0.02, "target": "self", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt_any": ["マキシミン", "ジョシュア"] } }
+    ]
+  },
+  "riche_piusolid": {
+    "chara": "リーチェ",
+    "skill_name": "ピウソリッド",
+    "description": "被ダメージ-5%軽減",
+    "icon": "skill/rice/riche_piusolid.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.05, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "riche_ganapoly": {
+    "chara": "リーチェ",
+    "skill_name": "ガナポリー人形術",
+    "description": "最小命中率-30%/最小回避率-30%/与ダメージ-30%/被ダメージ+20%（対象、10秒）",
+    "icon": "skill/rice/riche_ganapoly.png",
+    "effects": [
+      { "category_id": "final_damage_debuff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null },
+      { "category_id": "damage_reduction_skill_debuff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "riche_armor_mastery1": {
+    "chara": "リーチェ",
+    "skill_name": "マスタリー（悪の武具）",
+    "description": "虚弱 / 手薄 / 悪意蓄積",
+    "icon": "skill/rice/riche_armor_mastery1.png",
+    "masteries": {
+      "虚弱": { "icon": "skill/rice/riche_armor_mastery11.png", "description": "敵の最終ダメージ-20%" },
+      "手薄": { "icon": "skill/rice/riche_armor_mastery12.png", "description": "敵の被ダメージ+10%" },
+      "悪意蓄積": { "icon": "skill/rice/riche_armor_mastery13.png", "description": null }
+    },
+    "effects": [
+      { "category_id": "final_damage_debuff", "value": 0.10, "target": "pt", "mastery_group": "riche_armor_mastery1", "mastery_option": "虚弱", "condition": null },
+      { "category_id": "damage_reduction_skill_debuff", "value": 0.05, "target": "pt", "mastery_group": "riche_armor_mastery1", "mastery_option": "手薄", "condition": null }
+    ]
+  },
+  "riche_armor_mastery2": {
+    "chara": "リーチェ",
+    "skill_name": "マスタリー（悪の武具）",
+    "description": "爆気 / 酸化 / 薄弱",
+    "icon": "skill/rice/riche_armor_mastery2.png",
+    "masteries": {
+      "爆気": { "icon": "skill/rice/riche_armor_mastery21.png", "description": null },
+      "酸化": { "icon": "skill/rice/riche_armor_mastery22.png", "description": null },
+      "薄弱": { "icon": "skill/rice/riche_armor_mastery23.png", "description": "敵の最終ダメージ-20%+被ダメージ+10%" }
+    },
+    "effects": [
+      { "category_id": "additional_damage_unclassified", "value": 0.20, "target": "self", "mastery_group": "riche_armor_mastery2", "mastery_option": "爆気", "condition": null },
+      { "category_id": "final_damage_debuff", "value": 0.10, "target": "pt", "mastery_group": "riche_armor_mastery2", "mastery_option": "薄弱", "condition": null },
+      { "category_id": "damage_reduction_skill_debuff", "value": 0.05, "target": "pt", "mastery_group": "riche_armor_mastery2", "mastery_option": "薄弱", "condition": null }
+    ]
+  },
+  "riche_armor_mastery3": {
+    "chara": "リーチェ",
+    "skill_name": "マスタリー（悪の武具）",
+    "description": "スピロ / リフィラーレ / アーゴグロッソ",
+    "icon": "skill/rice/riche_armor_mastery3.png",
+    "masteries": {
+      "スピロ": { "icon": "skill/rice/riche_armor_mastery31.png", "description": null },
+      "リフィラーレ": { "icon": "skill/rice/riche_armor_mastery32.png", "description": null },
+      "アーゴグロッソ": { "icon": "skill/rice/riche_armor_mastery33.png", "description": null }
+    },
+    "effects": []
+  },
+  "riche_armor_mastery4": {
+    "chara": "リーチェ",
+    "skill_name": "マスタリー（悪の武具）",
+    "description": "圧殺 / 絞殺 / 悪気",
+    "icon": "skill/rice/riche_armor_mastery4.png",
+    "masteries": {
+      "圧殺": { "icon": "skill/rice/riche_armor_mastery41.png", "description": null },
+      "絞殺": { "icon": "skill/rice/riche_armor_mastery42.png", "description": null },
+      "悪気": { "icon": "skill/rice/riche_armor_mastery43.png", "description": null }
+    },
+    "effects": []
+  },
+  "riche_anarose_mastery1": {
+    "chara": "リーチェ",
+    "skill_name": "マスタリー（アナローズ）",
+    "description": "保護の温もり / 攻撃の熱気 / 強化された活力の剣",
+    "icon": "skill/rice/riche_anarose_mastery1.png",
+    "masteries": {
+      "保護の温もり": { "icon": "skill/rice/riche_anarose_mastery11.png", "description": "自身の被ダメージ-10%/チームメンバー-20%" },
+      "攻撃の熱気": { "icon": "skill/rice/riche_anarose_mastery12.png", "description": "自身の攻撃ダメージ+5%/チームメンバー+10%" },
+      "強化された活力の剣": { "icon": "skill/rice/riche_anarose_mastery13.png", "description": null }
+    },
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": 0.03, "target": "self", "mastery_group": "riche_anarose_mastery1", "mastery_option": "保護の温もり", "condition": null },
+      { "category_id": "damage_reduction_skill_buff", "value": 0.02, "target": "pt", "mastery_group": "riche_anarose_mastery1", "mastery_option": "保護の温もり", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.03, "target": "self", "mastery_group": "riche_anarose_mastery1", "mastery_option": "攻撃の熱気", "condition": null },
+      { "category_id": "attack_damage_skill", "value": 0.05, "target": "pt", "mastery_group": "riche_anarose_mastery1", "mastery_option": "攻撃の熱気", "condition": null }
+    ]
+  },
+  "riche_anarose_mastery2": {
+    "chara": "リーチェ",
+    "skill_name": "マスタリー（アナローズ）",
+    "description": "クラヴァータ / テセーレ / クチーレ",
+    "icon": "skill/rice/riche_anarose_mastery2.png",
+    "masteries": {
+      "クラヴァータ": { "icon": "skill/rice/riche_anarose_mastery21.png", "description": null },
+      "テセーレ": { "icon": "skill/rice/riche_anarose_mastery22.png", "description": null },
+      "クチーレ": { "icon": "skill/rice/riche_anarose_mastery23.png", "description": null }
+    },
+    "effects": []
+  },
+  "riche_anarose_mastery3": {
+    "chara": "リーチェ",
+    "skill_name": "マスタリー（アナローズ）",
+    "description": "勤勉な麦わら人形 / 危険な革の人形 / 優しいシルク人形",
+    "icon": "skill/rice/riche_anarose_mastery3.png",
+    "masteries": {
+      "勤勉な麦わら人形": { "icon": "skill/rice/riche_anarose_mastery31.png", "description": null },
+      "危険な革の人形": { "icon": "skill/rice/riche_anarose_mastery32.png", "description": null },
+      "優しいシルク人形": { "icon": "skill/rice/riche_anarose_mastery33.png", "description": null }
+    },
+    "effects": []
+  },
+  "riche_anarose_mastery4": {
+    "chara": "リーチェ",
+    "skill_name": "マスタリー（アナローズ）",
+    "description": "アナローズの力 / アナローズの活力 / アナローズの犠牲",
+    "icon": "skill/rice/riche_anarose_mastery4.png",
+    "masteries": {
+      "アナローズの力": { "icon": "skill/rice/riche_anarose_mastery41.png", "description": null },
+      "アナローズの活力": { "icon": "skill/rice/riche_anarose_mastery42.png", "description": null },
+      "アナローズの犠牲": { "icon": "skill/rice/riche_anarose_mastery43.png", "description": null }
+    },
+    "effects": []
+  },
+  "yefunen_mastery1": {
+    "chara": "イェフネン",
+    "skill_name": "マスタリー",
+    "description": "パイク特化 / アックス特化 / ウルミ特化",
+    "icon": "skill/yevgnen/yefunen_mastery1.png",
+    "masteries": {
+      "パイク特化": { "icon": "skill/yevgnen/yefunen_mastery11.png", "description": "パイクシェイプ系スキルで後方攻撃時追加ダメージ+10%" },
+      "アックス特化": { "icon": "skill/yevgnen/yefunen_mastery12.png", "description": "アックスシェイプ系スキルで<ブレンド>がかかった状態の敵を攻撃すると、<ブレンド>の重複量が増加する\n<スレイ・アックス>と<クラッシュ・アックス>のチャージタイムが半減する" },
+      "ウルミ特化": { "icon": "skill/yevgnen/yefunen_mastery13.png", "description": "ウルミシェイプ系スキルで敵を攻撃すると、HPを回復する。\n回復量公式：？\n回復量上限：10万\n回復クールタイム：1秒" }
+    },
+    "effects": []
+  },
+  "yefunen_blend": {
+    "chara": "イェフネン",
+    "skill_name": "ブレンド",
+    "description": "敵被ダメージ+1%/スタック（最大+10%）",
+    "icon": "skill/yevgnen/yefunen_blend.png",
+    "masteries": {
+      "安定した混合": { "icon": "skill/yevgnen/yefunen_blend1.png", "description": "<ブレンド>の能力を元のまま使用する。" },
+      "膨張する混合": { "icon": "skill/yevgnen/yefunen_blend2.png", "description": "攻撃時、付与する<ブレンド>を減らす代わりに、付与した<ブレンド>の重複量が一定時間ごとに自動で増加する。" },
+      "縮小する混合": { "icon": "skill/yevgnen/yefunen_blend3.png", "description": "攻撃時、付与する<ブレンド>を増やす代わりに、付与した<ブレンド>の重複量が一定時間ごとに自動で減少する。" }
+    },
+    "effects": [
+      { "category_id": "damage_reduction_skill_debuff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "yefunen_sharp_shard": {
+    "chara": "イェフネン",
+    "skill_name": "鋭い欠片",
+    "description": "フラグスキル倍率+20% / 爆発スキル倍率-20%",
+    "icon": "skill/yevgnen/yefunen_sharp_shard.png",
+    "masteries": {
+      "安定した欠片": { "icon": "skill/yevgnen/yefunen_sharp_shard1.png", "description": "<フラグ>の能力をそのまま使う。" },
+      "鋭い欠片": { "icon": "skill/yevgnen/yefunen_sharp_shard2.png", "description": "<フラグ>の爆発ダメージ量が減少する代わりに持続ダメージ量が増加する。" },
+      "べたつく欠片": { "icon": "skill/yevgnen/yefunen_sharp_shard3.png", "description": "<フラグ>の持続ダメージ量が減少する代わりに、攻撃ダメージ減少効果を与える。" }
+    },
+    "effects": [
+      { "category_id": "skill_multiplier_increase", "value": 0.20, "target": "self", "mastery_group": "yefunen_sharp_shard", "mastery_option": "鋭い欠片", "condition": null },
+      { "category_id": "skill_multiplier_increase", "value": -0.10, "target": "self", "mastery_group": "yefunen_sharp_shard", "mastery_option": "べたつく欠片", "condition": null },
+      { "category_id": "final_damage_debuff", "value": 0.10, "target": "pt", "mastery_group": "yefunen_sharp_shard", "mastery_option": "べたつく欠片", "condition": null }
+    ]
+  },
+  "yefunen_speed_sword": {
+    "chara": "イェフネン",
+    "skill_name": "速剣",
+    "icon": "skill/yevgnen/yefunen_speed_sword.png",
+    "effects": [
+      { "category_id": "skill_multiplier_increase", "value": -0.10, "target": "self", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "yefunen_shard_wire": {
+    "chara": "イェフネン",
+    "skill_name": "シャードワイヤー",
+    "description": "敵の最終ダメージ-10%",
+    "icon": "skill/yevgnen/yefunen_shard_wire.png",
+    "masteries": {
+      "シャードバリア": { "icon": "skill/yevgnen/yefunen_shard_wire1.png", "description": "<シャードスパイク>や<コンバインドシャード>を<シャードバリア>に変える。" },
+      "シャードスパイク": { "icon": "skill/yevgnen/yefunen_shard_wire2.png", "description": "<シャードバリア>や<コンバインドシャード>を<シャードスパイク>に変える。" },
+      "コンバインドシャード": { "icon": "skill/yevgnen/yefunen_shard_wire3.png", "description": "<シャードバリア>や<シャードスパイク>を<コンバインドシャード>に変える。" }
+    },
+    "effects": [
+      { "category_id": "final_damage_debuff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": null }
+    ]
+  },
+  "yefunen_bittersweet": {
+    "chara": "イェフネン",
+    "skill_name": "なんともいえない切なさ",
+    "description": "チームにボリスがいると：ボリスの水属性+10%、イェフネンの攻撃ダメージ+3%\nボリスへの攻撃者に[ボリス!]デバフ付与（最終ダメージ-10%、持続30秒）\n[ボリス!]デバフ付与中のイェフネン追加ダメージ+10%",
+    "icon": "skill/yevgnen/yefunen_bittersweet.png",
+    "effects": [
+      { "category_id": "final_damage_debuff", "value": 0.10, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt": "ボリス" } }
+    ]
+  },
+  "yefunen_guilt": {
+    "chara": "イェフネン",
+    "skill_name": "罪悪感",
+    "description": "チームにナヤトレイまたはロアミニがいるとナヤトレイとロアミニの被ダメージを減少させ、ナヤトレイまたはロアミニがダメージを受けた場合に一定の確率でHPを回復させる。\nナヤトレイまたはロアミニが戦闘不能状態に陥ると、イェフネンの攻撃ダメージが大きく上昇する。",
+    "icon": "skill/yevgnen/yefunen_guilt.png",
+    "effects": [
+      { "category_id": "damage_reduction_skill_buff", "value": null, "target": "pt", "mastery_group": null, "mastery_option": null, "condition": { "chara_in_pt_any": ["ナヤトレイ", "ロアミニ"] } }
+    ]
+  }
+}
