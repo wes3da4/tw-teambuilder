@@ -40,10 +40,12 @@ This project was built with the assistance of [Claude](https://claude.ai/) (Anth
 
 本ツールで利用しているキャラクター画像・アイコン類・名称に関する著作権はすべて以下に帰属します。
 
-> Copyright © 2009 NEXON Korea Corporation and NEXON Co., Ltd. All Rights Reserved.
+> Copyrights (C) NEXON Corporation and NEXON Co., Ltd. All Rights Reserved.
 
 本ツールはファンメイドのユーティリティであり、NEXON Korea Corporation および NEXON Co., Ltd. とは一切関係ありません。
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+スキルデータの一部は [TaleWiki](https://talewiki.com/) (GFDL) を出典としています。詳細は [CREDITS.md](CREDITS.md) を参照してください。

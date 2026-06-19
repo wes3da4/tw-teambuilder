@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDraggable } from '@dnd-kit/core'
 import type { Member, Role } from '../types'
 import { CHARA_MAP, ROLE_ICON, SLOT_ROLE_CLASS } from '../constants'
+import { getSynergyCharas } from '../skillCalc'
 import MemoTooltip from './MemoTooltip'
 
 interface Props {
@@ -12,9 +13,11 @@ interface Props {
   absenceMode?: boolean
   onAbsenceClick?: () => void
   showEta?: boolean
+  draggingChara?: string | null
+  draggingMemberId?: string | null
 }
 
-export default function MemberCard({ member, slotRole, draggableId, draggableData, absenceMode, onAbsenceClick, showEta = true }: Props) {
+export default function MemberCard({ member, slotRole, draggableId, draggableData, absenceMode, onAbsenceClick, showEta = true, draggingChara, draggingMemberId }: Props) {
   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
     id: draggableId,
     data: draggableData ?? {},
@@ -27,10 +30,19 @@ export default function MemberCard({ member, slotRole, draggableId, draggableDat
   const slotRoleClass = slotRole ? SLOT_ROLE_CLASS[slotRole] : ''
   const mismatch = slotRole && slotRole !== 'free' && slotRole !== member.role
 
+  const isSynergyHighlight = !!draggingChara && (
+    member.id === draggingMemberId || getSynergyCharas(draggingChara).has(member.chara)
+  )
+
   const classes = [
     'member-card',
     isDragging ? 'dragging' : '',
     member.absent ? 'absent' : '',
+  ].filter(Boolean).join(' ')
+
+  const charaIconClasses = [
+    'card-chara-icon',
+    isSynergyHighlight ? 'synergy-glow' : '',
   ].filter(Boolean).join(' ')
 
   return (
@@ -51,7 +63,7 @@ export default function MemberCard({ member, slotRole, draggableId, draggableDat
           )}
         </div>
       )}
-      <div className="card-chara-icon">
+      <div className={charaIconClasses}>
         {charaFile && <img src={`${import.meta.env.BASE_URL}icons/${charaFile}`} alt={member.chara} />}
       </div>
       <div className="card-info">

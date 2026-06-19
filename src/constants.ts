@@ -7,31 +7,31 @@ export const CHARAS = [
 ] as const
 
 export const CHARA_MAP: Record<string, string> = {
-  'ルシアン': 'Char-Lucian.png',
-  'ボリス': 'Char-Boris.png',
-  'ティチエル': 'Char-Tichiel.png',
-  'ミラ': 'Char-Mila.png',
-  'イスピン': 'Char-Ispin.png',
-  'マキシミン': 'Char-Maximin.png',
-  'ナヤトレイ': 'Char-Maya.png',
-  'シベリン': 'Char-Sivelin.png',
-  'ジョシュア': 'Char-Josua.png',
-  'クロエ': 'Char-Cloe.png',
-  'ランジエ': 'Char-Lanziee.png',
-  'イサック': 'Char-Issac.png',
-  'アナイス': 'Char-Anais.png',
-  'イソレット': 'Char-Isolet.png',
-  'ベンヤ': 'Char-Benya.png',
-  'ロアミニ': 'Char-Roamini.png',
-  'ノクターン': 'Char-Nocturne.png',
-  'リーチェ': 'Char-Rice.png',
-  'イェフネン': 'Char-Yevgnen.png',
+  'ルシアン': 'char/Lucian.png',
+  'ボリス': 'char/Boris.png',
+  'ティチエル': 'char/Tichiel.png',
+  'ミラ': 'char/Mila.png',
+  'イスピン': 'char/Ispin.png',
+  'マキシミン': 'char/Maximin.png',
+  'ナヤトレイ': 'char/Naya.png',
+  'シベリン': 'char/Sivelin.png',
+  'ジョシュア': 'char/Josua.png',
+  'クロエ': 'char/Cloe.png',
+  'ランジエ': 'char/Lanziee.png',
+  'イサック': 'char/Issac.png',
+  'アナイス': 'char/Anais.png',
+  'イソレット': 'char/Isolet.png',
+  'ベンヤ': 'char/Benya.png',
+  'ロアミニ': 'char/Roamini.png',
+  'ノクターン': 'char/Nocturne.png',
+  'リーチェ': 'char/Rice.png',
+  'イェフネン': 'char/Yevgnen.png',
 }
 
 export const ROLE_ICON: Record<string, string> = {
-  tank: `${import.meta.env.BASE_URL}icons/Role-Tank.png`,
-  heal: `${import.meta.env.BASE_URL}icons/Role-Healer.png`,
-  dps:  `${import.meta.env.BASE_URL}icons/Role-Attacker.png`,
+  tank: `${import.meta.env.BASE_URL}icons/role/Tank.png`,
+  heal: `${import.meta.env.BASE_URL}icons/role/Healer.png`,
+  dps:  `${import.meta.env.BASE_URL}icons/role/Attacker.png`,
 }
 
 export const SLOT_ROLE_CLASS: Record<string, string> = {

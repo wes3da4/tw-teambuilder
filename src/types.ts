@@ -8,6 +8,8 @@ export interface Member {
   chara: string
   absent: boolean
   memo: string
+  masterySelections: Record<string, string>
+  buildType?: string
 }
 
 export interface Content {

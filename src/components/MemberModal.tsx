@@ -10,8 +10,10 @@ import {
 import { CSS } from '@dnd-kit/utilities'
 import type { Member, Role } from '../types'
 import { CHARAS, CHARA_MAP, ROLE_ICON, ROLES } from '../constants'
+import MasterySelector, { hasMasteries } from './MasterySelector'
+import BuildTypeSelector, { getBuildOptions, getEffectiveBuildType } from './BuildTypeSelector'
 
-const EMPTY_FORM = { name: '', level: 0, role: 'dps' as Role, chara: '', absent: false, memo: '' }
+const EMPTY_FORM = { name: '', level: 0, role: 'dps' as Role, chara: '', absent: false, memo: '', masterySelections: {} as Record<string, string>, buildType: undefined as string | undefined }
 
 interface Props {
   members: Member[]
@@ -73,7 +75,7 @@ export default function MemberModal({ members, showEta, onToggleEta, onAdd, onUp
 
   function startEdit(m: Member) {
     setEditId(m.id)
-    setForm({ name: m.name, level: m.level, role: m.role, chara: m.chara, absent: m.absent, memo: m.memo ?? '' })
+    setForm({ name: m.name, level: m.level, role: m.role, chara: m.chara, absent: m.absent, memo: m.memo ?? '', masterySelections: m.masterySelections ?? {}, buildType: m.buildType })
   }
 
   function handleSave() {
@@ -136,10 +138,28 @@ export default function MemberModal({ members, showEta, onToggleEta, onAdd, onUp
             </div>
             <div className="form-row">
               <label>キャラクター</label>
-              <select value={form.chara} onChange={e => setForm(f => ({ ...f, chara: e.target.value }))}>
+              <select value={form.chara} onChange={e => setForm(f => ({ ...f, chara: e.target.value, masterySelections: {}, buildType: undefined }))}>
                 <option value="">-- 選択 --</option>
                 {CHARAS.map(c => <option key={c} value={c}>{c}</option>)}
               </select>
+              <div className="mode-mastery-row">
+                {getBuildOptions(form.chara) && (
+                  <BuildTypeSelector
+                    chara={form.chara}
+                    value={form.buildType}
+                    onChange={buildType => setForm(f => ({ ...f, buildType }))}
+                  />
+                )}
+                {!!getBuildOptions(form.chara) && hasMasteries(form.chara) && (
+                  <div className="mode-mastery-divider" />
+                )}
+                <MasterySelector
+                  chara={form.chara}
+                  selections={form.masterySelections}
+                  buildType={getEffectiveBuildType(form.chara, form.buildType)}
+                  onChange={(skillId, option) => setForm(f => ({ ...f, masterySelections: { ...f.masterySelections, [skillId]: option } }))}
+                />
+              </div>
             </div>
             <div className="form-row">
               <label>メモ</label>

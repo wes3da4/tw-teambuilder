@@ -16,6 +16,8 @@ interface Props {
   onRemovePT: (ptIdx: number) => void
   onPTNameChange: (ptIdx: number, name: string) => void
   onReorderPTs?: (from: number, to: number) => void
+  draggingChara?: string | null
+  draggingMemberId?: string | null
 }
 
 interface SortablePTBoxProps {
@@ -30,9 +32,11 @@ interface SortablePTBoxProps {
   onRemove: () => void
   canRemove: boolean
   measureRef?: React.RefObject<HTMLDivElement | null>
+  draggingChara?: string | null
+  draggingMemberId?: string | null
 }
 
-function SortablePTBox({ id, ptIdx, content, ptName, slotAssignments, members, showEta, onNameChange, onRemove, canRemove, measureRef }: SortablePTBoxProps) {
+function SortablePTBox({ id, ptIdx, content, ptName, slotAssignments, members, showEta, onNameChange, onRemove, canRemove, measureRef, draggingChara, draggingMemberId }: SortablePTBoxProps) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id,
     data: { type: 'pt-sort' },
@@ -56,12 +60,14 @@ function SortablePTBox({ id, ptIdx, content, ptName, slotAssignments, members, s
         canRemove={canRemove}
         dragHandleListeners={listeners as Record<string, unknown> | undefined}
         dragHandleAttributes={attributes as unknown as Record<string, unknown>}
+        draggingChara={draggingChara}
+        draggingMemberId={draggingMemberId}
       />
     </div>
   )
 }
 
-export default function PTArea({ content, ptCount, ptNames, assignments, members, showEta, ptAreaRef, onAddPT, onRemovePT, onPTNameChange }: Props) {
+export default function PTArea({ content, ptCount, ptNames, assignments, members, showEta, ptAreaRef, onAddPT, onRemovePT, onPTNameChange, draggingChara, draggingMemberId }: Props) {
   const ptIds = Array.from({ length: ptCount }, (_, i) => `pt-${i}`)
   const firstBoxRef = useRef<HTMLDivElement>(null)
   const [ptBoxHeight, setPtBoxHeight] = useState<number | undefined>(undefined)
@@ -93,6 +99,8 @@ export default function PTArea({ content, ptCount, ptNames, assignments, members
               onRemove={() => onRemovePT(i)}
               canRemove={ptCount > 1}
               measureRef={i === 0 ? firstBoxRef : undefined}
+              draggingChara={draggingChara}
+              draggingMemberId={draggingMemberId}
             />
           ))}
           <div className="pt-add-wrap" data-html2canvas-ignore style={ptBoxHeight !== undefined ? { height: ptBoxHeight } : undefined}>
