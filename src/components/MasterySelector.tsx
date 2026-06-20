@@ -40,8 +40,18 @@ interface Props {
   onChange: (skillId: string, masteryOption: string) => void
 }
 
+export function getMasterySkillIds(chara: string): string[] {
+  return Object.entries(SKILLS)
+    .filter(([, sk]) => sk.chara === chara && sk.masteries && Object.keys(sk.masteries).length > 0)
+    .map(([skillId]) => skillId)
+}
+
+export function getMasteryOptionNames(skillId: string): string[] {
+  return Object.keys(SKILLS[skillId]?.masteries ?? {})
+}
+
 export function hasMasteries(chara: string): boolean {
-  return Object.values(SKILLS).some(sk => sk.chara === chara && sk.masteries && Object.keys(sk.masteries).length > 0)
+  return getMasterySkillIds(chara).length > 0
 }
 
 function iconUrl(path: string) {

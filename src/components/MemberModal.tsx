@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import {
   DndContext, closestCenter, PointerSensor, useSensor, useSensors,
   type DragEndEvent,
@@ -12,6 +12,8 @@ import type { Member, Role } from '../types'
 import { CHARAS, CHARA_MAP, ROLE_ICON, ROLES } from '../constants'
 import MasterySelector, { hasMasteries } from './MasterySelector'
 import BuildTypeSelector, { getBuildOptions, getEffectiveBuildType } from './BuildTypeSelector'
+import PasscodeImportPopover from './PasscodeImportPopover'
+import { encodeMember, encodeMembers, decodeMembers } from '../passcode'
 
 const EMPTY_FORM = { name: '', level: 0, role: 'dps' as Role, chara: '', absent: false, memo: '', masterySelections: {} as Record<string, string>, buildType: undefined as string | undefined }
 
@@ -71,7 +73,54 @@ function SortableRow({ member, editId, onStartEdit, onDelete }: RowProps) {
 export default function MemberModal({ members, showEta, onToggleEta, onAdd, onUpdate, onDelete, onReorder, onClose }: Props) {
   const [form, setForm] = useState(EMPTY_FORM)
   const [editId, setEditId] = useState<string | null>(null)
+  const [importAnchorRect, setImportAnchorRect] = useState<DOMRect | null>(null)
+  const [importText, setImportText] = useState('')
+  const [statusTip, setStatusTip] = useState<string | null>(null)
+  const [allStatusTip, setAllStatusTip] = useState<string | null>(null)
+  const statusTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const allStatusTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 5 } }))
+
+  const { members: parsedMembers, errors: importErrors } = useMemo(() => decodeMembers(importText), [importText])
+
+  function showStatus(message: string) {
+    if (statusTimerRef.current) clearTimeout(statusTimerRef.current)
+    setStatusTip(message)
+    statusTimerRef.current = setTimeout(() => setStatusTip(null), 2000)
+  }
+
+  function showAllStatus(message: string) {
+    if (allStatusTimerRef.current) clearTimeout(allStatusTimerRef.current)
+    setAllStatusTip(message)
+    allStatusTimerRef.current = setTimeout(() => setAllStatusTip(null), 2000)
+  }
+
+  function copyMemberPasscode() {
+    try {
+      const code = encodeMember({ id: editId ?? '', ...form })
+      navigator.clipboard.writeText(code)
+      showStatus('✓ 1人分のゼリピッピをコピーしました')
+    } catch (e) {
+      showStatus(`⚠ ${e instanceof Error ? e.message : 'ゼリピッピの生成に失敗しました'}`)
+    }
+  }
+
+  function copyAllPasscode() {
+    if (members.length === 0) return
+    try {
+      navigator.clipboard.writeText(encodeMembers(members))
+      showAllStatus(`✓ ${members.length}人分のゼリピッピをコピーしました`)
+    } catch (e) {
+      showAllStatus(`⚠ ${e instanceof Error ? e.message : 'ゼリピッピの生成に失敗しました'}`)
+    }
+  }
+
+  function applyImport() {
+    parsedMembers.forEach(onAdd)
+    showStatus(`✓ ${parsedMembers.length}人分を復元しました`)
+    setImportText('')
+    setImportAnchorRect(null)
+  }
 
   function startEdit(m: Member) {
     setEditId(m.id)
@@ -119,9 +168,38 @@ export default function MemberModal({ members, showEta, onToggleEta, onAdd, onUp
         <div className="member-modal-body">
           {/* 左カラム: 追加 / 編集フォーム */}
           <div className="member-add-section">
-            <div className="member-add-section-label">
-              {editId ? '編集中' : 'メンバーを追加'}
+            <div className="member-add-section-label section-label-row">
+              <span>{editId ? '編集中' : 'メンバーを追加'}</span>
+              {statusTip && <span className="copy-feedback">{statusTip}</span>}
+              {editId ? (
+                <button type="button" className="icon-btn" title="この1人分のゼリピッピをコピー" onClick={copyMemberPasscode}>
+                  <i className="ti ti-upload" />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="icon-btn"
+                  title="ゼリピッピから復元"
+                  onClick={e => {
+                    const rect = e.currentTarget.getBoundingClientRect()
+                    setImportAnchorRect(r => r ? null : rect)
+                  }}
+                >
+                  <i className="ti ti-download" />
+                </button>
+              )}
             </div>
+            {importAnchorRect && (
+              <PasscodeImportPopover
+                anchorRect={importAnchorRect}
+                value={importText}
+                onChange={setImportText}
+                errors={importErrors}
+                count={parsedMembers.length}
+                onApply={applyImport}
+                onClose={() => { setImportAnchorRect(null); setImportText('') }}
+              />
+            )}
             <div className="form-row">
               <label>名前</label>
               <input value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} placeholder="キャラクター名" onKeyDown={e => e.key === 'Enter' && handleSave()} />
@@ -179,7 +257,13 @@ export default function MemberModal({ members, showEta, onToggleEta, onAdd, onUp
 
           {/* 右カラム: メンバー一覧 */}
           <div className="member-list-col">
-            <div className="member-add-section-label">メンバー一覧</div>
+            <div className="member-add-section-label section-label-row">
+              <span>メンバー一覧</span>
+              {allStatusTip && <span className="copy-feedback">{allStatusTip}</span>}
+              <button type="button" className="icon-btn" title="全員分のゼリピッピをコピー" disabled={members.length === 0} onClick={copyAllPasscode}>
+                <i className="ti ti-upload" />
+              </button>
+            </div>
             <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
               <SortableContext items={members.map(m => m.id)} strategy={verticalListSortingStrategy}>
                 <div className="member-list">

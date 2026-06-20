@@ -635,6 +635,37 @@ input[type="number"] { -moz-appearance: textfield; }
   letter-spacing: 0.05em;
   margin-bottom: 10px;
 }
+.member-add-section-label.section-label-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-label-row .copy-feedback { flex: 1; text-transform: none; letter-spacing: normal; }
+.section-label-row .icon-btn { margin-left: auto; font-size: 16px; }
+.icon-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.passcode-import-popover {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  width: 320px;
+}
+.passcode-import-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.passcode-import-count {
+  flex: 1;
+  font-size: 11px;
+  color: var(--text-dim);
+}
 .member-list-item.editing {
   background: var(--accent-bg);
   box-shadow: inset 0 0 0 1px var(--accent);
